@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="~{fragments/layout}">
+
+<head>
+	<title>Zadania</title>
+</head>
+
+<body>
+	<script th:inline="javascript">
+	/*<![CDATA[*/
+	$(document).ready(function() 
+		{
+			var dttable = $("#datatable").dataTable(
+			{
+       			"iDisplayLength": 50,
+        		"aLengthMenu": [[20, 50, 100, 500, 1000], [20, 50, 100, 500, 1000]],
+        		"deferRender": true,
+        		colReorder: true,
+        		"aaSorting": [],
+        		"language":{
+        					"lengthMenu": "Wyświetl _MENU_ wierszy na stronę",
+            				"zeroRecords": "Brak danych do wyświetlenia",
+            				"info": "Strona _PAGE_ z _PAGES_",
+            				"infoEmpty": "Brak danych do wyświetlenia",
+            				"infoFiltered": "(wyszukane spośród _MAX_ wszystkich wierszy)",
+            				"search": "Wyszukaj:",
+            				"paginate": {
+                						"first":      "Pierwsza",
+                						"last":       "Ostatnia",
+                						"next":       "Następna",
+                						"previous":   "Poprzednia"
+            							}
+        					},
+			});
+    		if (document.getElementById("sorter")) 
+    			{
+    				dttable.fnSort( [ [0,'asc'] ] );
+    				var td = document.querySelectorAll("td");
+    				for (var i = 0; i < td.length; i++) 
+    					{
+    	    				td[i].style.whiteSpace = "nowrap";
+    					}
+    			}
+   		});
+  	/*]]>*/
+  	</script>
+
+	<div layout:fragment="content" th:remove="tag">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+					<table id="datatable" class="table table-striped table-bordered nowrap">
+						<thead class="thead">
+							<tr><th><a title="Nowe zadanie" class='btn btn-warning btn-xs' th:href="@{/tasks/add}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id zadania</th><th>Nazwa zadania</th><th>System</th></tr>
+						</thead>
+						<tbody class="tbody">					
+							<tr th:each="tasks:${taskList}">
+								
+								<!-- Modalne okno kasowania  -->
+								<div class="modal fade" th:id="delete+${tasks.taskId}" role="dialog">
+								<div class='modal-dialog'>
+								<div class='modal-content'>
+								<div class='modal-header'>
+									<h4 class='modal-title'>Uwaga!</h4>
+									<button type='button' class='close' data-dismiss='modal'>&times;</button>									
+								</div>																		
+								<div class='modal-body'>
+										<h6 class='modal-title'>Czy na pewno usunąć zadanie ze słownika?</h6>
+								</div>
+								<div class='modal-footer'>
+										<button type='button' class='btn btn-default' data-dismiss='modal'>Anuluj</button>
+										<a th:href="${'/tasks/delete/'+ tasks.taskId}" class='btn btn-success'>OK</a>
+									</div>
+								</div>
+								</div>
+								</div>
+	    						<!-- Koniec -->
+								
+								
+								<td>				
+									<button type='button' class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#delete'+${tasks.taskId}"><span class="glyphicon glyphicon-remove"></span></button>
+									<a th:href="${'/tasks/edit/'+tasks.taskId}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
+								</td>															
+								<td th:text="${tasks.taskId}"></td>
+								<td th:text="${tasks.taskName}"></td>
+								<td th:text="${tasks.taskSystem}"></td>													
+							</tr>
+						</tbody>
+					</table>			
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
