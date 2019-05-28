@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import pl.pzu.trak.security.LoggingAccessDeniedHandler;
 import pl.pzu.trak.services.UserService;
 
 @Configuration
@@ -17,6 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private LoggingAccessDeniedHandler accessDeniedHandler;    
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -33,7 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/css/**",
                             "/media/**",
                             "/webjars/**").permitAll()
-                    .anyRequest().hasAuthority("READ")
+                    .antMatchers("/tasks/**").hasAuthority("ROLE_TASK")
+                    .anyRequest().hasAuthority("ROLE_READ")
                 .and()
                     .formLogin()
                         .loginPage("/login")
@@ -44,7 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
-                    .permitAll();
+                        .permitAll()                        
+                .and()
+                    .exceptionHandling()
+                        .accessDeniedHandler(accessDeniedHandler);                        
+                    
     }
 
     @Bean
