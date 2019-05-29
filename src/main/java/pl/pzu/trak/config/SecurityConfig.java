@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/css/**",
                             "/media/**",
                             "/webjars/**").permitAll()
-                    .antMatchers("/tasks/**").hasAuthority("ROLE_TASK")
-                    .anyRequest().hasAuthority("ROLE_READ")
+                    .antMatchers("/tasks/**").hasAuthority("TASK_PRIVILEGE")
+                    .anyRequest().hasAuthority("READ_PRIVILEGE")
                 .and()
                     .formLogin()
                         .loginPage("/login")
