@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="~{fragments/layout}">
+
+<head>
+	<title>Nowe zadanie</title>
+</head>
+
+<body>
+	<div layout:fragment="content" th:remove="tag">
+	<div class="container">
+	<div>
+		<h4>Nowe zadanie</h4>
+	</div>		
+		  <form th:action="@{/tasks/add}" th:object="${newTask}" accept-charset='UTF-8' method="POST">	
+				<div>
+					<div class="row">
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="taskName">Nazwa zadania</label>
+							<input type="text" th:field="*{taskName}" class="form-control" required="required"/>
+						</div>
+					</div>
+	
+					<div class="row">			
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="taskSystem">System</label>
+							<select th:field="*{taskSystem}" class="form-control" required="required">
+    							<option th:each="sys : ${systList}" th:value="${sys.systemName}"
+            							th:label="${sys.systemName}">
+            					</option>
+          					</select>					
+						</div>
+					</div>	
+				
+					<div class="row">						
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="taskWeigth">Waga</label>
+							<input type="number" th:field="*{taskWeight}" class="form-control"  min="0" max="999999" value=""/>
+						</div>
+					</div>	
+			
+					<div class="submit">
+						<button type="button" class="btn btn-default">Anuluj</button>
+						<button type="submit" class="btn btn-success">Zapisz</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+</body>
+</html>
