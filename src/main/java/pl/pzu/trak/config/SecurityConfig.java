@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/css/**",
                             "/media/**",
                             "/webjars/**").permitAll()
-                    .antMatchers("/tasks/**").hasAuthority("TASK_PRIVILEGE")
-                    .anyRequest().hasAuthority("READ_PRIVILEGE")
+                    .antMatchers("/tasks/**").hasAuthority("TASK")
+                    .anyRequest().hasAuthority("READ")
                 .and()
                     .formLogin()
                         .loginPage("/login")
@@ -56,6 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     
     }
 
+    @Bean
+    public static DefaultRolesPrefixPostProcessor defaultRolesPrefixPostProcessor() {
+    	return new DefaultRolesPrefixPostProcessor();
+    }
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
