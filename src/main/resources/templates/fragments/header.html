@@ -12,7 +12,7 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">                    
                     <li class="nav-item dropdown">
-                    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" sec:authorize="hasRole('ROLE_TASK')" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
+                    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" sec:authorize="hasRole('TASK')" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     		<a class="dropdown-item" th:href="@{/tasks/all}">Słownik zadań</a>
                     	</div>
