@@ -94,7 +94,11 @@ public class UserServiceImpl implements UserService
 		user.setLogin(registration.getLogin());
 		user.setPassword(passwordEncoder.encode(registration.getPassword()));
 		user.setEnabled(true);
-		user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
+		user.setRoles(Arrays.asList(roleRepository.findByName("TRAK_UZYTKOWNIK")));
 		return userRepository.save(user);
+	}
+	
+	public List<User> findAll(){
+		return userRepository.findAll();
 	}
 }

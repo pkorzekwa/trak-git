@@ -31,7 +31,7 @@ public class UserRegistrationController {
     public String showRegistrationForm(Model model) {
         return "registration";
     }
-
+    
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto, 
                                       BindingResult result){
