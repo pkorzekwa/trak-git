@@ -9,7 +9,7 @@ import pl.pzu.trak.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByLogin(String login);
-    
+      
     @Override
     void delete(User user);
 }

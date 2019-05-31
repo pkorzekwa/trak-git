@@ -1,5 +1,7 @@
 package pl.pzu.trak.services;
 
+import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import pl.pzu.trak.domain.User;
@@ -9,4 +11,5 @@ public interface UserService extends UserDetailsService {
 
     User findByLogin(String login);
     User save(UserRegistrationDto registration);
+    List<User> findAll();
 }
