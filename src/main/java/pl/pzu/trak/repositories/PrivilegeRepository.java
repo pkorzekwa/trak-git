@@ -10,4 +10,6 @@ public interface PrivilegeRepository extends JpaRepository<Privilege, Long> {
 
     @Override
     void delete(Privilege privilege);
+    
+    
 }
