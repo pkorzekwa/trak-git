@@ -29,14 +29,14 @@ public class UserControler
 	public String showUserListDetail(Map<String, Object> model)
 	{
 		model.put("userList", userService.findAll());
-		return "userlist";
+		return "/user/upr/userlist";
 	}	
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editUser(Model model, @PathVariable(value = "id") Long id)
 	{
 		model.addAttribute("editUser", userService.findOne(id));
-		return "editUser";
+		return "/user/upr/editUser";
 	}
 	
 	
@@ -49,9 +49,9 @@ public class UserControler
 		} else
 		{
 			userService.save(user);
-			return "redirect:/userlist";
+			return "redirect:/user/upr/userlist";
 		}
 	}	    
-    
+ 
     
 }
