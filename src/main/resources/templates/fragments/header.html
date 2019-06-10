@@ -15,8 +15,12 @@
                     	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     		<a class="dropdown-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
+<<<<<<< HEAD
                     		<a class="dropdown-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
                     		<a class="dropdown-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy uprawnień</a>
+=======
+                    		<a class="dropdown-item" th:href="@{/userlist}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
+>>>>>>> branch 'master' of \\osw01130\git\trak_spring
                     	</div>
                     </li>
                 </ul>

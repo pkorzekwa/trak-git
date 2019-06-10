@@ -1,0 +1,541 @@
+@CHARSET "UTF-8";
+
+.footer {
+	width: 100%;
+}
+
+form.form-inline { line-height: 5ch }
+
+body { padding-top:20px; }
+
+div.buttonblock .btn:not(.btn-block) { width:260px;margin-bottom:10px; margin-left:10px;}
+td.buttonblock .btn:not(.btn-block) { width:80px;margin-bottom:0px; margin-left:0px;}
+
+
+/*MENU*/
+.navbar-inverse
+{
+    background:#646464;
+    border-bottom-color: #646464;
+}
+.navbar-inverse .navbar-nav>li>a,.navbar-inverse .navbar-brand,.navbar-inverse .navbar-nav>.dropdown>a .caret
+{
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus,
+.navbar-nav>li>.dropdown-menu
+{
+    background:#969696;
+}
+.nav-pills>li>a,
+{
+    color: #303F9F;
+}
+
+.nav>li>a:hover, .nav>li>a:focus
+{
+    background-color: #EEEEEE;
+}
+
+
+/*REPORT TABLES*/
+
+table {
+	 font-size:12px;
+	 padding: 0px;
+}
+
+table.dataTable thead th {
+	 border-top: 1px solid lightgray;
+	 border-right: 1px solid lightgray;
+	 
+	 margin-bottom: 20px;
+     background-color: #d9edf7;
+     border: 1px solid transparent;
+	 border-color: #bce8f1;
+	 color: #31708f;
+	 font-weight: normal;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 14px;
+     line-height: 1.42857143;
+}
+
+.dataTables_length label{
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;	
+}
+
+.dataTables_filter label {
+	font-size: 14px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal; 
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #31708f;
+}  
+
+/*ANIMATED PROGRESS-BAR*/
+.animationload {
+    background-color: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+.osahanloading {
+    animation: 1.5s linear 0s normal none infinite running osahanloading;
+    background: #fed37f none repeat scroll 0 0;
+    border-radius: 50px;
+    height: 50px;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+}
+.osahanloading::after {
+    animation: 1.5s linear 0s normal none infinite running osahanloading_after;
+    border-color: #85d6de transparent;
+    border-radius: 80px;
+    border-style: solid;
+    border-width: 10px;
+    content: "";
+    height: 80px;
+    left: -15px;
+    position: absolute;
+    top: -15px;
+    width: 80px;
+}
+@keyframes osahanloading {
+0% {
+    transform: rotate(0deg);
+}
+50% {
+    background: #85d6de none repeat scroll 0 0;
+    transform: rotate(180deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+
+
+/* NEW REPORTTREE */
+
+div.treeview {
+    min-width: 100px;
+    min-height: 100px;   
+    max-height: 400px;
+    overflow:auto;	
+	padding: 4px;
+	margin-bottom: 20px;
+	
+	/* color: #369;	
+	border: solid 1px;
+	border-radius: 4px; */
+}
+div.treeview ul:first-child:before {
+    display: none;
+}
+.treeview, .treeview ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    
+	/* color: #369; */
+}
+.treeview ul {
+    margin-left:1em;
+    position:relative
+}
+.treeview ul ul {
+    margin-left:.5em
+}
+.treeview ul:before {
+    content:"";
+    display:block;
+    width:0;
+    position:absolute;
+    top:0;
+    left:0;
+    border-left:1px solid;
+    
+    /* creates a more theme-ready standard for the bootstrap themes */
+    bottom:15px;
+}
+.treeview li {
+    margin:0;
+    padding:0 1em;
+    line-height:2em;
+    font-weight:500;
+    position:relative
+}
+.treeview ul li:before {
+    content:"";
+    display:block;
+    width:10px;
+    height:0;
+    border-top:1px solid;
+    margin-top:-1px;
+    position:absolute;
+    top:1em;
+    left:0
+}
+.tree-indicator {
+    margin-right:5px;
+    
+    cursor:pointer;
+}
+.treeview li a {
+    text-decoration: none;
+    color:inherit;
+    cursor:pointer;
+}
+.treeview li button, .treeview li button:active, .treeview li button:focus {
+    text-decoration: none;
+    color:inherit;
+    border:none;
+    background:transparent;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    outline: 0;
+}
+
+/*TASK SCHEDULER*/
+/*SCROLLS*/
+#ts-daydiv-active::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+ 
+/* Track */
+#ts-daydiv-active::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+#ts-daydiv-active::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(128,170,255,0.4); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
+}
+#ts-daydiv-active::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(128,170,255,0.1); 
+}
+/*TS OTHER*/
+#ts-monthcontrol{
+	margin: 0 auto;
+	width: 300px;
+}
+#ts-monthleft{
+	width: 25px;
+	height: 18px;
+}
+#ts-monthright{
+	width: 25px;
+	height: 18px;
+}
+#ts-monthtext{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#ts-tablehead th{
+	background: white;
+	border: 0px;
+	font-size: 15px;
+}
+
+#ts-daydiv-active{
+	height: 140px;
+	width: 180px;
+	background: #f0f0f5;
+	overflow: auto;
+	z-index: 1;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+}
+#ts-daydiv-inactive{
+	height: 140px;
+	width: 180px;
+	background: #e0e0eb;
+	overflow: auto;
+	z-index: 1;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+}
+#ts-daynumber{
+	font-weight: bold;
+	font-size: 98px;
+	color: blue;
+	
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+#ts-daynumber:hover{
+	color: black;
+	opacity: 0.5;
+	}
+#ts-daywatermark{
+	position:static;
+	overflow: visible;
+	z-index:0;
+	display:block;
+	height: 0px;
+	width: 0px;
+	opacity: 0.16;
+}
+
+#ts-daytable{
+	width: 100%;
+	border: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+	font-size: 10px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;	
+}
+
+#ts-tablerow{
+	border: 0px;
+	border-style: solid;
+	border-color: black;
+}
+
+#ts-tablecell{
+	border: 0px;
+	border-style: solid;
+	border-color: black;
+}
+
+#ts-daytable{
+	border: 0px;
+	border-style: solid;
+	border-color: black;
+	padding: 0px;
+	margin: 0px;
+}
+
+#ts-daytable tr, td, th{
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#ts-taskempty{
+	background-color: rgba(255,26,26,0.2);
+	white-space: nowrap;
+}
+#ts-tasktaken{
+	background-color: rgba(0,255,85,0.2);
+	white-space: nowrap;
+}
+#ts-delete{
+	width: 10px;
+	height: 10px;
+	opacity: 0.1;
+}
+#ts-delete:hover{
+	opacity: 0.9;
+}
+
+.ts-today{
+	border: 1px solid rgba(70, 70, 70, 1.0);
+}
+
+/*IDENTYFIKACJA KLIENTÓW*/
+#clientdiv{
+	width: 700px;
+	height: auto;
+	color: white;
+	display: block;
+	background: #00509E;
+	margin: 0 auto;
+	margin-left: 100px;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid gray;
+	
+	
+}
+#clienttable{
+	width: 100%;
+}
+#clientaddressdiv{
+	width: 100%;
+}
+#clientaddresstable{
+	width: 100%;
+}
+
+#clientaddresstable th{
+	background: #00509E;
+	border: 0px;
+	text-align: left;
+}
+
+#hintdiv{
+	width: 700px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	margin-left: 100px;
+	background: #9FD1F3;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid gray;
+}
+#hintsdiv{
+	width: 100%;
+	height: 300px;
+	overflow-y: auto;
+}
+#hinttable{
+	
+}
+#hintaddressdiv{
+	width: 100%;
+	max-height: 70px;
+	overflow-y: auto;
+}
+#hintaddresstable th{
+	border: 0px;
+}
+#hintaddresstable{
+	width: 100%;
+	text-align: left;
+}
+
+#hintaddresstable tr:nth-child(odd) {
+    background-color: #84D0F0;
+}
+
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+}
+
+.modal-body {
+padding: 2px 16px;
+overflow: auto;
+max-height: 500px;
+}
+
+
+.panel-container{
+  height: 100%;
+}
+
+.panel-top {
+height: 200px;
+}
+
+.panel-splitter {
+  flex: 0 0 auto;
+  height: 2px;
+  background: silver;
+}
+
+.panel-bottom {
+  min-height: 300px;
+  background: white;
+
+}
+
+.modaljs-hint{
+	color: lightgray;
+}
+.modaljs-hint:hover{
+	color: black;
+}
+
+.modaljs-input{
+	margin: 5px;
+	width: 210px;
+	border: 1px solid #9FD1F3;
+	background-color: white;
+}
+.modaljs-input:hover{
+	border: 1px solid #999;
+}
+.modaljs-input:focus{
+	border: 1px solid #999;
+	background-color: #ADE0F5;
+}
+.modaljs-input:disabled{
+	background-color: #F0F0F0;
+}
+
+
+/* DYNAMICZNA LISTA w module sectionsemployees */
+
+.dual-list .list-group {
+    margin-top: 8px;
+}
+
+.list-left li, .list-right li {
+    cursor: pointer;
+}
+
+.list-arrows {
+    padding-top: 100px;
+}
+
+.list-arrows button {
+    margin-bottom: 20px;
+}
+	
