@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import pl.pzu.trak.security.LoggingAccessDeniedHandler;
@@ -38,7 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/media/**",
                             "/webjars/**").permitAll()
                     .antMatchers("/tasks/**").hasAuthority("ZADANIA")
-                    .antMatchers("/userlist").hasAuthority("UZYTKOWNICY")
+                    .antMatchers("/users/**").hasAuthority("UZYTKOWNICY")
+                    .antMatchers("/roles/**").hasAuthority("ROLES")
                     .anyRequest().hasAuthority("READ")
                 .and()
                     .formLogin()
@@ -74,4 +76,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
+
+
+    //LDAP    
+//	@Override
+//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth
+//			.ldapAuthentication()
+//				.userDnPatterns("uid={0},CN=Users,O=PZU")
+//				.groupSearchBase("CN=Users,O=PZU")
+//				.contextSource()
+//					.url("ldap://ldap.pzu.pl:389/")
+//					.and()
+//				.passwordCompare()
+//					.passwordEncoder(passwordEncoder())
+//					.passwordAttribute("userPassword");    
+//	}
+//	
+//    private PasswordEncoder passwordEncoder() {
+//		final BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+//		return new PasswordEncoder() {
+//			@Override
+//			public String encode(CharSequence rawPassword) {
+//				return bcrypt.encode(rawPassword.toString());
+//			}
+//			@Override
+//			public boolean matches(CharSequence rawPassword, String encodedPassword) {
+//				return bcrypt.matches(rawPassword, encodedPassword);
+//			}
+//		};
+//	}    
+//    
+//	@Bean
+//	public BCryptPasswordEncoder bcryptEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}    
+    
 }
