@@ -61,7 +61,8 @@ layout:decorate="~{fragments/layout}">
 														
 								
 								<td>				
-									<a th:href="${'/users/edit/'+users.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
+									<a th:href="${'/users/edit/'+users.id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>	
+									<a th:href="${'/users/roles/'+users.id}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-cog"></span></a>								
 								</td>			
 								<td th:text="${users.id}"></td>												
 								<td th:text="${users.login}"></td>

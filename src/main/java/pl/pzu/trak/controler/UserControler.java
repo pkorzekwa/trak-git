@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.pzu.trak.domain.User;
+import pl.pzu.trak.services.RoleService;
 import pl.pzu.trak.services.UserService;
 
 @Controller
@@ -24,6 +25,8 @@ public class UserControler
 {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private RoleService roleService;
 
     @GetMapping("/all")
 	public String showUserListDetail(Map<String, Object> model)
@@ -53,5 +56,24 @@ public class UserControler
 		}
 	}	    
  
+	@RequestMapping(value = "/edit/{id}", params = { "cancel" }, method = RequestMethod.POST)
+	public String updateUserCancel(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editUser";
+		} else
+		{		
+			model.addAttribute("userList", userService.findAll());
+			return "redirect:/users/all";
+		}
+	}
     
+	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
+	public String addRoleToUser(Model model, @PathVariable(value = "id") Long id)
+	{
+		model.addAttribute("editUser", userService.findOne(id));
+		model.addAttribute("roleList", roleService.findAll());
+		return "/user/upr/addRoleToUser";
+	}
 }
