@@ -41,15 +41,15 @@ public class UserControler
 	
 	
 	@RequestMapping(value = "/edit/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateUser(@Valid @ModelAttribute("kontrakt") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	public String updateUser(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,  @PathVariable(value = "id") Long id)
 	{
 		if (bindingResult.hasErrors())
 		{
-			return "editUser";
+			return "/user/upr/editUser";
 		} else
 		{
 			userService.save(user);
-			return "redirect:/user/upr/userlist";
+			return "redirect:/users/all";
 		}
 	}	    
  
