@@ -64,11 +64,11 @@ public class RoleControler
 	{
 		if (bindingResult.hasErrors())
 		{
-			return "editRole";
+			return "user/upr/editRole";
 		} else
 		{
 			
-			roleService.save(role);
+			roleService.updateRole(role.getId(), role.getName());
 			return "redirect:/roles/all";
 		}
 	}	

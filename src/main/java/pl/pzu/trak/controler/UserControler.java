@@ -41,7 +41,7 @@ public class UserControler
 	
 	
 	@RequestMapping(value = "/edit/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateUser(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,  @PathVariable(value = "id") Long id)
+	public String updateUser(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
 	{
 		if (bindingResult.hasErrors())
 		{
