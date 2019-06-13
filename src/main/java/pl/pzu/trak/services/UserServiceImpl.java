@@ -115,4 +115,9 @@ public class UserServiceImpl implements UserService
 		userRepository.save(user);
 	}
 	
+	public void updateUser(Long id, String firstName, String lastName, String login, boolean enabled)
+	{
+		userRepository.updateUser(id, firstName, lastName, login, enabled);
+	}
+	
 }

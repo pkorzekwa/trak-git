@@ -51,7 +51,7 @@ public class UserControler
 			return "/user/upr/editUser";
 		} else
 		{
-			userService.save(user);
+			userService.updateUser(user.getId(), user.getFirstName(), user.getLastName(), user.getLogin(), user.isEnabled());
 			return "redirect:/users/all";
 		}
 	}	    
@@ -76,4 +76,31 @@ public class UserControler
 		model.addAttribute("roleList", roleService.findAll());
 		return "/user/upr/addRoleToUser";
 	}
+	
+	@RequestMapping(value = "/roles/{id}", params = { "cancel" }, method = RequestMethod.POST)
+	public String updateAddUserToRoleCancel(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editUser";
+		} else
+		{		
+			model.addAttribute("userList", userService.findAll());
+			return "redirect:/users/all";
+		}
+	}
+	
+/*	@RequestMapping(value = "/roles/{id}", params = { "save" }, method = RequestMethod.POST)
+	public String updateAddUserToRoleSave(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editUser";
+		} else
+		{		
+			model.addAttribute("userList", userService.findAll());
+			return "redirect:/users/all";
+		}
+	}*/
+	
 }

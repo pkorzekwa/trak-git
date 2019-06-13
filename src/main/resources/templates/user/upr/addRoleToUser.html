@@ -71,18 +71,7 @@ layout:decorate="~{fragments/layout}">
 					<table id="datatable" class="table table-striped table-bordered nowrap">
 					
 						<thead class="thead">
-						
-						
-						   <!--  
-							<tr><th><a title="Nowy uzytkownik" class='btn btn-warning btn-xs' th:href="@{/registration}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id</th><th>Login</th><th>Nazwisko</th><th>Imie</th><th>Aktywny</th><th>Uprawnienia</th></tr>
-						 -->
-						</thead>
-					
-						<thead class="thead">
 						    <tr><th>Id</th><th>Dostępne role</th><th>TAK/NIE</th></tr>
-						   <!--  
-							<tr><th><a title="Nowy uzytkownik" class='btn btn-warning btn-xs' th:href="@{/registration}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id</th><th>Login</th><th>Nazwisko</th><th>Imie</th><th>Aktywny</th><th>Uprawnienia</th></tr>
-						 -->
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="role:${roleList}">
@@ -94,7 +83,7 @@ layout:decorate="~{fragments/layout}">
 								<td th:text="${role.id}"></td>	
 								<td th:text="${role.name}"></td>	
 								<td>
-									<input type="checkbox" value="${role.id}"/>				
+									<input type="checkbox" th:value="${role.id}" />				
 								</td>									
 							
 							
