@@ -38,4 +38,14 @@ public class RoleServiceImpl implements RoleService
 	public void save(Role role) {
 		roleRepository.save(role);
 	}
+	
+	@Override
+	public Role findOne(Long id) {
+		return roleRepository.getOne(id);
+	}
+
+	public void updateRole(Long id, String name)
+	{
+		roleRepository.updateRole(id, name);
+	}
 }

@@ -10,4 +10,7 @@ public interface RoleService
 	void remove(Long roleId);
 	void update(Role role);
 	void save(Role role);
+	Role findOne(Long id);
+	void updateRole(Long id, String name);
+
 }
