@@ -1,5 +1,6 @@
 package pl.pzu.trak.controler;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pl.pzu.trak.domain.Role;
 import pl.pzu.trak.domain.User;
 import pl.pzu.trak.services.RoleService;
 import pl.pzu.trak.services.UserService;
@@ -72,11 +74,18 @@ public class UserControler
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
 	public String addRoleToUser(Model model, @PathVariable(value = "id") Long id)
 	{
-		model.addAttribute("editUser", userService.findOne(id));
+/*		model.addAttribute("editUser", userService.findOne(id));
 		model.addAttribute("roleList", roleService.findAll());
+		return "/user/upr/addRoleToUser";*/
+		
+		model.addAttribute("user", userService.findOne(id));
+		
+		List<Role> allroles = roleService.findAll();
+		model.addAttribute("allroles", allroles);
+		
 		return "/user/upr/addRoleToUser";
 	}
-	
+		
 	@RequestMapping(value = "/roles/{id}", params = { "cancel" }, method = RequestMethod.POST)
 	public String updateAddUserToRoleCancel(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
 	{
@@ -89,18 +98,5 @@ public class UserControler
 			return "redirect:/users/all";
 		}
 	}
-	
-/*	@RequestMapping(value = "/roles/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateAddUserToRoleSave(@Valid @ModelAttribute("editUser") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model)
-	{
-		if (bindingResult.hasErrors())
-		{
-			return "/user/upr/editUser";
-		} else
-		{		
-			model.addAttribute("userList", userService.findAll());
-			return "redirect:/users/all";
-		}
-	}*/
-	
+		
 }

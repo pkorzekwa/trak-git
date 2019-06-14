@@ -15,8 +15,8 @@
                     	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     		<a class="dropdown-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
-                    		<a class="dropdown-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
-                    		<a class="dropdown-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy</a>
+                    		<a class="dropdown-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a><br>
+                    		<a class="dropdown-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy użytkowników</a>
                     	</div>
                     </li>
                 </ul>
