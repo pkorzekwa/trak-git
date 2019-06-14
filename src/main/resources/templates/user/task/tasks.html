@@ -10,7 +10,6 @@ layout:decorate="~{fragments/layout}">
 
 <body>
 	<script th:inline="javascript">
-	/*<![CDATA[*/
 	$(document).ready(function() 
 		{
 			var dttable = $("#datatable").dataTable(
@@ -45,7 +44,6 @@ layout:decorate="~{fragments/layout}">
     					}
     			}
    		});
-  	/*]]>*/
   	</script>
 
 	<div layout:fragment="content" th:remove="tag">

@@ -83,6 +83,7 @@ layout:decorate="~{fragments/layout}">
 								<td>				
 									<button type='button' class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#delete'+${roles.Id}"><span class="glyphicon glyphicon-remove"></span></button>
 									<a th:href="${'/roles/edit/'+roles.Id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
+									<a th:href="${'/roles/editprivileges/'+roles.Id}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-list"></span></a>
 								</td>															
 								<td th:text="${roles.Id}"></td>
 								<td th:text="${roles.name}"></td>

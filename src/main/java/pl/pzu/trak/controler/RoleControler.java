@@ -1,5 +1,6 @@
 package pl.pzu.trak.controler;
 
+import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pl.pzu.trak.domain.Privilege;
 import pl.pzu.trak.domain.Role;
+import pl.pzu.trak.services.PrivilegeService;
 import pl.pzu.trak.services.RoleService;
 
 @Controller
@@ -22,6 +25,9 @@ public class RoleControler
 {
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private PrivilegeService privilegeService;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -72,4 +78,17 @@ public class RoleControler
 			return "redirect:/roles/all";
 		}
 	}	
+
+	@RequestMapping(value = "/editprivileges/{id}", method = RequestMethod.GET)
+	public String editRolePrivileges(Model model, @PathVariable(value = "id") Long id)
+	{
+		
+		model.addAttribute("role", roleService.findOne(id));		
+		
+		List<Privilege> allprivileges = privilegeService.findAll();	
+		model.addAttribute("allprivileges", allprivileges);
+		
+		return "user/upr/editRolePrivileges";
+	}
+
 }
