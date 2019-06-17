@@ -41,12 +41,7 @@
 								</div>
 							</div>	
 							
-							<div class="row">						
-								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
-									<label for="enabled">Enabled</label>
-									<input type="text" th:field="*{enabled}" class="form-control"/>
-								</div>
-							</div>	
+	
 							
 							<div class="row">						
 								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
@@ -55,7 +50,17 @@
 								</div>
 							</div>	
 							
-							
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="enabled">Aktywny</label><br>
+									<div>
+										<label>Tak</label>
+										<input type="radio" th:field="*{enabled}" th:value="true" />
+										<label>Nie</label>
+										<input type="radio" th:field="*{enabled}" th:value="false"/>
+									</div>
+								</div>
+							</div>
 							
 <!--  							<div class="row">
 							<tr th:each="users:${editUser}">	
