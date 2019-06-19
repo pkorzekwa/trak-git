@@ -8,14 +8,16 @@
             <p>
                 &copy; trak.pzu.pl
                 <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | Logged user: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/logout}">Sign Out</a>
+                    | <b><span th:text="#{logged.user}" ></span>:</b> <span sec:authentication="name"></span> 
+                    | <b><span th:text="#{roles.privilege}"></span>:</b> <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}"><span th:text="#{sign.out}"></span></a>
                 </span>
             </p>
         </div>
     </footer>
-   
+
+
+
 </th:block>
 </body>
 </html>
