@@ -23,7 +23,7 @@ public class PrivilegeServiceImpl implements PrivilegeService
 	public List<Privilege> findAll() {
 		return privilegeRepository.findAll();
 	}
-
+	
 	@Override
 	public void remove(Long privilegeId) {
 		privilegeRepository.deleteById(privilegeId);
@@ -42,5 +42,9 @@ public class PrivilegeServiceImpl implements PrivilegeService
 	@Override
 	public Privilege findOne(Long id) {
 		return privilegeRepository.getOne(id);
+	}
+	
+	public List<Privilege> ListAllPrivilegesRoleList(Long roleId){
+		return privilegeRepository.AllPrivilegesRoleList(roleId);
 	}
 }

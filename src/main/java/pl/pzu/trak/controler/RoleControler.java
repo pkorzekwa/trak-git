@@ -85,7 +85,7 @@ public class RoleControler
 		
 		model.addAttribute("role", roleService.findOne(id));		
 		
-		List<Privilege> allprivileges = privilegeService.findAll();	
+		List<Privilege> allprivileges = privilegeService.ListAllPrivilegesRoleList(id);
 		model.addAttribute("allprivileges", allprivileges);
 		
 		return "user/upr/editRolePrivileges";

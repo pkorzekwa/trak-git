@@ -6,12 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Trak</title>
+ 
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/datatables/datatables.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 </head>
+
 <body>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/datatables/datatables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
     <th:block th:replace="fragments/header :: header"/>
     <div class="container">
         <th:block layout:fragment="content"/>

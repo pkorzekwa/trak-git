@@ -1,25 +1,12 @@
 @CHARSET "UTF-8";
 
-
-h1 {
-    color: #78ab46;
-}
-
-footer {
-    position: fixed;
-    height: 50px;
-    bottom: 0;
-    width: 100%;
-    background-color: #ccc
-}
-
-footer p {
-    padding: 15px;
+.footer {
+	width: 100%;
 }
 
 form.form-inline { line-height: 5ch }
 
-body { padding-top:70px; }
+body { padding-top:20px; }
 
 div.buttonblock .btn:not(.btn-block) { width:260px;margin-bottom:10px; margin-left:10px;}
 td.buttonblock .btn:not(.btn-block) { width:80px;margin-bottom:0px; margin-left:0px;}
@@ -268,8 +255,8 @@ div.treeview ul:first-child:before {
 }
 
 #ts-daydiv-active{
-	height: 140px;
-	width: 180px;
+	height: 170px;
+	width: 209px;
 	background: #f0f0f5;
 	overflow: auto;
 	z-index: 1;
@@ -278,8 +265,8 @@ div.treeview ul:first-child:before {
 	border-color: black;
 }
 #ts-daydiv-inactive{
-	height: 140px;
-	width: 180px;
+	height: 170px;
+	width: 209px;
 	background: #e0e0eb;
 	overflow: auto;
 	z-index: 1;
@@ -287,6 +274,18 @@ div.treeview ul:first-child:before {
 	border-style: solid;
 	border-color: black;
 }
+
+#ts-daydiv-inactive-sunday{
+	height: 170px;
+	width: 78px;
+	background: #e0e0eb;
+	overflow: auto;
+	z-index: 1;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
 #ts-daynumber{
 	font-weight: bold;
 	font-size: 98px;
@@ -300,7 +299,28 @@ div.treeview ul:first-child:before {
     user-select: none;
     cursor: pointer;
 }
+
+#ts-daynumber-sunday{
+	font-weight: bold;
+	font-size: 49px;
+	color: red;
+	
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+
 #ts-daynumber:hover{
+	color: black;
+	opacity: 0.5;
+	}
+	
+#ts-daynumber-sunday:hover{
 	color: black;
 	opacity: 0.5;
 	}
@@ -357,6 +377,14 @@ div.treeview ul:first-child:before {
 	background-color: rgba(0,255,85,0.2);
 	white-space: nowrap;
 }
+#ts-name{
+	width: 80px;
+}
+
+#ts-login{
+	width: 107px;
+}
+
 #ts-delete{
 	width: 10px;
 	height: 10px;

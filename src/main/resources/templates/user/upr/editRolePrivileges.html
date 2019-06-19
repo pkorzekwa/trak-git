@@ -9,14 +9,14 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
+	<div layout:fragment="content" th:remove="tag">
 	<script th:inline="javascript">
      /*<![CDATA[*/
-     $(function () {
+    $(function () {
     	  	$('body').on('click', '.list-group .list-group-item', function () {
             $(this).toggleClass('active');
         });
-        $('.list-arrows button').click(function () {
-        	
+        $('.list-arrows button').click(function () {       	
         	var $appmod='sectionemployees';
         	var $section=$('#section').val();
         	var $team=$("select#json_teams").val();
@@ -40,8 +40,7 @@ layout:decorate="~{fragments/layout}">
                 $.post('JsonServlet',{appmodule:$appmod,section:$section,team:$team,mode:$mode,elist:$('.list-right ul li.active').text()});
                 actives = $('.list-right ul li.active');
                 actives.removeClass('active');
-                actives = '';
-                
+                actives = '';                
             }
         });
         $('.dual-list .selector').click(function () {
@@ -65,11 +64,10 @@ layout:decorate="~{fragments/layout}">
                 return !~text.indexOf(val);
             }).hide();
         });
-    });
+    });  	     	 
     /*]]>*/
     </script>
 
-	<div layout:fragment="content" th:remove="tag">
 	<div class="container">
 	<div class="row">
         <div class="dual-list list-left col-md-5">
@@ -124,7 +122,7 @@ layout:decorate="~{fragments/layout}">
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item" th:each="p : ${role.privileges}" th:text="${p.name}"></li>
+                    <li class="list-group-item" data-toggle="list" th:each="p : ${role.privileges}" th:text="${p.name}"></li>
                 </ul>
             </div>
         </div>

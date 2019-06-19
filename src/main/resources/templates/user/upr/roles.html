@@ -9,6 +9,7 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
+	<div layout:fragment="content" th:remove="tag">	
 	<script th:inline="javascript">
 	/*<![CDATA[*/
 	$(document).ready(function() 
@@ -16,7 +17,7 @@ layout:decorate="~{fragments/layout}">
 			var dttable = $("#datatable").dataTable(
 			{
        			"iDisplayLength": 50,
-        		"aLengthMenu": [[20, 50, 100, 500, 1000], [20, 50, 100, 500, 1000]],
+        		"aLengthMenu": [ [20, 50, 100, 500, 1000], [20, 50, 100, 500, 1000] ],
         		"deferRender": true,
         		colReorder: true,
         		"aaSorting": [],
@@ -44,15 +45,14 @@ layout:decorate="~{fragments/layout}">
     	    				td[i].style.whiteSpace = "nowrap";
     					}
     			}
-   		});
+   		}
   	/*]]>*/
   	</script>
-
-	<div layout:fragment="content" th:remove="tag">
+  	
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
-					<table id="datatable" class="table table-striped table-bordered nowrap">
+					<table id='datatable' class='table table-striped table-bordered nowrap'>
 						<thead class="thead">
 							<tr><th><a title="Nowa grupa" class='btn btn-warning btn-xs' th:href="@{/roles/add}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id grupy</th><th>Nazwa grupy</th></tr>
 						</thead>

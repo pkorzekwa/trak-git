@@ -12,5 +12,5 @@ public interface PrivilegeService
 	void update(Privilege privilege);
 	void save(Privilege privilege);
 	Privilege findOne(Long id);
-
+	List<Privilege> ListAllPrivilegesRoleList(Long roleId);
 }
