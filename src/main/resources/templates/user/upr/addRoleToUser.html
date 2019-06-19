@@ -9,6 +9,7 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
+	<div layout:fragment="content" th:remove="tag">
 	<script th:inline="javascript">
      /*<![CDATA[*/
      $(function () {
@@ -68,8 +69,6 @@ layout:decorate="~{fragments/layout}">
     });
     /*]]>*/
     </script>
-
-	<div layout:fragment="content" th:remove="tag">
 	<div class="container">
 	<div class="row">
         <div class="dual-list list-left col-md-5">

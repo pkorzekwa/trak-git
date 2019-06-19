@@ -17,6 +17,13 @@
                         Invalid username or password.
                     </div>
                 </div>
+                
+<!--            <div th:if="${status}">
+                    <div class="alert alert-danger" th:text="#{error.userStatusFalse}">
+                        Invalid username or password.
+                    </div>
+                </div> -->
+                
                 <div th:if="${param.logout}">
                     <div class="alert alert-info" th:text="#{info.logout}">
                         You have been logged out.

@@ -35,6 +35,8 @@ public class UserServiceImpl implements UserService
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	//private UserDetails status;
 
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException
@@ -44,6 +46,19 @@ public class UserServiceImpl implements UserService
 		{
 			throw new UsernameNotFoundException("Błędna nazwa użytkownika, lub hasło.");
 		}
+		
+		if (user.isEnabled() == false)
+		{
+				System.out.println("Użytkownik nieaktywny");
+			
+		}
+		
+		if (user.isEnabled() == true)
+		{
+				System.out.println("Użytkownik aktywny");
+			
+		}
+		
 		return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
 				user.isEnabled(), true, true, true, getAuthorities(user.getRoles()));
 	}
@@ -119,5 +134,7 @@ public class UserServiceImpl implements UserService
 	{
 		userRepository.updateUser(id, firstName, lastName, login, enabled);
 	}
+	
+	
 	
 }

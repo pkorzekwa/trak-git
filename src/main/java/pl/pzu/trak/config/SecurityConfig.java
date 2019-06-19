@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/js/**",
                             "/css/**",
                             "/media/**",
+                            "/datatables/**",
                             "/webjars/**").permitAll()
                     .antMatchers("/tasks/**").hasAuthority("ZADANIA")
                     .antMatchers("/users/**").hasAuthority("UZYTKOWNICY")
