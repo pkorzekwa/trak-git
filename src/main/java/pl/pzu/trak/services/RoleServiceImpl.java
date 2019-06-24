@@ -48,4 +48,9 @@ public class RoleServiceImpl implements RoleService
 	{
 		roleRepository.updateRole(id, name);
 	}
+
+	@Override
+	public List<Role> ListAllRolesUserList(Long userId) {
+		return roleRepository.AllRolesUserList(userId);
+	}
 }

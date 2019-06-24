@@ -80,7 +80,7 @@ public class UserControler
 		
 		model.addAttribute("user", userService.findOne(id));
 		
-		List<Role> allroles = roleService.findAll();
+		List<Role> allroles = roleService.ListAllRolesUserList(id);
 		model.addAttribute("allroles", allroles);
 		
 		return "/user/upr/addRoleToUser";
