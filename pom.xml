@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.pzu</groupId>
-	<artifactId>trak</artifactId>
+	<artifactId>trak_spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>trak</name>
@@ -18,6 +18,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+<!-- 		<tomcat.version>7.0.59</tomcat.version> -->
 	</properties>
 
 	<dependencies>
@@ -49,21 +50,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-test</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 
 		<!-- bootstrap and jquery -->
 		<dependency>
@@ -76,28 +72,42 @@
 			<artifactId>jquery</artifactId>
 			<version>3.2.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.2</version>
 		</dependency>
-		
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.ldap</groupId> -->
+		<!-- <artifactId>spring-ldap-core</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.security</groupId> -->
+		<!-- <artifactId>spring-security-ldap</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.unboundid</groupId> -->
+		<!-- <artifactId>unboundid-ldapsdk</artifactId> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.tomcat</groupId> -->
+		<!-- <artifactId>tomcat-juli</artifactId> -->
+		<!-- <version>${tomcat.version}</version> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>org.springframework.ldap</groupId>
-			<artifactId>spring-ldap-core</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-ldap</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.unboundid</groupId>
-			<artifactId>unboundid-ldapsdk</artifactId>
-		</dependency>		
-		
+
+
 	</dependencies>
 
 	<build>
+		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -112,22 +122,9 @@
 		</resources>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>LOCAL</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.active>LOCAL</spring.profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>DEV</id>
-			<properties>
-				<spring.profiles.active>DEV</spring.profiles.active>
-			</properties>
-		</profile>
-	</profiles>
+	<!-- <profiles> <profile> <id>LOCAL</id> <activation> <activeByDefault>true</activeByDefault> 
+		</activation> <properties> <spring.profiles.active>LOCAL</spring.profiles.active> 
+		</properties> </profile> <profile> <id>DEV</id> <properties> <spring.profiles.active>DEV</spring.profiles.active> 
+		</properties> </profile> </profiles> -->
 
 </project>
