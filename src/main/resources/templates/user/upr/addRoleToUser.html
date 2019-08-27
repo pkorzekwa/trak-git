@@ -105,6 +105,8 @@ layout:decorate="~{fragments/layout}">
             </button>
         </div>
 
+
+		<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${userRole}" th:accept-charset='UTF-8' method="post">
         <div class="dual-list list-right col-md-5">
             <div class="well">
 				<h4>Role w grupie</h4>
@@ -123,10 +125,17 @@ layout:decorate="~{fragments/layout}">
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item" th:each="p : ${user.roles}" th:text="${p.name}"></li>
+                    <li class="list-group-item" th:each="p : ${user.roles}" th:text="${p.name}" th:value="${p.name}"></li>             
                 </ul>
+         
             </div>
-        </div>
+            	<div class="submit">
+								<button type="button" class="btn btn-default">Anuluj</button>
+								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+				</div>
+				
+		</div>
+		</form>
 
 	</div>
 	</div>

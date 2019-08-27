@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/tasks/**").hasAuthority("ZADANIA")
                     .antMatchers("/users/**").hasAuthority("UZYTKOWNICY")
                     .antMatchers("/roles/**").hasAuthority("ROLES")
+                    .antMatchers("/employee/**").hasAuthority("UZYTKOWNICY")
                     .anyRequest().hasAuthority("READ")
                 .and()
                     .formLogin()

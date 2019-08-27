@@ -80,7 +80,7 @@ public class UserControler
 		
 		model.addAttribute("user", userService.findOne(id));
 		
-		List<Role> allroles = roleService.findAll();
+		List<Role> allroles = roleService.ListAllRolesUserList(id);
 		model.addAttribute("allroles", allroles);
 		
 		return "/user/upr/addRoleToUser";
@@ -95,6 +95,24 @@ public class UserControler
 		} else
 		{		
 			model.addAttribute("userList", userService.findAll());
+			return "redirect:/users/all";
+		}
+	}
+	
+	@RequestMapping(value = "/roles/{id}", params = { "save" }, method = RequestMethod.POST)
+	public String updateAddUserToRoleSave(@Valid @ModelAttribute("userRole") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,
+			@PathVariable(value = "id") Long id)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editRole";
+		} 
+		else
+		{
+		//	userService.updateUserRoles(user.getId(), user.getRoles());
+			System.out.println(user);
+			System.out.println(user.getRoles());
+		
 			return "redirect:/users/all";
 		}
 	}

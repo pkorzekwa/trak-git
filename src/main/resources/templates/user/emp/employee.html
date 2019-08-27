@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="~{fragments/layout}">
+
+<head>
+	<title>Użytkownicy</title>
+</head>
+
+<body>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	$(document).ready(function() 
+		{
+			var dttable = $("#datatable").dataTable(
+			{
+       			"iDisplayLength": 50,
+        		"aLengthMenu": [[20, 50, 100, 500, 1000], [20, 50, 100, 500, 1000]],
+        		"deferRender": true,
+        		colReorder: true,
+        		"aaSorting": [],
+        		"language":{
+        					"lengthMenu": "Wyświetl _MENU_ wierszy na stronę",
+            				"zeroRecords": "Brak danych do wyświetlenia",
+            				"info": "Strona _PAGE_ z _PAGES_",
+            				"infoEmpty": "Brak danych do wyświetlenia",
+            				"infoFiltered": "(wyszukane spośród _MAX_ wszystkich wierszy)",
+            				"search": "Wyszukaj:",
+            				"paginate": {
+                						"first":      "Pierwsza",
+                						"last":       "Ostatnia",
+                						"next":       "Następna",
+                						"previous":   "Poprzednia"
+            							}
+        					},
+			});
+    		if (document.getElementById("sorter")) 
+    			{
+    				dttable.fnSort( [ [0,'asc'] ] );
+    				var td = document.querySelectorAll("td");
+    				for (var i = 0; i < td.length; i++) 
+    					{
+    	    				td[i].style.whiteSpace = "nowrap";
+    					}
+    			}
+   		});
+  	/*]]>*/
+  	</script>
+
+	<div layout:fragment="content" th:remove="tag">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+					<table id="datatable" class="table table-striped table-bordered nowrap">
+						<thead class="thead">
+							<tr><th>Id</th><th>Imie</th><th>Nazwisko</th><th>Zespol</th><th>Stanowisko</th><th>Id_umowy</th><th>Id_systemu</th><th>Status Pracownika</th></tr>
+						</thead>
+						<tbody class="tbody">					
+							<tr th:each="emp:${employeeList}">
+														
+	
+																				
+								<td th:text="${emp.imie}"></td>
+								<td th:text="${emp.nazwisko}"></td>
+								<td th:text="${emp.zespol}"></td>
+								<td th:text="${emp.stanowisko}"></td>
+								<td th:text="${emp.id_umowy}"></td>
+								
+								<td th:text="${emp.status_pracownika}"></td>
+												
+							</tr>
+						</tbody>
+					</table>			
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>
