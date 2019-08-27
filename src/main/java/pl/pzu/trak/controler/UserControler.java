@@ -98,5 +98,23 @@ public class UserControler
 			return "redirect:/users/all";
 		}
 	}
+	
+	@RequestMapping(value = "/roles/{id}", params = { "save" }, method = RequestMethod.POST)
+	public String updateAddUserToRoleSave(@Valid @ModelAttribute("userRole") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,
+			@PathVariable(value = "id") Long id)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editRole";
+		} 
+		else
+		{
+		//	userService.updateUserRoles(user.getId(), user.getRoles());
+			System.out.println(user);
+			System.out.println(user.getRoles());
+		
+			return "redirect:/users/all";
+		}
+	}
 		
 }

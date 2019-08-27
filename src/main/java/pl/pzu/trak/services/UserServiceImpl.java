@@ -135,6 +135,10 @@ public class UserServiceImpl implements UserService
 		userRepository.updateUser(id, firstName, lastName, login, enabled);
 	}
 	
-	
+	public void updateUserRoles(Long id, Collection<Role> roles)
+	{
+		userRepository.updateUserRoles(id, roles);
+	}
+
 	
 }
