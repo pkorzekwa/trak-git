@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "employee_contract")
 public class EmployeeContract {
@@ -18,7 +19,7 @@ public class EmployeeContract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_umowy;  
-    private Long id_pracownika;
+//    private Long id_pracownika;
     private Long id_spolki;
     private Date data_od;
     private Date data_do;
@@ -26,16 +27,13 @@ public class EmployeeContract {
     private boolean status_umowy;
     
 	@ManyToOne
-	@JoinColumn(name = "id_umowy", nullable=false , insertable=false, updatable=false)
+	@JoinColumn(name = "id_pracownika", nullable=false , insertable=false, updatable=false)
 	private Employee employee;
-    
 	
 	
-	
-	public EmployeeContract(Long id_umowy, Long id_pracownika, Long id_spolki, Date data_od, Date data_do, Long id_rodzaj_umowy, boolean status_umowy, Employee employee) {
+	public EmployeeContract(Long id_umowy, Long id_spolki, Date data_od, Date data_do, Long id_rodzaj_umowy, boolean status_umowy, Employee employee) {
 		super();
 		this.id_umowy = id_umowy;
-		this.id_pracownika = id_pracownika;
 		this.id_spolki = id_spolki;
 		this.data_od = data_od;
 		this.data_do = data_do;
@@ -64,13 +62,13 @@ public class EmployeeContract {
 		this.id_umowy = id_umowy;
 	}
 
-	public Long getId_pracownika() {
-		return id_pracownika;
-	}
-
-	public void setId_pracownika(Long id_pracownika) {
-		this.id_pracownika = id_pracownika;
-	}
+//	public Long getId_pracownika() {
+//		return id_pracownika;
+//	}
+//
+//	public void setId_pracownika(Long id_pracownika) {
+//		this.id_pracownika = id_pracownika;
+//	}
 
 	public Long getId_spolki() {
 		return id_spolki;

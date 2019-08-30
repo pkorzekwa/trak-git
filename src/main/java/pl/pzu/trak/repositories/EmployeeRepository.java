@@ -14,13 +14,12 @@ import pl.pzu.trak.domain.EmployeeQuery;
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
 	
-	@Query(value = "SELECT employee.imie, employee_contract.id_umowy from employee JOIN employee_contract ON employee.id_umowy = employee_contract.id_umowy", nativeQuery = true)
-	List<Employee> all();
+//	@Query(value = "SELECT employee.imie, employee_contract.id_umowy from employee JOIN employee_contract ON employee.id_umowy = employee_contract.id_umowy", nativeQuery = true)
+//	List<Employee> all();
 	
-//	@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.imie, e.nazwisko, e.zespol, e.stanowisko)"
-//			+ " FROM Employee e"
-//			+ " LEFT JOIN  e.employee_contract c")
-//	List<EmployeeQuery> all();
+	@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.imie, e.nazwisko, e.zespol, e.stanowisko, c.id_spolki, e.status_pracownika)" 
+			+"FROM Employee e INNER JOIN e.employeeContract c")
+	List<EmployeeQuery> allEmployee();
 	
 }
 

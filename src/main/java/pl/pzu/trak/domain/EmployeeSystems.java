@@ -16,11 +16,11 @@ public class EmployeeSystems {
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	 	private Long id_systemy_pracownika;
 	 	private Long id_systemu;
-	    private Long id_pracownika;
+	    //private Long id_pracownika;
 	    private Long id_spolki;
 		
 		@ManyToOne
-		@JoinColumn(name = "id_systemy_pracownika", nullable=false , insertable=false, updatable=false)
+		@JoinColumn(name = "id_pracownika", nullable=false , insertable=false, updatable=false)
 		private Employee employee;
 			
 			
@@ -42,12 +42,12 @@ public class EmployeeSystems {
 		public void setId_systemu(Long id_systemu) {
 			this.id_systemu = id_systemu;
 		}
-		public Long getId_pracownika() {
-			return id_pracownika;
-		}
-		public void setId_pracownika(Long id_pracownika) {
-			this.id_pracownika = id_pracownika;
-		}
+//		public Long getId_pracownika() {
+//			return id_pracownika;
+//		}
+//		public void setId_pracownika(Long id_pracownika) {
+//			this.id_pracownika = id_pracownika;
+//		}
 		public Long getId_spolki() {
 			return id_spolki;
 		}

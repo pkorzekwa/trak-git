@@ -1,7 +1,5 @@
 package pl.pzu.trak.domain;
 
-
-
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,12 +20,13 @@ public class Employee {
     private String nazwisko;
     private String zespol;
     private String stanowisko;
-    private Long id_umowy;
-    private Long id_systemy_pracownika;
+//    private Long id_umowy;
+//    private Long id_systemy_pracownika;
     private boolean status_pracownika;
     
     @OneToMany(mappedBy="employee")
     List<EmployeeContract> employeeContract;
+    
     @OneToMany(mappedBy="employee")
     List<EmployeeSystems> employeeSystems;
     
@@ -37,16 +36,16 @@ public class Employee {
 		super();
 	}
 
-	public Employee(Long id_pracownika, String imie, String nazwisko, String zespol, String stanowisko, Long id_umowy,
-			Long id_systemy_pracownika, boolean status_pracownika, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
+	public Employee(Long id_pracownika, String imie, String nazwisko, String zespol, String stanowisko,
+			boolean status_pracownika, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
 		super();
 		this.id_pracownika = id_pracownika;
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.zespol = zespol;
 		this.stanowisko = stanowisko;
-		this.id_umowy = id_umowy;
-		this.id_systemy_pracownika = id_systemy_pracownika;
+//		this.id_umowy = id_umowy;
+//		this.id_systemy_pracownika = id_systemy_pracownika;
 		this.status_pracownika = status_pracownika;
 		this.employeeContract = employeeContract;
 		this.employeeSystems = employeeSystems;
@@ -116,22 +115,22 @@ public class Employee {
 //		this.id_umowy = id_umowy;
 //	}
 
-	public Long getId_umowy() {
-		return id_umowy;
-	}
+//	public Long getId_umowy() {
+//		return id_umowy;
+//	}
+//
+//	public void setId_umowy(Long id_umowy) {
+//		this.id_umowy = id_umowy;
+//	}
 
-	public void setId_umowy(Long id_umowy) {
-		this.id_umowy = id_umowy;
-	}
 
-
-	public Long getId_systemy_pracownika() {
-		return id_systemy_pracownika;
-	}
-
-	public void setId_systemy_pracownika(Long id_systemy_pracownika) {
-		this.id_systemy_pracownika = id_systemy_pracownika;
-	}
+//	public Long getId_systemy_pracownika() {
+//		return id_systemy_pracownika;
+//	}
+//
+//	public void setId_systemy_pracownika(Long id_systemy_pracownika) {
+//		this.id_systemy_pracownika = id_systemy_pracownika;
+//	}
 
 	public boolean isStatus_pracownika() {
 		return status_pracownika;
