@@ -2,7 +2,6 @@ package pl.pzu.trak.controler;
 
 import java.util.Map;
 
-import org.aspectj.weaver.bcel.BcelGenericSignatureToTypeXConverter.GenericSignatureFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +23,6 @@ public class EmployeeController {
 	public String findAll(Map<String, Object> model)
 	{
 		model.put("employeeList", employeeService.all());
-		
 		return "user/emp/employee";
 	}
 }

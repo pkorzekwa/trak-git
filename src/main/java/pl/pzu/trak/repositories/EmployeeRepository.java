@@ -7,19 +7,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import pl.pzu.trak.domain.Employee;
-import pl.pzu.trak.domain.EmployeeQuery;
+
+
 
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
-	
-	@Query(value = "SELECT employee.imie, employee_contract.id_umowy from employee JOIN employee_contract ON employee.id_umowy = employee_contract.id_umowy", nativeQuery = true)
+	@Query(value = "SELECT * from employee", nativeQuery = true)
 	List<Employee> all();
 	
-//	@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.imie, e.nazwisko, e.zespol, e.stanowisko)"
+	
+//	@Query(value = "SELECT employee.imie, employee_contract.id_umowy from employee JOIN employee_contract ON employee.id_umowy = employee_contract.id_umowy", nativeQuery = true)
+//	List<Employee> all();
+	
+//	@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.imie, e.nazwisko, e.zespol, e.stanowisko, c.id_umowy)"
 //			+ " FROM Employee e"
-//			+ " LEFT JOIN  e.employee_contract c")
+//			+ " LEFT JOIN  e.employeeContract c")
 //	List<EmployeeQuery> all();
 	
 }

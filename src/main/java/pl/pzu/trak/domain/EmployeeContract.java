@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 @Entity
@@ -17,35 +18,82 @@ public class EmployeeContract {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_umowy;  
-    private Long id_pracownika;
-    private Long id_spolki;
-    private Date data_od;
-    private Date data_do;
-    private Long id_rodzaj_umowy;
-    private boolean status_umowy;
+    private Long id_contract;  
+
+    private Date data_from;
+    private Date data_to;
+    private Long id_type_of_contract;
+    private boolean contract_status;
     
 	@ManyToOne
-	@JoinColumn(name = "id_umowy", nullable=false , insertable=false, updatable=false)
+	@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
 	private Employee employee;
     
-	
-	
-	
-	public EmployeeContract(Long id_umowy, Long id_pracownika, Long id_spolki, Date data_od, Date data_do, Long id_rodzaj_umowy, boolean status_umowy, Employee employee) {
-		super();
-		this.id_umowy = id_umowy;
-		this.id_pracownika = id_pracownika;
-		this.id_spolki = id_spolki;
-		this.data_od = data_od;
-		this.data_do = data_do;
-		this.id_rodzaj_umowy = id_rodzaj_umowy;
-		this.status_umowy = status_umowy;
-		this.employee = employee;
-	}
+	//Spółka SL
+	@ManyToOne
+	@JoinColumn(name = "id_company", nullable=false , insertable=false, updatable=false)
+	private EmployeeCompanyDictionary employeeCompanyDictionary;
 
+	//Rodzaj umowy SL
+	@ManyToOne
+	@JoinColumn(name = "id_type_of_contract", nullable=false , insertable=false, updatable=false)
+	private EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary;
+	
 	public EmployeeContract() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
+			boolean contract_status, Employee employee, EmployeeCompanyDictionary employeeCompanyDictionary) {
+		super();
+		this.id_contract = id_contract;
+		this.data_from = data_from;
+		this.data_to = data_to;
+		this.id_type_of_contract = id_type_of_contract;
+		this.contract_status = contract_status;
+		this.employee = employee;
+		this.employeeCompanyDictionary = employeeCompanyDictionary;
+	}
+
+	public Long getId_contract() {
+		return id_contract;
+	}
+
+	public void setId_contract(Long id_contract) {
+		this.id_contract = id_contract;
+	}
+
+	public Date getData_from() {
+		return data_from;
+	}
+
+	public void setData_from(Date data_from) {
+		this.data_from = data_from;
+	}
+
+	public Date getData_to() {
+		return data_to;
+	}
+
+	public void setData_to(Date data_to) {
+		this.data_to = data_to;
+	}
+
+	public Long getId_type_of_contract() {
+		return id_type_of_contract;
+	}
+
+	public void setId_type_of_contract(Long id_type_of_contract) {
+		this.id_type_of_contract = id_type_of_contract;
+	}
+
+	public boolean isContract_status() {
+		return contract_status;
+	}
+
+	public void setContract_status(boolean contract_status) {
+		this.contract_status = contract_status;
 	}
 
 	public Employee getEmployee() {
@@ -56,63 +104,17 @@ public class EmployeeContract {
 		this.employee = employee;
 	}
 
-	public Long getId_umowy() {
-		return id_umowy;
+	public EmployeeCompanyDictionary getEmployeeCompanyDictionary() {
+		return employeeCompanyDictionary;
 	}
 
-	public void setId_umowy(Long id_umowy) {
-		this.id_umowy = id_umowy;
+	public void setEmployeeCompanyDictionary(EmployeeCompanyDictionary employeeCompanyDictionary) {
+		this.employeeCompanyDictionary = employeeCompanyDictionary;
 	}
 
-	public Long getId_pracownika() {
-		return id_pracownika;
-	}
 
-	public void setId_pracownika(Long id_pracownika) {
-		this.id_pracownika = id_pracownika;
-	}
-
-	public Long getId_spolki() {
-		return id_spolki;
-	}
-
-	public void setId_spolki(Long id_spolki) {
-		this.id_spolki = id_spolki;
-	}
-
-	public Date getData_od() {
-		return data_od;
-	}
-
-	public void setData_od(Date data_od) {
-		this.data_od = data_od;
-	}
-
-	public Date getData_do() {
-		return data_do;
-	}
-
-	public void setData_do(Date data_do) {
-		this.data_do = data_do;
-	}
-
-	public Long getId_rodzaj_umowy() {
-		return id_rodzaj_umowy;
-	}
-
-	public void setId_rodzaj_umowy(Long id_rodzaj_umowy) {
-		this.id_rodzaj_umowy = id_rodzaj_umowy;
-	}
-
-	public boolean isStatus_umowy() {
-		return status_umowy;
-	}
-
-	public void setStatus_umowy(boolean status_umowy) {
-		this.status_umowy = status_umowy;
-	}
-
-    
-    
+	
+	
+	
 
 }

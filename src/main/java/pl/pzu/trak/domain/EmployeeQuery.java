@@ -1,18 +1,21 @@
 package pl.pzu.trak.domain;
 
+import java.util.List;
+
 public class EmployeeQuery {
 
 	    private String imie;
 	    private String nazwisko;
 	    private String zespol;
 	    private String stanowisko;
+	    List<EmployeeContract> employeeContract;
 
-
-	    public EmployeeQuery(String imie, String nazwisko, String zespol, String stanowisko) {
+	    public EmployeeQuery(String imie, String nazwisko, String zespol, String stanowisko, List<EmployeeContract> employeeContract) {
 			this.imie = imie;
 			this.nazwisko = nazwisko;
 			this.zespol = zespol;
 			this.stanowisko = stanowisko;
+			this.employeeContract = employeeContract;
 	
 		}
 		public String getImie() {
@@ -39,6 +42,13 @@ public class EmployeeQuery {
 		public void setStanowisko(String stanowisko) {
 			this.stanowisko = stanowisko;
 		}
+		public List<EmployeeContract> getEmployeeContract() {
+			return employeeContract;
+		}
+		public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+			this.employeeContract = employeeContract;
+		}
+
 
 	
 	

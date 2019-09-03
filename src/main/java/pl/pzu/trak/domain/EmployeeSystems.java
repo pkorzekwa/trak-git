@@ -14,46 +14,72 @@ public class EmployeeSystems {
 	
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
-	 	private Long id_systemy_pracownika;
-	 	private Long id_systemu;
-	    private Long id_pracownika;
-	    private Long id_spolki;
+	 	private Long id_employee_systems;
+	 	private Long id_systems;
+	    private Long id_employee;
+	    private Long id_company;
 		
 		@ManyToOne
-		@JoinColumn(name = "id_systemy_pracownika", nullable=false , insertable=false, updatable=false)
+		@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
 		private Employee employee;
-			
-			
+
+		public EmployeeSystems(Long id_employee_systems, Long id_systems, Long id_employee, Long id_company,
+				Employee employee) {
+			super();
+			this.id_employee_systems = id_employee_systems;
+			this.id_systems = id_systems;
+			this.id_employee = id_employee;
+			this.id_company = id_company;
+			this.employee = employee;
+		}
+
+		public EmployeeSystems() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Long getId_employee_systems() {
+			return id_employee_systems;
+		}
+
+		public void setId_employee_systems(Long id_employee_systems) {
+			this.id_employee_systems = id_employee_systems;
+		}
+
+		public Long getId_systems() {
+			return id_systems;
+		}
+
+		public void setId_systems(Long id_systems) {
+			this.id_systems = id_systems;
+		}
+
+		public Long getId_employee() {
+			return id_employee;
+		}
+
+		public void setId_employee(Long id_employee) {
+			this.id_employee = id_employee;
+		}
+
+		public Long getId_company() {
+			return id_company;
+		}
+
+		public void setId_company(Long id_company) {
+			this.id_company = id_company;
+		}
+
 		public Employee getEmployee() {
 			return employee;
 		}
+
 		public void setEmployee(Employee employee) {
 			this.employee = employee;
 		}
-		public Long getId_systemy_pracownika() {
-			return id_systemy_pracownika;
-		}
-		public void setId_systemy_pracownika(Long id_systemy_pracownika) {
-			this.id_systemy_pracownika = id_systemy_pracownika;
-		}
-		public Long getId_systemu() {
-			return id_systemu;
-		}
-		public void setId_systemu(Long id_systemu) {
-			this.id_systemu = id_systemu;
-		}
-		public Long getId_pracownika() {
-			return id_pracownika;
-		}
-		public void setId_pracownika(Long id_pracownika) {
-			this.id_pracownika = id_pracownika;
-		}
-		public Long getId_spolki() {
-			return id_spolki;
-		}
-		public void setId_spolki(Long id_spolki) {
-			this.id_spolki = id_spolki;
-		}
+			
+			
+
 	    
 	    
 }

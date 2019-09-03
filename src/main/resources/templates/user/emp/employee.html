@@ -54,21 +54,37 @@ layout:decorate="~{fragments/layout}">
 			<div class="col-sm-12 col-md-12">
 					<table id="datatable" class="table table-striped table-bordered nowrap">
 						<thead class="thead">
-							<tr><th>Id</th><th>Imie</th><th>Nazwisko</th><th>Zespol</th><th>Stanowisko</th><th>Id_umowy</th><th>Id_systemu</th><th>Status Pracownika</th></tr>
+							<tr><th>Imie</th><th>Nazwisko</th><th>Zespol</th><th>Stanowisko</th><th>Id_umowy</th><th>Id_systemu</th><th>Status Pracownika</th></tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="emp:${employeeList}">
 														
 	
 																				
-								<td th:text="${emp.imie}"></td>
-								<td th:text="${emp.nazwisko}"></td>
-								<td th:text="${emp.zespol}"></td>
-								<td th:text="${emp.stanowisko}"></td>
-								<td th:text="${emp.id_umowy}"></td>
+								<td th:text="${emp.first_name}"></td>
+								<td th:text="${emp.last_name}"></td>
+								<td th:text="${emp.team}"></td>
+								<td th:text="${emp.workplace}"></td>
 								
-								<td th:text="${emp.status_pracownika}"></td>
-												
+								
+								
+								<td>
+									<table id="datatable" class="table table-striped table-bordered nowrap">
+										<tr th:each="row,rowStat : ${emp.employeeContract}">
+											<td th:text="${emp.employeeContract[__${rowStat.index}__].id_contract}"></td>
+										</tr>
+									</table>												
+								</td>	
+								<td>
+									<table id="datatable" class="table table-striped table-bordered nowrap">
+										<tr th:each="row,rowStat : ${emp.employeeSystems}">
+											<td th:text="${emp.employeeSystems[__${rowStat.index}__].id_employee_systems}"></td>
+										</tr>
+									</table>												
+								</td>	
+								
+						
+								<td th:text="${emp.employee_status}"></td>				
 							</tr>
 						</tbody>
 					</table>			
