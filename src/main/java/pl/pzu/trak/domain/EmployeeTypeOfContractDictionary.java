@@ -19,16 +19,19 @@ public class EmployeeTypeOfContractDictionary {
     private String name;
     
     @OneToMany(mappedBy="employeeTypeOfContractDictionary")
-    List<EmployeeContract> employeeContract3;
+    List<EmployeeContract> employeeContract;
     
     
     
-	public EmployeeTypeOfContractDictionary(Long id_type_of_contract, String name, List<EmployeeContract> employeeContract3) {
+
+
+	public EmployeeTypeOfContractDictionary(Long id_type_of_contract, String name, List<EmployeeContract> employeeContract) {
 		super();
 		this.id_type_of_contract = id_type_of_contract;
 		this.name = name;
-		this.employeeContract3 = employeeContract3;
+		this.employeeContract = employeeContract;
 	}
+	
 	public EmployeeTypeOfContractDictionary() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -46,6 +49,11 @@ public class EmployeeTypeOfContractDictionary {
 		this.name = name;
 	}
 
-    
+	public List<EmployeeContract> getEmployeeContract() {
+		return employeeContract;
+	}
+	public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+		this.employeeContract = employeeContract;
+	}
     
 }

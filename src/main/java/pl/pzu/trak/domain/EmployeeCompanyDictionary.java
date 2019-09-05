@@ -19,13 +19,16 @@ public class EmployeeCompanyDictionary {
     private String name;
     
     @OneToMany(mappedBy="employeeCompanyDictionary")
-    List<EmployeeContract> employeeContract2;
+    List<EmployeeContract> employeeContract;
 
-	public EmployeeCompanyDictionary(Long id_company, String name, List<EmployeeContract> employeeContract2) {
+
+
+
+	public EmployeeCompanyDictionary(Long id_company, String name, List<EmployeeContract> employeeContract) {
 		super();
 		this.id_company = id_company;
 		this.name = name;
-		this.employeeContract2 = employeeContract2;
+		this.employeeContract = employeeContract;
 	}
 
 	public EmployeeCompanyDictionary() {
@@ -48,16 +51,14 @@ public class EmployeeCompanyDictionary {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<EmployeeContract> getEmployeeContract2() {
-		return employeeContract2;
+	public List<EmployeeContract> getEmployeeContract() {
+		return employeeContract;
 	}
 
-	public void setEmployeeContract2(List<EmployeeContract> employeeContract2) {
-		this.employeeContract2 = employeeContract2;
+	public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+		this.employeeContract = employeeContract;
 	}
-    
-    
+
 
 
 }

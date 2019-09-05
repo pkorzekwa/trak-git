@@ -29,11 +29,8 @@ public class Employee {
     @OneToMany(mappedBy="employee")
     List<EmployeeSystems> employeeSystems;
     
+
     
-	public Employee() {
-		super();
-	}
-	
 	public Employee(Long id_employee, String first_name, String last_name, String team, String workplace,
 			boolean employee_status, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
 		super();
@@ -46,9 +43,10 @@ public class Employee {
 		this.employeeContract = employeeContract;
 		this.employeeSystems = employeeSystems;
 	}
-    
-   
-    
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId_employee() {
 		return id_employee;
 	}

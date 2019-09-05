@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class EmployeeSystems {
 	
 	 	@Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 	private Long id_employee_systems;
 	 	private Long id_systems;
 	    private Long id_employee;
@@ -22,6 +22,19 @@ public class EmployeeSystems {
 		@ManyToOne
 		@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
 		private Employee employee;
+		
+		//System SL
+		@ManyToOne
+		@JoinColumn(name = "id_systems", nullable=false , insertable=false, updatable=false)
+		private EmployeeSystemsDictionary employeeSystemsDictionary;
+
+		public EmployeeSystemsDictionary getEmployeeSystemsDictionary() {
+			return employeeSystemsDictionary;
+		}
+
+		public void setEmployeeSystemsDictionary(EmployeeSystemsDictionary employeeSystemsDictionary) {
+			this.employeeSystemsDictionary = employeeSystemsDictionary;
+		}
 
 		public EmployeeSystems(Long id_employee_systems, Long id_systems, Long id_employee, Long id_company,
 				Employee employee) {

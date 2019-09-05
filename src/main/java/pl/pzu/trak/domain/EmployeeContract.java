@@ -18,12 +18,12 @@ public class EmployeeContract {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_contract;  
-
+    private Long id_contract; 
     private Date data_from;
     private Date data_to;
     private Long id_type_of_contract;
     private boolean contract_status;
+    
     
 	@ManyToOne
 	@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
@@ -38,14 +38,15 @@ public class EmployeeContract {
 	@ManyToOne
 	@JoinColumn(name = "id_type_of_contract", nullable=false , insertable=false, updatable=false)
 	private EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary;
-	
+
 	public EmployeeContract() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
-			boolean contract_status, Employee employee, EmployeeCompanyDictionary employeeCompanyDictionary) {
+			boolean contract_status, Employee employee, EmployeeCompanyDictionary employeeCompanyDictionary,
+			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
 		super();
 		this.id_contract = id_contract;
 		this.data_from = data_from;
@@ -54,6 +55,7 @@ public class EmployeeContract {
 		this.contract_status = contract_status;
 		this.employee = employee;
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
+		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
 	}
 
 	public Long getId_contract() {
@@ -112,6 +114,29 @@ public class EmployeeContract {
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
 	}
 
+	public EmployeeTypeOfContractDictionary getEmployeeTypeOfContractDictionary() {
+		return employeeTypeOfContractDictionary;
+	}
+
+	public void setEmployeeTypeOfContractDictionary(EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
+		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeContract [id_contract=" + id_contract + ", data_from=" + data_from + ", data_to=" + data_to
+				+ ", id_type_of_contract=" + id_type_of_contract + ", contract_status=" + contract_status
+				+ ", employee=" + employee + ", employeeCompanyDictionary=" + employeeCompanyDictionary
+				+ ", employeeTypeOfContractDictionary=" + employeeTypeOfContractDictionary + ", getId_contract()="
+				+ getId_contract() + ", getData_from()=" + getData_from() + ", getData_to()=" + getData_to()
+				+ ", getId_type_of_contract()=" + getId_type_of_contract() + ", isContract_status()="
+				+ isContract_status() + ", getEmployee()=" + getEmployee() + ", getEmployeeCompanyDictionary()="
+				+ getEmployeeCompanyDictionary() + ", getEmployeeTypeOfContractDictionary()="
+				+ getEmployeeTypeOfContractDictionary() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
 
 	
 	

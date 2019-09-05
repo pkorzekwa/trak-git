@@ -4,52 +4,45 @@ import java.util.List;
 
 public class EmployeeQuery {
 
-	    private String imie;
-	    private String nazwisko;
-	    private String zespol;
-	    private String stanowisko;
-	    List<EmployeeContract> employeeContract;
+	    private String first_name;
+	    private String last_name;
+	    private String team;
+	    private String workplace;
+	    private List<employeeCompanyDictionary> name_company;
+	    private String name_system;
+	    
+		public String getFirst_name() {
+			return first_name;
+		}
+		public void setFirst_name(String first_name) {
+			this.first_name = first_name;
+		}
+		public String getLast_name() {
+			return last_name;
+		}
+		public void setLast_name(String last_name) {
+			this.last_name = last_name;
+		}
+		public String getTeam() {
+			return team;
+		}
+		public void setTeam(String team) {
+			this.team = team;
+		}
+		public String getWorkplace() {
+			return workplace;
+		}
+		public void setWorkplace(String workplace) {
+			this.workplace = workplace;
+		}
 
-	    public EmployeeQuery(String imie, String nazwisko, String zespol, String stanowisko, List<EmployeeContract> employeeContract) {
-			this.imie = imie;
-			this.nazwisko = nazwisko;
-			this.zespol = zespol;
-			this.stanowisko = stanowisko;
-			this.employeeContract = employeeContract;
+		public String getName_system() {
+			return name_system;
+		}
+		public void setName_system(String name_system) {
+			this.name_system = name_system;
+		}
 	
-		}
-		public String getImie() {
-			return imie;
-		}
-		public void setImie(String imie) {
-			this.imie = imie;
-		}
-		public String getNazwisko() {
-			return nazwisko;
-		}
-		public void setNazwisko(String nazwisko) {
-			this.nazwisko = nazwisko;
-		}
-		public String getZespol() {
-			return zespol;
-		}
-		public void setZespol(String zespol) {
-			this.zespol = zespol;
-		}
-		public String getStanowisko() {
-			return stanowisko;
-		}
-		public void setStanowisko(String stanowisko) {
-			this.stanowisko = stanowisko;
-		}
-		public List<EmployeeContract> getEmployeeContract() {
-			return employeeContract;
-		}
-		public void setEmployeeContract(List<EmployeeContract> employeeContract) {
-			this.employeeContract = employeeContract;
-		}
-
-
 	
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import pl.pzu.trak.domain.Employee;
+import pl.pzu.trak.domain.EmployeeQuery;
 
 
 
@@ -14,17 +15,24 @@ import pl.pzu.trak.domain.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
-	@Query(value = "SELECT * from employee", nativeQuery = true)
-	List<Employee> all();
-	
-	
-//	@Query(value = "SELECT employee.imie, employee_contract.id_umowy from employee JOIN employee_contract ON employee.id_umowy = employee_contract.id_umowy", nativeQuery = true)
+//	@Query(value = "SELECT * from employee", nativeQuery = true)
 //	List<Employee> all();
 	
-//	@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.imie, e.nazwisko, e.zespol, e.stanowisko, c.id_umowy)"
-//			+ " FROM Employee e"
-//			+ " LEFT JOIN  e.employeeContract c")
+	
+//	@Query(value = "SELECT e.first_name, e.last_name, e.team, e.workplace from employee e "
+//			+ " LEFT JOIN employee_contract c ON e.id_employee = c.id_employee"
+//			+ " LEFT JOIN  employee_company_dictionary cd ON c.id_company = cd.id_company"
+//			+ " LEFT JOIN employee_systems s ON e.id_employee = s.id_employee"
+//			+ " LEFT JOIN employee_systems_dictionary sd ON s.id_systems = sd.id_systems", nativeQuery = true)
 //	List<EmployeeQuery> all();
+	
+		@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.first_name, e.last_name, e.team, e.workplace, d.name, g.name)"
+			+ " FROM Employee e"
+			+ " LEFT JOIN  e.employeeContract c"
+			+ " LEFT JOIN  c.employeeCompanyDictionary d"
+			+ " LEFT JOIN  e.employeeSystems s"
+			+ " LEFT JOIN  s.employeeSystemsDictionary g")
+	List<EmployeeQuery> all();
 	
 }
 
