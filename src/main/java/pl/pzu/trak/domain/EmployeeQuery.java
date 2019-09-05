@@ -8,7 +8,7 @@ public class EmployeeQuery {
 	    private String last_name;
 	    private String team;
 	    private String workplace;
-	    private List<employeeCompanyDictionary> name_company;
+	    private String name_company;
 	    private String name_system;
 	    
 		public String getFirst_name() {
