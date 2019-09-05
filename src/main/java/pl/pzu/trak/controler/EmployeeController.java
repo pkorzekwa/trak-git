@@ -22,8 +22,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
 	{
-		model.put("employeeList", employeeService.allEmployee());
-		
+		model.put("employeeList", employeeService.all());
 		return "user/emp/employee";
 	}
 }

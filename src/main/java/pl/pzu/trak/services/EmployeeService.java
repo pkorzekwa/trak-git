@@ -5,7 +5,8 @@ import java.util.List;
 import pl.pzu.trak.domain.EmployeeQuery;
 
 
+
 public interface EmployeeService {
-	List allEmployee();
+	List<EmployeeQuery> all();
 	
 }

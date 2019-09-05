@@ -1,64 +1,45 @@
 package pl.pzu.trak.domain;
 
+import java.util.List;
+
 public class EmployeeQuery {
 
-	    private String imie;
-	    private String nazwisko;
-	    private String zespol;
-	    private String stanowisko;
-	    private Long id_spolki;
-	    private boolean status_pracownika;
-
-
-	    public EmployeeQuery(String imie, String nazwisko, String zespol, String stanowisko, Long id_spolki, boolean status_pracownika) {
-			this.imie = imie;
-			this.nazwisko = nazwisko;
-			this.zespol = zespol;
-			this.stanowisko = stanowisko;
-			this.id_spolki = id_spolki;
-			this.status_pracownika = status_pracownika;
-			
+	    private String first_name;
+	    private String last_name;
+	    private String team;
+	    private String workplace;
+	    private String name_company;
+	    private String name_system;
+	    
+		public String getFirst_name() {
+			return first_name;
 		}
-		public String getImie() {
-			return imie;
+		public void setFirst_name(String first_name) {
+			this.first_name = first_name;
 		}
-		public void setImie(String imie) {
-			this.imie = imie;
+		public String getLast_name() {
+			return last_name;
 		}
-		public String getNazwisko() {
-			return nazwisko;
+		public void setLast_name(String last_name) {
+			this.last_name = last_name;
 		}
-		public void setNazwisko(String nazwisko) {
-			this.nazwisko = nazwisko;
+		public String getTeam() {
+			return team;
 		}
-		public String getZespol() {
-			return zespol;
+		public void setTeam(String team) {
+			this.team = team;
 		}
-		public void setZespol(String zespol) {
-			this.zespol = zespol;
+		public String getWorkplace() {
+			return workplace;
 		}
-		public String getStanowisko() {
-			return stanowisko;
-		}
-		public void setStanowisko(String stanowisko) {
-			this.stanowisko = stanowisko;
-		}
-		public Long getId_spolki()
-		{
-			return id_spolki;
-		}
-		public void setId_spolki(Long id_spolki)
-		{
-			this.id_spolki = id_spolki;
-		}
-		public boolean isStatus_pracownika()
-		{
-			return status_pracownika;
-		}
-		public void setStatus_pracownika(boolean status_pracownika)
-		{
-			this.status_pracownika = status_pracownika;
+		public void setWorkplace(String workplace) {
+			this.workplace = workplace;
 		}
 
-		
+		public String getName_system() {
+			return name_system;
+		}
+		public void setName_system(String name_system) {
+			this.name_system = name_system;
+		}
 }
