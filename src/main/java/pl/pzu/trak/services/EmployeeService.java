@@ -9,5 +9,6 @@ import pl.pzu.trak.domain.EmployeeQuery;
 
 public interface EmployeeService {
 	List<EmployeeQuery> all();
+	Employee findOne(Long id_employee);
 	
 }

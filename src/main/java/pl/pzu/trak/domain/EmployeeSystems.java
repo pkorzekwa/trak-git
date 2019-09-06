@@ -27,6 +27,21 @@ public class EmployeeSystems {
 		@ManyToOne
 		@JoinColumn(name = "id_systems", nullable=false , insertable=false, updatable=false)
 		private EmployeeSystemsDictionary employeeSystemsDictionary;
+		
+		//Spółka SL
+		@ManyToOne
+		@JoinColumn(name = "id_company", nullable=false , insertable=false, updatable=false)
+		private EmployeeCompanyDictionary employeeCompanyDictionary;
+
+		
+		
+		public EmployeeCompanyDictionary getEmployeeCompanyDictionary() {
+			return employeeCompanyDictionary;
+		}
+
+		public void setEmployeeCompanyDictionary(EmployeeCompanyDictionary employeeCompanyDictionary) {
+			this.employeeCompanyDictionary = employeeCompanyDictionary;
+		}
 
 		public EmployeeSystemsDictionary getEmployeeSystemsDictionary() {
 			return employeeSystemsDictionary;
@@ -36,14 +51,19 @@ public class EmployeeSystems {
 			this.employeeSystemsDictionary = employeeSystemsDictionary;
 		}
 
+
+
 		public EmployeeSystems(Long id_employee_systems, Long id_systems, Long id_employee, Long id_company,
-				Employee employee) {
+				Employee employee, EmployeeSystemsDictionary employeeSystemsDictionary,
+				EmployeeCompanyDictionary employeeCompanyDictionary) {
 			super();
 			this.id_employee_systems = id_employee_systems;
 			this.id_systems = id_systems;
 			this.id_employee = id_employee;
 			this.id_company = id_company;
 			this.employee = employee;
+			this.employeeSystemsDictionary = employeeSystemsDictionary;
+			this.employeeCompanyDictionary = employeeCompanyDictionary;
 		}
 
 		public EmployeeSystems() {

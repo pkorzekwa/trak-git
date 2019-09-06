@@ -23,6 +23,7 @@ public class EmployeeContract {
     private Date data_to;
     private Long id_type_of_contract;
     private boolean contract_status;
+    private Long id_company;
     
     
 	@ManyToOne
@@ -44,8 +45,11 @@ public class EmployeeContract {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
-			boolean contract_status, Employee employee, EmployeeCompanyDictionary employeeCompanyDictionary,
+			boolean contract_status, Long id_company, Employee employee,
+			EmployeeCompanyDictionary employeeCompanyDictionary,
 			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
 		super();
 		this.id_contract = id_contract;
@@ -53,11 +57,20 @@ public class EmployeeContract {
 		this.data_to = data_to;
 		this.id_type_of_contract = id_type_of_contract;
 		this.contract_status = contract_status;
+		this.id_company = id_company;
 		this.employee = employee;
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
 	}
 
+
+
+	public Long getId_company() {
+		return id_company;
+	}
+	public void setId_company(Long id_company) {
+		this.id_company = id_company;
+	}
 	public Long getId_contract() {
 		return id_contract;
 	}
@@ -122,23 +135,7 @@ public class EmployeeContract {
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
 	}
 
-	@Override
-	public String toString() {
-		return "EmployeeContract [id_contract=" + id_contract + ", data_from=" + data_from + ", data_to=" + data_to
-				+ ", id_type_of_contract=" + id_type_of_contract + ", contract_status=" + contract_status
-				+ ", employee=" + employee + ", employeeCompanyDictionary=" + employeeCompanyDictionary
-				+ ", employeeTypeOfContractDictionary=" + employeeTypeOfContractDictionary + ", getId_contract()="
-				+ getId_contract() + ", getData_from()=" + getData_from() + ", getData_to()=" + getData_to()
-				+ ", getId_type_of_contract()=" + getId_type_of_contract() + ", isContract_status()="
-				+ isContract_status() + ", getEmployee()=" + getEmployee() + ", getEmployeeCompanyDictionary()="
-				+ getEmployeeCompanyDictionary() + ", getEmployeeTypeOfContractDictionary()="
-				+ getEmployeeTypeOfContractDictionary() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
-	
-	
 
-	
 	
 	
 

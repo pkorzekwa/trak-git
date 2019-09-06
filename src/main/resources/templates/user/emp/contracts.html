@@ -5,7 +5,7 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 layout:decorate="~{fragments/layout}">
 
 <head>
-	<title>Użytkownicy</title>
+	<title>Umowy Pracownika</title>
 </head>
 
 <body>
@@ -52,26 +52,27 @@ layout:decorate="~{fragments/layout}">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
-					<table id="datatable" class="table table-striped table-bordered nowrap">
+					<table id="datatable" class="table table-striped table-bordered nowrap">				
 						<thead class="thead">
-							<tr><th>Umowy</th><th>Systemy</th><th>Imie</th><th>Nazwisko</th><th>Zespol</th><th>Stanowisko</th><th>Id_umowy</th><th>Id_systemu</th><th>Status Pracownika</th></tr>
+						<tr><td th:text="${employeeOne.first_name}"></td><td th:text="${employeeOne.last_name}"></td></tr>
+							<tr><th>Nazwa</th><th>Data od</th><th>Data do</th><th>Rodzaj umowy</th><th>Status umowy</th></tr>
 						</thead>
-						<tbody class="tbody">					
-							<tr th:each="emp:${employeeList}">
+						<tbody class="tbody">				
+							<tr th:each="c:${listContracts}">
 														
-												
-									<td><a th:href="${'/employee/contracts/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list-alt"></span></a></td>
-									<td><a th:href="${'/employee/systems/'+emp.id_employee}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-book"></span></a></td>								
-									
+								<!-- 				
+									<td><a th:href="${'/emp/contracts/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list-alt"></span></a></td>
+									<td><a th:href="${'/emp/systems/'+emp.id_employee}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-book"></span></a></td>								
+									 -->
 																				
-								<td th:text="${emp.first_name}"></td>
-								<td th:text="${emp.last_name}"></td>
-								<td th:text="${emp.team}"></td>
-								<td th:text="${emp.workplace}"></td>
-								<td th:text="${emp.name_company}"></td>
-								<td th:text="${emp.name_system}"></td>
+							 	<td th:text="${c.employeeCompanyDictionary.name}"></td>
+								<td th:text="${c.data_from}"></td> 					
+								<td th:text="${c.data_to}"></td>
+								<td th:text="${c.employeeTypeOfContractDictionary.name}"></td>
+								<td th:text="${c.contract_status}"></td>
+							
 								
-<!-- 								<td>
+<!-- 							<td>
 									<table id="datatable" class="table table-striped table-bordered nowrap">
 										<tr th:each="row,rowStat : ${emp.employeeContract}">
 											<td th:text="${emp.employeeContract[__${rowStat.index}__].id_contract}"></td>
@@ -89,7 +90,7 @@ layout:decorate="~{fragments/layout}">
 	
 
 						
-								<td th:text="${emp.employee_status}"></td>				
+										
 							</tr>
 						</tbody>
 					</table>			
