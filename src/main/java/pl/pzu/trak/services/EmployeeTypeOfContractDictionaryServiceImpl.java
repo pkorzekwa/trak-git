@@ -19,4 +19,9 @@ public class EmployeeTypeOfContractDictionaryServiceImpl implements EmployeeType
 		return employeeTypeOfContractDictionaryRepository.employeeListContracts(id_employee);
 	}
 	
+	@Override
+	public List<EmployeeTypeOfContractDictionary> findAll (){
+		return employeeTypeOfContractDictionaryRepository.findAll();
+	}
+	
 }

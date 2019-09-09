@@ -21,4 +21,8 @@ public class EmployeeContractsServiceImpl implements EmployeeContractsService {
 		return employeeContractRepository.employeeContractsListContracts(id_employee);
 	}
 
+	@Override
+	public void add(EmployeeContract employeeContract) {
+		employeeContractRepository.save(employeeContract);
+	}
 }

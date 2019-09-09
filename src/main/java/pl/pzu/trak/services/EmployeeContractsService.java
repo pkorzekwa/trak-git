@@ -7,5 +7,5 @@ import pl.pzu.trak.domain.EmployeeContract;
 public interface EmployeeContractsService {
 	
 	List<EmployeeContract> findContracts (Long id_employee);
-
+	void add(EmployeeContract employeeContract);
 }
