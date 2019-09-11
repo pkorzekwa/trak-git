@@ -91,4 +91,16 @@ public class RoleControler
 		return "user/upr/editRolePrivileges";
 	}
 
+	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
+	public String updateRolePrivileges(@Valid @ModelAttribute("role") Role role, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "user/upr/editRolePrivileges";
+		} else
+		{			
+			roleService.save(role);
+			return "redirect:/roles/all";
+		}		
+	}
 }

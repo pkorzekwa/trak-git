@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeQuery;
 
-
-
-
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	

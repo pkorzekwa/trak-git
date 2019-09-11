@@ -70,6 +70,7 @@ layout:decorate="~{fragments/layout}">
 
 	<div class="container">
 	<div class="row">
+		
         <div class="dual-list list-left col-md-5">
             <div class="well">
 				<h4>Dostępne uprawnienia</h4>
@@ -88,7 +89,7 @@ layout:decorate="~{fragments/layout}">
 	                    </div>
 	                </div>
 	                <ul class="list-group">	                    
-  						<li class="list-group-item" th:each="p : ${allprivileges}" th:text="${p.name}"></li>
+  						<li class="list-group-item" th:each="p : ${allprivileges}" th:id="${p.id}" th:text="${p.name}"></li>
 	                </ul>
 	            </div>
             </div>
@@ -103,7 +104,8 @@ layout:decorate="~{fragments/layout}">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
         </div>
-
+		
+		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${role}" method="post">
         <div class="dual-list list-right col-md-5">
             <div class="well">
 				<h4>Uprawnienia w grupie</h4>
@@ -114,19 +116,30 @@ layout:decorate="~{fragments/layout}">
                             <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
                         </div>
                     </div>
+                    
                     <div class="col-md-10">
+                	
                         <div class="input-group">
                             <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
                             <span class="input-group-addon glyphicon glyphicon-search"></span>
                         </div>
                     </div>
                 </div>
+                
                 <ul class="list-group">
-                    <li class="list-group-item" data-toggle="list" th:each="p : ${role.privileges}" th:text="${p.name}"></li>
+                    <li class="list-group-item" data-toggle="list" th:each="row,rowStat : *{privileges}" th:id="*{privileges[__${rowStat.index}__].id}" th:text="*{privileges[__${rowStat.index}__].name}"></li>
                 </ul>
             </div>
-        </div>
+        	</div>
+        	<div class="submit">
+				<input type="hidden" th:field="*{id}" class="form-control" required="required" />
+            	<input type="hidden" th:field="*{name}" class="form-control" required="required" />
+				<button type="button" class="btn btn-default">Anuluj</button>
+				<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+			</div>
+        </form>
 	</div>
+
 	</div>
 	</div>
 </body>

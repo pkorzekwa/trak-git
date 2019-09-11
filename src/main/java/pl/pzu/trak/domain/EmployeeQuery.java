@@ -1,7 +1,5 @@
 package pl.pzu.trak.domain;
 
-import java.util.List;
-
 public class EmployeeQuery {
 
 	    private String first_name;
@@ -11,6 +9,20 @@ public class EmployeeQuery {
 	    private String name_company;
 	    private String name_system;
 	    
+	    
+	    
+	    
+		public EmployeeQuery(String first_name, String last_name, String team, String workplace, String name_company,
+				String name_system)
+		{
+			super();
+			this.first_name = first_name;
+			this.last_name = last_name;
+			this.team = team;
+			this.workplace = workplace;
+			this.name_company = name_company;
+			this.name_system = name_system;
+		}
 		public String getFirst_name() {
 			return first_name;
 		}
@@ -42,4 +54,13 @@ public class EmployeeQuery {
 		public void setName_system(String name_system) {
 			this.name_system = name_system;
 		}
+		public String getName_company()
+		{
+			return name_company;
+		}
+		public void setName_company(String name_company)
+		{
+			this.name_company = name_company;
+		}
+		
 }
