@@ -24,5 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee findOne(Long id_employee) {
 		return employeeRepository.getOne(id_employee);
 	}
+	
+	public List<Employee> findAll() {
+		return employeeRepository.findAll();
+	}
 
 }

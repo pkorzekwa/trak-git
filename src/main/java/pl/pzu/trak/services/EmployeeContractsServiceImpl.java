@@ -25,4 +25,5 @@ public class EmployeeContractsServiceImpl implements EmployeeContractsService {
 	public void add(EmployeeContract employeeContract) {
 		employeeContractRepository.save(employeeContract);
 	}
+
 }

@@ -136,7 +136,11 @@ public class EmployeeContract {
 	}
 
 
-	
+	public EmployeeContract withEmployee(Employee employee)
+	{
+		this.employee = employee;
+		return this;
+	}
 	
 
 }

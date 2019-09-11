@@ -8,4 +8,5 @@ public interface EmployeeContractsService {
 	
 	List<EmployeeContract> findContracts (Long id_employee);
 	void add(EmployeeContract employeeContract);
+
 }

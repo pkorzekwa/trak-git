@@ -14,14 +14,26 @@ layout:decorate="~{fragments/layout}">
 	<div>
 		<h4>Nowa umowa</h4>
 	</div>		
-		  <form th:action="@{/employee/contracts/add}" th:object="${newContract}" accept-charset='UTF-8' method="POST">	
+		  <form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newContract}" accept-charset='UTF-8' method="POST">	
 				<div>
-		
+				
+					<div class="row">			
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="employee.id_employee">Pracownik</label>
+							<select th:field="*{employee.id_employee}" class="form-control" required="required">
+    							<option th:each="c : ${employeeList1}" th:value="${c.id_employee}"
+            							th:label="${c.first_name} + ' ' + ${c.last_name}+ ' ' + ${c.id_employee}">
+            					</option>
+          					</select>					
+						</div>
+					</div> 
+					
+					
 					<div class="row">			
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="id_company">Nazwa spółki</label>
 							<select th:field="*{id_company}" class="form-control" required="required">
-    							<option th:each="c : ${companyList}" th:value="${c.name}"
+    							<option th:each="c : ${companyList}" th:value="${c.id_company}"
             							th:label="${c.name}">
             					</option>
           					</select>					
@@ -44,7 +56,7 @@ layout:decorate="~{fragments/layout}">
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="id_type_of_contract">Rodzaj umowy</label>
 							<select th:field="*{id_type_of_contract}" class="form-control" required="required">
-    							<option th:each="t : ${typeOfContractList}" th:value="${t.name}"
+    							<option th:each="t : ${typeOfContractList}" th:value="${t.id_type_of_contract}"
             							th:label="${t.name}">
             					</option>
           					</select>					
@@ -63,10 +75,12 @@ layout:decorate="~{fragments/layout}">
 									</div>
 								</div>
 							</div>
+							
+
 			
 					<div class="submit">
 						<button type="button" class="btn btn-default">Anuluj</button>
-						<button type="submit" class="btn btn-success">Zapisz</button>
+						<button type="submit" name="save" class="btn btn-success">Zapisz</button>
 					</div>
 				</div>			
 			</form>
