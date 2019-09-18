@@ -23,6 +23,7 @@ public class EmployeeContract {
     private Date data_to;
     private Long id_type_of_contract;
     private boolean contract_status;
+    private Long id_company;
     
     
 	@ManyToOne
@@ -39,24 +40,38 @@ public class EmployeeContract {
 	@JoinColumn(name = "id_type_of_contract", nullable=false , insertable=false, updatable=false)
 	private EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary;
 
-	public EmployeeContract() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
-			boolean contract_status, Employee employee, EmployeeCompanyDictionary employeeCompanyDictionary,
-			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
+			boolean contract_status, Long id_company, Employee employee,
+			EmployeeCompanyDictionary employeeCompanyDictionary,
+			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary)
+	{
 		super();
 		this.id_contract = id_contract;
 		this.data_from = data_from;
 		this.data_to = data_to;
 		this.id_type_of_contract = id_type_of_contract;
 		this.contract_status = contract_status;
+		this.id_company = id_company;
 		this.employee = employee;
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
 	}
+
+
+	public EmployeeContract()
+	{
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public EmployeeContract withEmployee(Employee employee)
+	{
+		this.employee = employee;
+		return this;
+	}
+
 
 	public Long getId_contract() {
 		return id_contract;
@@ -120,6 +135,16 @@ public class EmployeeContract {
 
 	public void setEmployeeTypeOfContractDictionary(EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
+	}
+	
+	public Long getId_company()
+	{
+		return id_company;
+	}
+
+	public void setId_company(Long id_company)
+	{
+		this.id_company = id_company;
 	}
 
 	@Override

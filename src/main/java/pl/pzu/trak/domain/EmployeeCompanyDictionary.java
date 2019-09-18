@@ -21,19 +21,30 @@ public class EmployeeCompanyDictionary {
     @OneToMany(mappedBy="employeeCompanyDictionary")
     List<EmployeeContract> employeeContract;
 
+    @OneToMany(mappedBy="employeeCompanyDictionary")
+    List<EmployeeSystems> employeeSystems;
 
 
 
-	public EmployeeCompanyDictionary(Long id_company, String name, List<EmployeeContract> employeeContract) {
+	public EmployeeCompanyDictionary(Long id_company, String name, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
 		super();
 		this.id_company = id_company;
 		this.name = name;
 		this.employeeContract = employeeContract;
+		this.employeeSystems = employeeSystems;
 	}
 
 	public EmployeeCompanyDictionary() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<EmployeeSystems> getEmployeeSystems() {
+		return employeeSystems;
+	}
+
+	public void setEmployeeSystems(List<EmployeeSystems> employeeSystems) {
+		this.employeeSystems = employeeSystems;
 	}
 
 	public Long getId_company() {
