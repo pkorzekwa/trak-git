@@ -20,7 +20,6 @@ public class TrakApplication extends SpringBootServletInitializer {
     }
 }
 
-
 //@SpringBootApplication
 //public class TrakApplication {
 //
