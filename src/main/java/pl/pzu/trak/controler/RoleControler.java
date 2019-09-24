@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.pzu.trak.domain.Privilege;
+import pl.pzu.trak.domain.PrivilegeListDto;
 import pl.pzu.trak.domain.Role;
 import pl.pzu.trak.services.PrivilegeService;
 import pl.pzu.trak.services.RoleService;
@@ -28,6 +29,7 @@ public class RoleControler
 	
 	@Autowired
 	private PrivilegeService privilegeService;
+	private Role role;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -72,8 +74,7 @@ public class RoleControler
 		{
 			return "user/upr/editRole";
 		} else
-		{
-			
+		{		
 			roleService.updateRole(role.getId(), role.getName());
 			return "redirect:/roles/all";
 		}
@@ -82,8 +83,20 @@ public class RoleControler
 	@RequestMapping(value = "/editprivileges/{id}", method = RequestMethod.GET)
 	public String editRolePrivileges(Model model, @PathVariable(value = "id") Long id)
 	{
+		//Role role = new Role();
+		role = roleService.findOne(id);
+				
+		PrivilegeListDto privilegeForm = new PrivilegeListDto();
+	//	System.out.println("dane :"+role.getPrivileges().size());
+	//	privilegeForm.addAllPrivilege(role);
 		
-		model.addAttribute("role", roleService.findOne(id));		
+		for(Privilege i: role.getPrivileges())
+		{
+		//	System.out.println("Dane :"+i.toString());
+			privilegeForm.addPrivilege(i);
+		}
+		
+		model.addAttribute("privilegeForm", privilegeForm);
 		
 		List<Privilege> allprivileges = privilegeService.ListAllPrivilegesRoleList(id);
 		model.addAttribute("allprivileges", allprivileges);
@@ -92,14 +105,14 @@ public class RoleControler
 	}
 
 	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateRolePrivileges(@Valid @ModelAttribute("role") Role role, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm, BindingResult bindingResult, RedirectAttributes attributes, Model model)
 	{
 		if (bindingResult.hasErrors())
 		{
 			return "user/upr/editRolePrivileges";
 		} else
 		{			
-			roleService.save(role);
+			//roleService.save(role);
 			return "redirect:/roles/all";
 		}		
 	}

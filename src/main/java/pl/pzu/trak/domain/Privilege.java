@@ -15,17 +15,6 @@ public class Privilege {
     @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
 
-    public Privilege() {
-        super();
-    }
-
-    public Privilege(final String name) {
-        super();
-        this.name = name;
-    }
-
-    //
-
     public Long getId() {
         return id;
     }

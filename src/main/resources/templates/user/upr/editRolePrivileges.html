@@ -105,7 +105,7 @@ layout:decorate="~{fragments/layout}">
             </button>
         </div>
 		
-		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${role}" method="post">
+		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${privilegeForm}" method="post">
         <div class="dual-list list-right col-md-5">
             <div class="well">
 				<h4>Uprawnienia w grupie</h4>
@@ -127,17 +127,16 @@ layout:decorate="~{fragments/layout}">
                 </div>
                 
                 <ul class="list-group">
-                    <li class="list-group-item" data-toggle="list" th:each="row,rowStat : *{privileges}" th:id="*{privileges[__${rowStat.index}__].id}" th:text="*{privileges[__${rowStat.index}__].name}"></li>
+                    <li class="list-group-item" data-toggle="list" th:each="row, rowStat : *{privileges}" th:id="*{privileges[__${rowStat.index}__].id}" th:text="*{privileges[__${rowStat.index}__].name}"></li>
                 </ul>
             </div>
         	</div>
-        	<div class="submit">
-				<input type="hidden" th:field="*{id}" class="form-control" required="required" />
-            	<input type="hidden" th:field="*{name}" class="form-control" required="required" />
+
+             <div class="submit">
 				<button type="button" class="btn btn-default">Anuluj</button>
 				<button type="submit" name="save" class="btn btn-success">Zapisz</button>
 			</div>
-        </form>
+        </form>        	
 	</div>
 
 	</div>
