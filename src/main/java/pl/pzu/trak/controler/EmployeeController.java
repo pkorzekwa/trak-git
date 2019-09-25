@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeContract;
+import pl.pzu.trak.domain.EmployeeSystems;
 import pl.pzu.trak.services.EmployeeCompanyDictionaryService;
 import pl.pzu.trak.services.EmployeeContractsService;
 import pl.pzu.trak.services.EmployeeService;
+import pl.pzu.trak.services.EmployeeSystemsDictionaryService;
 import pl.pzu.trak.services.EmployeeSystemsService;
 import pl.pzu.trak.services.EmployeeTypeOfContractDictionaryService;
 
@@ -38,6 +40,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeTypeOfContractDictionaryService employeeTypeOfContractDictionaryService;
+	
+	@Autowired
+	private EmployeeSystemsDictionaryService employeeSystemsDictionaryService;
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -108,6 +113,29 @@ public class EmployeeController {
 			employeeContractsService.add(employeeContract);
 			return "redirect:/employee/contracts/{id_employee}";
 //		}
+	}
+	
+	
+	
+	@RequestMapping(value = "/systems/add/{id_employee}", method = RequestMethod.GET)
+	public String getAddSystems (Model model, @PathVariable(value = "id_employee") Long id_employee)
+	{
+		EmployeeSystems newSystem = new EmployeeSystems();
+		model.addAttribute("newSystem", newSystem);
+		
+		model.addAttribute("employeeList1", employeeService.findOne(id_employee));
+		model.addAttribute("companyList", employeeCompanyDictionaryService.findAll());
+		model.addAttribute("systemsList", employeeSystemsDictionaryService.findAll());
+	
+		return "/user/emp/addSystem";
+	}
+	
+	@RequestMapping(value = "/systems/add/{id_employee}", params = { "save" }, method = RequestMethod.POST)
+	public String postAddSystem (@ModelAttribute("newSystem") EmployeeSystems employeeSystems, BindingResult bindingResult, @PathVariable(value = "id_employee") Long id_employee)
+	{
+		
+		employeeSystemsService.add(employeeSystems);
+		return "redirect:/employee/systems/{id_employee}";
 	}
 	
 //	@RequestMapping(value = "/contracts/add", method = RequestMethod.POST)
