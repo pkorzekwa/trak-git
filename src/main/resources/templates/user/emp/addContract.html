@@ -22,7 +22,7 @@ layout:decorate="~{fragments/layout}">
 							<label for="employee.id_employee">Pracownik</label>
 							<select th:field="*{employee.id_employee}" class="form-control" required="required">
     							<option th:each="c : ${employeeList1}" th:value="${c.id_employee}"
-            							th:label="${c.first_name} + ' ' + ${c.last_name}+ ' ' + ${c.id_employee}">
+            							th:label="${c.first_name} + ' ' + ${c.last_name}">
             					</option>
           					</select>					
 						</div>
@@ -34,7 +34,7 @@ layout:decorate="~{fragments/layout}">
 							<label for="id_company">Nazwa spółki</label>
 							<select th:field="*{id_company}" class="form-control" required="required">
     							<option th:each="c : ${companyList}" th:value="${c.id_company}"
-            							th:label="${c.employeeCompanyDictionary.name}">
+            							th:label="${c.name}">
             					</option>
           					</select>					
 						</div>
@@ -57,7 +57,7 @@ layout:decorate="~{fragments/layout}">
 							<label for="id_type_of_contract">Rodzaj umowy</label>
 							<select th:field="*{id_type_of_contract}" class="form-control" required="required">
     							<option th:each="t : ${typeOfContractList}" th:value="${t.id_type_of_contract}"
-            							th:label="${t.employeeTypeOfContractDictionary.name}">
+            							th:label="${t.name}">
             					</option>
           					</select>					
 						</div>

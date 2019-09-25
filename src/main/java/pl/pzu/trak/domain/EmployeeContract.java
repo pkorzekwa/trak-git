@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "employee_contract")
 public class EmployeeContract {
@@ -19,12 +21,14 @@ public class EmployeeContract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_contract; 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data_from;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data_to;
     private Long id_type_of_contract;
     private boolean contract_status;
     private Long id_company;
-    
+    private Long id_employee;
     
 	@ManyToOne
 	@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
@@ -41,11 +45,13 @@ public class EmployeeContract {
 	private EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary;
 
 	
+
+
+
 	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
-			boolean contract_status, Long id_company, Employee employee,
+			boolean contract_status, Long id_company, Long id_employee, Employee employee,
 			EmployeeCompanyDictionary employeeCompanyDictionary,
-			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary)
-	{
+			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
 		super();
 		this.id_contract = id_contract;
 		this.data_from = data_from;
@@ -53,6 +59,7 @@ public class EmployeeContract {
 		this.id_type_of_contract = id_type_of_contract;
 		this.contract_status = contract_status;
 		this.id_company = id_company;
+		this.id_employee = id_employee;
 		this.employee = employee;
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
@@ -159,6 +166,16 @@ public class EmployeeContract {
 				+ getEmployeeCompanyDictionary() + ", getEmployeeTypeOfContractDictionary()="
 				+ getEmployeeTypeOfContractDictionary() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
+	}
+
+
+	public Long getId_employee() {
+		return id_employee;
+	}
+
+
+	public void setId_employee(Long id_employee) {
+		this.id_employee = id_employee;
 	}
 	
 }

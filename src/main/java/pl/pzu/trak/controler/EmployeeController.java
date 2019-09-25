@@ -59,6 +59,7 @@ public class EmployeeController {
 	{
 		model.addAttribute("listSystems", employeeSystemsService.findSystems(id_employee));
 		model.addAttribute("employeeOne", employeeService.findOne(id_employee));
+		
 		return "/user/emp/systems";
 	}
 	
@@ -105,7 +106,7 @@ public class EmployeeController {
 			employeeContract.withEmployee(employee);
 			employee.getEmployeeContract().add(employeeContract);
 			employeeContractsService.add(employeeContract);
-			return "redirect:/user/emp/employee";
+			return "redirect:/employee/contracts/{id_employee}";
 //		}
 	}
 	
