@@ -155,6 +155,20 @@ public class EmployeeController {
 	}
 	
 	
+	@RequestMapping(value = "/systems/delete/{id_employee_systems}/{id_employee}", method = RequestMethod.GET)
+	public String deleteSystem (@PathVariable(value = "id_employee_systems") Long id_employee_systems, @PathVariable(value = "id_employee") Long id_employee)
+	{
+		employeeSystemsService.remove(id_employee_systems);
+		return "redirect:/employee/systems/{id_employee}";
+	}
+	
+	@RequestMapping(value = "/contracts/delete/{id_contract}/{id_employee}", method = RequestMethod.GET)
+	public String deleteContract (@PathVariable(value = "id_contract") Long id_contract, @PathVariable(value = "id_employee") Long id_employee)
+	{
+		employeeContractsService.remove(id_contract);
+		return "redirect:/employee/contracts/{id_employee}";
+	}
+	
 //	@RequestMapping(value = "/contracts/add", method = RequestMethod.POST)
 //	public String postAddContract (@ModelAttribute("newContract") EmployeeContract employeeContract, BindingResult bindingResult)
 //	{
