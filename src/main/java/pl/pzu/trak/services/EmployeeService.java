@@ -9,5 +9,5 @@ public interface EmployeeService {
 	List<EmployeeQuery> all();
 	Employee findOne(Long id_employee);
 	List<Employee> findAll();
-	
+	void add(Employee employee);
 }

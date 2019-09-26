@@ -138,6 +138,23 @@ public class EmployeeController {
 		return "redirect:/employee/systems/{id_employee}";
 	}
 	
+	@RequestMapping(value = "/employeeaddnew", method = RequestMethod.GET)
+	public String addNewEmployee (Model model)
+	{
+		Employee newEmployee = new Employee();
+		model.addAttribute("newEmployee", newEmployee);
+		
+		
+		return "/user/emp/addEmployee";
+	}
+	@RequestMapping(value = "/employeeaddnew", method = RequestMethod.POST)
+	public String addNewEmployee (@ModelAttribute("newEmployee") Employee employee)
+	{
+		employeeService.add(employee);
+		return "redirect:/employee/all";
+	}
+	
+	
 //	@RequestMapping(value = "/contracts/add", method = RequestMethod.POST)
 //	public String postAddContract (@ModelAttribute("newContract") EmployeeContract employeeContract, BindingResult bindingResult)
 //	{

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+
+<head>
+	<title>Pracownik</title>
+</head>
+
+<body>
+	<section layout:fragment="content">
+	<div class="container">
+		<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="#{employee.add}"></div>
+				<div class="panel-body">
+
+					<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newEmployee}" th:accept-charset='UTF-8' method="post">
+						<div>
+						<input type="hidden" th:field="*{id_employee}" class="form-control"/>
+
+						
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="first_name">Imie</label>
+									<input type="text" th:field="*{first_name}" class="form-control"/>
+								</div>
+							</div>	
+							
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="last_name">Nazwisko</label>
+									<input type="text" th:field="*{last_name}" class="form-control"/>
+								</div>
+							</div>	
+							
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="team">Zespół</label>
+									<input type="text" th:field="*{team}" class="form-control"/>
+								</div>
+							</div>	
+							
+	
+							
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="workplace">Stanowisko</label>
+									<input type="text" th:field="*{workplace}" class="form-control"/>
+								</div>
+							</div>	
+							
+							<div class="row">						
+								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+									<label for="employee_status">Aktywny</label><br>
+									<div>
+										<label>Tak</label>
+										<input type="radio" th:field="*{employee_status}" th:value="true" />
+										<label>Nie</label>
+										<input type="radio" th:field="*{employee_status}" th:value="false"/>
+										
+									</div>
+								</div>
+							</div>
+							
+
+							
+							
+							<div class="submit">
+								<button type="submit" name="cancel" class="btn btn-default">Anuluj</button>
+								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+</body>
+</html>

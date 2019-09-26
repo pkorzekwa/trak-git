@@ -81,9 +81,9 @@ layout:decorate="~{fragments/layout}">
 
 							
 							
-				<tr th:each="c:${listSystems[0]}">
-					<td th:hidden="${c.employee.id_employee}"></td>
-						<th><a title="Dodaj System" class='btn btn-warning btn-xs' th:href="@{'/employee/systems/add/'+${c.employee.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj system</th>
+				<tr th:each="c:${employeeOne}">
+					<td th:hidden="${c.id_employee}"></td>
+						<th><a title="Dodaj System" class='btn btn-warning btn-xs' th:href="@{'/employee/systems/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj system</th>
 				</tr>
 						</tbody>
 					</table>			

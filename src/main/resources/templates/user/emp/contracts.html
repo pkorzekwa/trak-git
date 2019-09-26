@@ -92,15 +92,15 @@ layout:decorate="~{fragments/layout}">
 									</table>												
 								</td>	 -->
 
-						
+				
 							</tr>
 							
 								
-				<tr th:each="c:${listContracts[0]}">
-					<td th:hidden="${c.employee.id_employee}"></td>
-				<th><a title="Dodaj umowe" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.employee.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj umowe</th>
+				<tr th:each="c:${employeeOne}">
+					<td th:hidden="${c.id_employee}"></td>
+				<th><a title="Dodaj umowe" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj umowe</th>
 				</tr>	
-						</tbody>
+					</tbody>
 					</table>			
 			</div>
 		</div>
