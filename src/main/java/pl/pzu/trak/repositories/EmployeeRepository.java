@@ -2,9 +2,12 @@ package pl.pzu.trak.repositories;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import javax.transaction.Transactional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import pl.pzu.trak.domain.Employee;
@@ -32,7 +35,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 			+ " LEFT JOIN  s.employeeSystemsDictionary g")
 		List<EmployeeQuery> all();
 		
-
+		@Transactional
+		@Modifying(clearAutomatically = true)
+	    @Query("UPDATE Employee r SET r.first_name = :first_name, r.last_name = :last_name, r.team = :team, r.workplace = :workplace, r.employee_status = :employee_status WHERE r.id_employee = :id_employee")
+	    int updateEmployee(@Param("id_employee") Long id_employee, @Param("first_name") String first_name, @Param("last_name") String last_name, @Param("team") String team, @Param("workplace") String workplace, @Param("employee_status") boolean employee_status);
 	
 }
 

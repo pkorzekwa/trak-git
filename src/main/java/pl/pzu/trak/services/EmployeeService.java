@@ -10,4 +10,5 @@ public interface EmployeeService {
 	Employee findOne(Long id_employee);
 	List<Employee> findAll();
 	void add(Employee employee);
+	void updateEmployee(Long id_employee, String first_name, String last_name, String team, String workplace, boolean employee_status);
 }

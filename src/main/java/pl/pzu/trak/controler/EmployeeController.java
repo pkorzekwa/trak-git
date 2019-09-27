@@ -1,6 +1,9 @@
 package pl.pzu.trak.controler;
 
 import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeContract;
@@ -168,6 +172,32 @@ public class EmployeeController {
 		employeeContractsService.remove(id_contract);
 		return "redirect:/employee/contracts/{id_employee}";
 	}
+	
+	@RequestMapping(value = "/employeeedit", method = RequestMethod.GET)
+	public String editEmployee (Model model)
+	{
+		model.addAttribute("employeeList", employeeService.all());
+		
+		return "/user/emp/editEmployee";
+	}
+	
+	@RequestMapping(value = "/employeeeditpost/{id_employee}", method = RequestMethod.GET)
+	public String editFindEmployee (Model model, @PathVariable(value = "id_employee") Long id_employee)
+	{
+		model.addAttribute("editEmployee", employeeService.findOne(id_employee));
+		
+		return "/user/emp/editEmployeeModyfication";
+	}
+	
+	@RequestMapping(value = "/employeeeditpost/{id_employee}", method = RequestMethod.POST)
+	public String editEmployeepost (@Valid @ModelAttribute("editEmployee") Employee employee, @PathVariable(value = "id_employee") Long id_employee, RedirectAttributes attributes)
+	{
+		
+		//employeeService.add(id_employee);
+		employeeService.updateEmployee(employee.getId_employee(), employee.getFirst_name(), employee.getLast_name(), employee.getTeam(), employee.getWorkplace(), employee.isEmployee_status());
+		return "redirect:/employee/employeeedit";
+	}
+	
 	
 //	@RequestMapping(value = "/contracts/add", method = RequestMethod.POST)
 //	public String postAddContract (@ModelAttribute("newContract") EmployeeContract employeeContract, BindingResult bindingResult)

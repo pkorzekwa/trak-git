@@ -12,11 +12,14 @@
 	<div class="container">
 		<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
 			<div class="panel panel-default">
-				<div class="panel-heading" th:text="#{employee.add}"></div>
+				<div class="panel-heading" th:text="#{employee.edit}"></div>
 				<div class="panel-body">
 
-					<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newEmployee}" th:accept-charset='UTF-8' method="post">
+					<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${editEmployee}" th:accept-charset='UTF-8' method="post">
 						<div>
+						
+						
+						
 						<input type="hidden" th:field="*{id_employee}" class="form-control"/>
 
 						
@@ -67,7 +70,7 @@
 							
 							
 							<div class="submit">
-								<a type="button" name="cancel" class="btn btn-default" th:href="${'/employee/all/'}">Anuluj</a>
+								<a type="button" name="cancel" class="btn btn-default" th:href="${'/employee/employeeedit/'}">Anuluj</a>
 								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
 							</div>
 						</div>

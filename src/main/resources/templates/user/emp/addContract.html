@@ -79,7 +79,7 @@ layout:decorate="~{fragments/layout}">
 
 			
 					<div class="submit">
-						<button type="button" class="btn btn-default">Anuluj</button>
+						<a type="button" name="cancel" class="btn btn-default" th:href="${'/employee/contracts/' + id_employee}">Anuluj</a>
 						<button type="submit" name="save" class="btn btn-success">Zapisz</button>
 					</div>
 				</div>			

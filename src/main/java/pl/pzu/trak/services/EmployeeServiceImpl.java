@@ -34,5 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	{
 		employeeRepository.save(employee);
 	}
+	
+	public void updateEmployee(Long id_employee, String first_name, String last_name, String team, String workplace, boolean employee_status)
+	{
+		employeeRepository.updateEmployee(id_employee, first_name, last_name, team, workplace, employee_status);
+	}
+	
 }
 
