@@ -1,5 +1,8 @@
 package pl.pzu.trak.controler;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -66,8 +69,34 @@ public class EmployeeController {
 	@RequestMapping(value = "/systems/{id_employee}", method = RequestMethod.GET)
 	public String findSystems (Model model, @PathVariable(value = "id_employee") Long id_employee)
 	{
-		model.addAttribute("listSystems", employeeSystemsService.findSystems(id_employee));
+		
+		Collection<EmployeeSystems> employeeSystems = new ArrayList<>();
+		employeeSystems.addAll(employeeSystemsService.employeeDetailsSystemsById(id_employee));
+		
+		//model.addAttribute("listSystems", employeeSystemsService.employeeDetails(id_employee));
+
+	//	model.addAttribute("systems", employeeSystemsService.);
+
 		model.addAttribute("employeeOne", employeeService.findOne(id_employee));
+		model.addAttribute("systems", employeeSystemsService.employeeDetailsSystemsById(id_employee));
+		
+//		model.addAttribute("company", employeeContractsService.employeeDetailsCompanyById(id_employee));
+
+//		Collection<EmployeeSystems> systemy = new ArrayList<>();
+//		systemy.addAll(employeeSystemsService.employeeDetailsSystemsById(id_employee));
+		
+		Employee employee = new Employee();
+		employee = employeeService.findOne(id_employee);
+		System.out.println(employee.toString());
+		
+		for(EmployeeSystems ex:employee.getEmployeeSystems())
+		{
+		System.out.println("AAAAAA "+ex.getId_systems()+"_"+ex.getEmployeeSystemsDictionary().getName());
+		System.out.println("bbbbbb "+ex.getId_company()+"_"+ex.getEmployeeCompanyDictionary().getName());
+		}
+		
+		
+
 		
 		return "/user/emp/systems";
 	}
@@ -96,7 +125,7 @@ public class EmployeeController {
 		model.addAttribute("newContract", newContract);
 		
 		model.addAttribute("employeeList1", employeeService.findOne(id_employee));
-		model.addAttribute("companyList", employeeCompanyDictionaryService.findAll());
+		model.addAttribute("companyList", employeeCompanyDictionaryService.findAllNameCompanyDictionary());
 		model.addAttribute("typeOfContractList", employeeTypeOfContractDictionaryService.findAll());
 		
 		return "/user/emp/addContract";
@@ -128,8 +157,8 @@ public class EmployeeController {
 		model.addAttribute("newSystem", newSystem);
 		
 		model.addAttribute("employeeList1", employeeService.findOne(id_employee));
-		model.addAttribute("companyList", employeeCompanyDictionaryService.findAll());
-		model.addAttribute("systemsList", employeeSystemsDictionaryService.findAll());
+		model.addAttribute("companyList", employeeCompanyDictionaryService.findAllNameCompanyDictionary());
+		model.addAttribute("systemsList", employeeSystemsDictionaryService.findAllNameSystemsDictionary());
 	
 		return "/user/emp/addSystem";
 	}

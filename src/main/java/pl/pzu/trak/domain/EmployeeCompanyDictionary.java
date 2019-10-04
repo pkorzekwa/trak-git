@@ -1,6 +1,7 @@
 package pl.pzu.trak.domain;
 
-import java.util.List;
+import java.util.Collection;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,14 +20,14 @@ public class EmployeeCompanyDictionary {
     private String name;
     
     @OneToMany(mappedBy="employeeCompanyDictionary")
-    List<EmployeeContract> employeeContract;
+    Collection<EmployeeContract> employeeContract;
 
     @OneToMany(mappedBy="employeeCompanyDictionary")
-    List<EmployeeSystems> employeeSystems;
+    Collection<EmployeeSystems> employeeSystems;
 
 
 
-	public EmployeeCompanyDictionary(Long id_company, String name, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
+	public EmployeeCompanyDictionary(Long id_company, String name, Collection<EmployeeContract> employeeContract, Collection<EmployeeSystems> employeeSystems) {
 		super();
 		this.id_company = id_company;
 		this.name = name;
@@ -39,11 +40,11 @@ public class EmployeeCompanyDictionary {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<EmployeeSystems> getEmployeeSystems() {
+	public Collection<EmployeeSystems> getEmployeeSystems() {
 		return employeeSystems;
 	}
 
-	public void setEmployeeSystems(List<EmployeeSystems> employeeSystems) {
+	public void setEmployeeSystems(Collection<EmployeeSystems> employeeSystems) {
 		this.employeeSystems = employeeSystems;
 	}
 
@@ -62,12 +63,17 @@ public class EmployeeCompanyDictionary {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<EmployeeContract> getEmployeeContract() {
+	public Collection<EmployeeContract> getEmployeeContract() {
 		return employeeContract;
 	}
 
-	public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+	public void setEmployeeContract(Collection<EmployeeContract> employeeContract) {
 		this.employeeContract = employeeContract;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeCompanyDictionary [id_company=" + id_company + ", name=" + name + "]";
 	}
 
 

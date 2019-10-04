@@ -1,6 +1,7 @@
 package pl.pzu.trak.domain;
 
-import java.util.List;
+import java.util.Collection;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,14 +24,14 @@ public class Employee {
     private boolean employee_status;
     
     @OneToMany(mappedBy="employee")
-    List<EmployeeContract> employeeContract;
+    Collection<EmployeeContract> employeeContract;
     @OneToMany(mappedBy="employee")
-    List<EmployeeSystems> employeeSystems;
+    Collection<EmployeeSystems> employeeSystems;
     
 
     
 	public Employee(Long id_employee, String first_name, String last_name, String team, String workplace,
-			boolean employee_status, List<EmployeeContract> employeeContract, List<EmployeeSystems> employeeSystems) {
+			boolean employee_status, Collection<EmployeeContract> employeeContract, Collection<EmployeeSystems> employeeSystems) {
 		super();
 		this.id_employee = id_employee;
 		this.first_name = first_name;
@@ -81,17 +82,25 @@ public class Employee {
 	public void setEmployee_status(boolean employee_status) {
 		this.employee_status = employee_status;
 	}
-	public List<EmployeeContract> getEmployeeContract() {
+	public Collection<EmployeeContract> getEmployeeContract() {
 		return employeeContract;
 	}
-	public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+	public void setEmployeeContract(Collection<EmployeeContract> employeeContract) {
 		this.employeeContract = employeeContract;
 	}
-	public List<EmployeeSystems> getEmployeeSystems() {
+	public Collection<EmployeeSystems> getEmployeeSystems() {
 		return employeeSystems;
 	}
-	public void setEmployeeSystems(List<EmployeeSystems> employeeSystems) {
+	public void setEmployeeSystems(Collection<EmployeeSystems> employeeSystems) {
 		this.employeeSystems = employeeSystems;
-	}    
+	}
+	@Override
+	public String toString() {
+		return "Employee [id_employee=" + id_employee + ", first_name=" + first_name + ", last_name=" + last_name
+				+ ", team=" + team + ", workplace=" + workplace + ", employee_status=" + employee_status
+				+ ", employeeContract=" + employeeContract + ", employeeSystems=" + employeeSystems + "]";
+	}
+	
+	
 }
 

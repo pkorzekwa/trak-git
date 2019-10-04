@@ -1,5 +1,6 @@
 package pl.pzu.trak.services;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 	
 	@Override
-	public List<EmployeeQuery> all(){
+	public Collection<EmployeeQuery> all(){
 		return employeeRepository.all();
 	}
 	
@@ -25,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepository.getOne(id_employee);
 	}
 	
-	public List<Employee> findAll() {
+	public Collection<Employee> findAll() {
 		return employeeRepository.findAll();
 	}
 

@@ -1,5 +1,6 @@
 package pl.pzu.trak.domain;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class EmployeeSystemsDictionary {
 	    private String name;
 	    
 	    @OneToMany(mappedBy="employeeSystemsDictionary")
-	    List<EmployeeSystems> employeeSystems;
+	    Collection<EmployeeSystems> employeeSystems;
 	    
 
 
@@ -28,17 +29,17 @@ public class EmployeeSystemsDictionary {
 			// TODO Auto-generated constructor stub
 		}
 
-		public EmployeeSystemsDictionary(Long id_systems, String name, List<EmployeeSystems> employeeSystems) {
+		public EmployeeSystemsDictionary(Long id_systems, String name, Collection<EmployeeSystems> employeeSystems) {
 			super();
 			this.id_systems = id_systems;
 			this.name = name;
 			this.employeeSystems = employeeSystems;
 		}
 
-		public List<EmployeeSystems> getEmployeeSystems() {
+		public Collection<EmployeeSystems> getEmployeeSystems() {
 			return employeeSystems;
 		}
-		public void setEmployeeSystems(List<EmployeeSystems> employeeSystems) {
+		public void setEmployeeSystems(Collection<EmployeeSystems> employeeSystems) {
 			this.employeeSystems = employeeSystems;
 		}
 		public Long getId_systems() {
@@ -47,10 +48,10 @@ public class EmployeeSystemsDictionary {
 		public void setId_systems(Long id_systems) {
 			this.id_systems = id_systems;
 		}
-		public List<EmployeeSystems> getEmployeeSystems2() {
+		public Collection<EmployeeSystems> getEmployeeSystems2() {
 			return employeeSystems;
 		}
-		public void setEmployeeSystems2(List<EmployeeSystems> employeeSystems) {
+		public void setEmployeeSystems2(Collection<EmployeeSystems> employeeSystems) {
 			this.employeeSystems = employeeSystems;
 		}
 		public String getName() {
@@ -58,6 +59,11 @@ public class EmployeeSystemsDictionary {
 		}
 		public void setName(String name) {
 			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return "EmployeeSystemsDictionary [id_systems=" + id_systems + ", name=" + name + "]";
 		}
 
 	    

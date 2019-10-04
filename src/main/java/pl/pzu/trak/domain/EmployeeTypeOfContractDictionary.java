@@ -1,5 +1,6 @@
 package pl.pzu.trak.domain;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,13 +20,13 @@ public class EmployeeTypeOfContractDictionary {
     private String name;
     
     @OneToMany(mappedBy="employeeTypeOfContractDictionary")
-    List<EmployeeContract> employeeContract;
+    Collection<EmployeeContract> employeeContract;
     
     
     
 
 
-	public EmployeeTypeOfContractDictionary(Long id_type_of_contract, String name, List<EmployeeContract> employeeContract) {
+	public EmployeeTypeOfContractDictionary(Long id_type_of_contract, String name, Collection<EmployeeContract> employeeContract) {
 		super();
 		this.id_type_of_contract = id_type_of_contract;
 		this.name = name;
@@ -49,10 +50,10 @@ public class EmployeeTypeOfContractDictionary {
 		this.name = name;
 	}
 
-	public List<EmployeeContract> getEmployeeContract() {
+	public Collection<EmployeeContract> getEmployeeContract() {
 		return employeeContract;
 	}
-	public void setEmployeeContract(List<EmployeeContract> employeeContract) {
+	public void setEmployeeContract(Collection<EmployeeContract> employeeContract) {
 		this.employeeContract = employeeContract;
 	}
     

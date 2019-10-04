@@ -1,5 +1,6 @@
 package pl.pzu.trak.repositories;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -33,7 +34,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 			+ " LEFT JOIN  c.employeeCompanyDictionary d"
 			+ " LEFT JOIN  e.employeeSystems s"
 			+ " LEFT JOIN  s.employeeSystemsDictionary g")
-		List<EmployeeQuery> all();
+		Collection<EmployeeQuery> all();
 		
 		@Transactional
 		@Modifying(clearAutomatically = true)

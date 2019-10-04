@@ -110,4 +110,14 @@ public class EmployeeSystems {
 		public void setEmployee(Employee employee) {
 			this.employee = employee;
 		}
+
+		@Override
+		public String toString() {
+			return "EmployeeSystems [id_employee_systems=" + id_employee_systems + ", employeeSystemsDictionary="
+					+ employeeSystemsDictionary + "]";
+		}
+
+
+		
+		
 }

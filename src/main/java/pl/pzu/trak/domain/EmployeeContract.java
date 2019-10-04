@@ -154,20 +154,6 @@ public class EmployeeContract {
 		this.id_company = id_company;
 	}
 
-	@Override
-	public String toString() {
-		return "EmployeeContract [id_contract=" + id_contract + ", data_from=" + data_from + ", data_to=" + data_to
-				+ ", id_type_of_contract=" + id_type_of_contract + ", contract_status=" + contract_status
-				+ ", employee=" + employee + ", employeeCompanyDictionary=" + employeeCompanyDictionary
-				+ ", employeeTypeOfContractDictionary=" + employeeTypeOfContractDictionary + ", getId_contract()="
-				+ getId_contract() + ", getData_from()=" + getData_from() + ", getData_to()=" + getData_to()
-				+ ", getId_type_of_contract()=" + getId_type_of_contract() + ", isContract_status()="
-				+ isContract_status() + ", getEmployee()=" + getEmployee() + ", getEmployeeCompanyDictionary()="
-				+ getEmployeeCompanyDictionary() + ", getEmployeeTypeOfContractDictionary()="
-				+ getEmployeeTypeOfContractDictionary() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
-
 
 	public Long getId_employee() {
 		return id_employee;
@@ -177,6 +163,17 @@ public class EmployeeContract {
 	public void setId_employee(Long id_employee) {
 		this.id_employee = id_employee;
 	}
+
+
+	@Override
+	public String toString() {
+		return "EmployeeContract [id_contract=" + id_contract + ", employeeCompanyDictionary="
+				+ employeeCompanyDictionary + "]";
+	}
+
+
+	
+	
 	
 }
 
