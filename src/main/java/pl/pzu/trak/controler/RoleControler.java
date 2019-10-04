@@ -1,5 +1,6 @@
 package pl.pzu.trak.controler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
@@ -26,10 +27,9 @@ public class RoleControler
 {
 	@Autowired
 	private RoleService roleService;
-	
+
 	@Autowired
 	private PrivilegeService privilegeService;
-	private Role role;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -58,7 +58,7 @@ public class RoleControler
 			return "redirect:/roles/all";
 		}
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editRole(Model model, @PathVariable(value = "id") Long id)
 	{
@@ -66,54 +66,65 @@ public class RoleControler
 		return "user/upr/editRole";
 	}
 
-
 	@RequestMapping(value = "/edit/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateRole(@Valid @ModelAttribute("role") Role role, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	public String updateRole(@Valid @ModelAttribute("role") Role role, BindingResult bindingResult,
+			RedirectAttributes attributes, Model model)
 	{
 		if (bindingResult.hasErrors())
 		{
 			return "user/upr/editRole";
 		} else
-		{		
+		{
 			roleService.updateRole(role.getId(), role.getName());
 			return "redirect:/roles/all";
 		}
-	}	
+	}
 
 	@RequestMapping(value = "/editprivileges/{id}", method = RequestMethod.GET)
 	public String editRolePrivileges(Model model, @PathVariable(value = "id") Long id)
 	{
-		//Role role = new Role();
+		Role role = new Role();
 		role = roleService.findOne(id);
-				
-		PrivilegeListDto privilegeForm = new PrivilegeListDto();
-	//	System.out.println("dane :"+role.getPrivileges().size());
-	//	privilegeForm.addAllPrivilege(role);
+
+		List<Privilege> privileges = new ArrayList<>();
+		role.getPrivileges().iterator().forEachRemaining(privileges::add);
+		model.addAttribute("privilegeForm", new PrivilegeListDto(privileges));
 		
-		for(Privilege i: role.getPrivileges())
-		{
-		//	System.out.println("Dane :"+i.toString());
-			privilegeForm.addPrivilege(i);
-		}
-		
-		model.addAttribute("privilegeForm", privilegeForm);
-		
+//		PrivilegeListDto privilegeForm = new PrivilegeListDto();
+//		for (Privilege priv: role.getPrivileges())
+//		{
+//			privilegeForm.addPrivilege(priv);
+//		}	
+//		model.addAttribute("privilegeForm", privilegeForm);
+
 		List<Privilege> allprivileges = privilegeService.ListAllPrivilegesRoleList(id);
 		model.addAttribute("allprivileges", allprivileges);
-		
+
 		return "user/upr/editRolePrivileges";
 	}
 
 	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm, BindingResult bindingResult, RedirectAttributes attributes, Model model)
+	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm,
+			BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)
 	{
 		if (bindingResult.hasErrors())
 		{
 			return "user/upr/editRolePrivileges";
 		} else
-		{			
+		{
+			Role role = new Role();
+			role = roleService.findOne(roleId);
+			role.setPrivileges(new ArrayList<>());
+			for (Privilege priv: privilegeForm.getPrivileges())
+			{
+				role.getPrivileges().add(priv);
+				priv.setRoles(new ArrayList<>());
+				priv.getRoles().add(role);
+				//privilegeService.save(priv);
+			}
 			//roleService.save(role);
+
 			return "redirect:/roles/all";
-		}		
+		}
 	}
 }

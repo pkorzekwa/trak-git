@@ -127,7 +127,8 @@ layout:decorate="~{fragments/layout}">
                 </div>
                 
                 <ul class="list-group">
-                    <li class="list-group-item" data-toggle="list" th:each="row, rowStat : *{privileges}" th:id="*{privileges[__${rowStat.index}__].id}" th:text="*{privileges[__${rowStat.index}__].name}"></li>
+						 <li class="list-group-item" data-toggle="list" th:each="privilege, itemStat : ${privilegeForm.privileges}" th:id="${privilege.getId()}" th:value="${privilege.getName()}" th:text="${privilege.getName()}"></li>
+<!--                     <li class="list-group-item" data-toggle="list" th:each="row, rowStat : *{privileges}" th:id="*{privileges[__${rowStat.index}__].id}" th:text="*{privileges[__${rowStat.index}__].name}"></li> -->
                 </ul>
             </div>
         	</div>
