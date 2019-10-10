@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import pl.pzu.trak.domain.EmployeeSystems;
+import pl.pzu.trak.domain.EmployeeSystemsQuery;
 
 public interface EmployeeSystemsService {
 	
@@ -12,7 +13,7 @@ public interface EmployeeSystemsService {
 	void add(EmployeeSystems employeeSystems);
 	void remove(Long id_employee_systems);
 	Collection<EmployeeSystems> employeeDetails (Long id_employee);
-	Collection<EmployeeSystems> employeeDetailsSystemsById (Long id_employee);
+	Collection<EmployeeSystemsQuery> employeeDetailsSystemsById (Long id_employee);
 	//Collection<EmployeeSystems> employeeDetailsCompany (Long id_employee);
 	EmployeeSystems findSystemsById (Long id_employee);
 

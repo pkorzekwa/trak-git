@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.pzu.trak.domain.EmployeeSystems;
+import pl.pzu.trak.domain.EmployeeSystemsQuery;
 import pl.pzu.trak.repositories.EmployeeSystemsRepository;
 
 @Service
@@ -29,7 +30,7 @@ public class EmployeeSystemsServiceImpl implements EmployeeSystemsService {
 		return employeeSystemsRepository.employeeDetails(id_employee);
 	}
 	@Override
-	public Collection<EmployeeSystems> employeeDetailsSystemsById (Long id_employee) {
+	public Collection<EmployeeSystemsQuery> employeeDetailsSystemsById (Long id_employee) {
 		return employeeSystemsRepository.employeeDetailsSystemsById(id_employee);
 	}
 //	@Override

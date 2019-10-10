@@ -18,4 +18,6 @@ public interface PrivilegeRepository extends JpaRepository<Privilege, Long> {
 
     @Query(value="SELECT * from Privilege p WHERE p.id NOT IN (SELECT rp.privilege_id FROM roles_privileges rp WHERE rp.role_id = :roleId)", nativeQuery = true)
     List<Privilege> AllPrivilegesRoleList(@Param("roleId") Long roleId);
+// dfgsdfg
+    
 }

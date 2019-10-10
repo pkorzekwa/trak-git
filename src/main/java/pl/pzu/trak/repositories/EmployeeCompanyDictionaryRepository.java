@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import pl.pzu.trak.domain.EmployeeCompanyDictionary;
+import pl.pzu.trak.domain.Role;
 
 @Repository
 public interface EmployeeCompanyDictionaryRepository extends JpaRepository<EmployeeCompanyDictionary, Long>{
@@ -16,5 +17,5 @@ public interface EmployeeCompanyDictionaryRepository extends JpaRepository<Emplo
 	@Query("select distinct z from EmployeeCompanyDictionary z")
 	Collection<EmployeeCompanyDictionary> findAllNameCompanyDictionary();
 	
-// asdfasdffsdfsdf
+
 }

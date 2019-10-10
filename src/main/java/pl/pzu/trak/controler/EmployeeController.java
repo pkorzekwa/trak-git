@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeContract;
 import pl.pzu.trak.domain.EmployeeSystems;
+import pl.pzu.trak.domain.EmployeeSystemsQuery;
 import pl.pzu.trak.services.EmployeeCompanyDictionaryService;
 import pl.pzu.trak.services.EmployeeContractsService;
 import pl.pzu.trak.services.EmployeeService;
@@ -70,7 +71,7 @@ public class EmployeeController {
 	public String findSystems (Model model, @PathVariable(value = "id_employee") Long id_employee)
 	{
 		
-		Collection<EmployeeSystems> employeeSystems = new ArrayList<>();
+		Collection<EmployeeSystemsQuery> employeeSystems = new ArrayList<>();
 		employeeSystems.addAll(employeeSystemsService.employeeDetailsSystemsById(id_employee));
 		
 		//model.addAttribute("listSystems", employeeSystemsService.employeeDetails(id_employee));
@@ -225,6 +226,7 @@ public class EmployeeController {
 		//employeeService.add(id_employee);
 		employeeService.updateEmployee(employee.getId_employee(), employee.getFirst_name(), employee.getLast_name(), employee.getTeam(), employee.getWorkplace(), employee.isEmployee_status());
 		return "redirect:/employee/employeeedit";
+		
 	}
 	
 	
@@ -239,7 +241,7 @@ public class EmployeeController {
 //			employeeContractsService.add(employeeContract);
 //			return "redirect:/employee/all";
 //		}
-//			
+//		komentarz	tydty
 //		
 //	}
 }

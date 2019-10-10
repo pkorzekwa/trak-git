@@ -12,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import pl.pzu.trak.domain.EmployeeSystems;
+import pl.pzu.trak.domain.EmployeeSystemsQuery;
 
 @Repository
 public interface EmployeeSystemsRepository extends JpaRepository<EmployeeSystems, Long>{
@@ -28,12 +29,20 @@ public interface EmployeeSystemsRepository extends JpaRepository<EmployeeSystems
 //	@Query(value = "SELECT distinct * FROM employee_contract c JOIN c.employee_company_dictionary cd WHERE c.id_employee = :id_employee", nativeQuery = true)
 //	Collection<EmployeeSystems> employeeDetailsCompany (@Param("id_employee") Long id_employee);
 	
-	@Query("SELECT DISTINCT cd.name, sd.name FROM EmployeeSystems s "
-			+ " JOIN s.employeeSystemsDictionary sd "
-			+ " JOIN s.employeeCompanyDictionary cd"
-			+ " WHERE s.id_employee = :id_employee"
-			+ " GROUP BY cd.name, cd.id_company, sd.id_systems, sd.name")
-	Collection<EmployeeSystems> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
+	
+//	@Query("SELECT DISTINCT s, sd FROM EmployeeSystems s "
+//			+ " JOIN s.employeeSystemsDictionary sd "
+//			+ " JOIN s.employeeCompanyDictionary cd"
+//			+ " WHERE s.id_employee = :id_employee")
+//			//+ " GROUP BY cd.name, cd.id_company, sd.id_systems, sd.name")
+//	Collection<EmployeeSystems> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
+	
+	@Query("SELECT DISTINCT new pl.pzu.trak.domain.EmployeeSystemsQuery (cd.name, sd.name) FROM EmployeeSystems AS s "
+			+ " JOIN s.employeeSystemsDictionary AS sd "
+			+ " JOIN s.employeeCompanyDictionary AS cd"
+			+ " WHERE s.id_employee = :id_employee")
+			//+ " GROUP BY cd.name, cd.id_company, sd.id_systems, sd.name")
+	Collection<EmployeeSystemsQuery> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
 	
 //	@Query("SELECT cd FROM EmployeeContract c JOIN c.employeeCompanyDictionary cd WHERE c.id_employee = :id_employee")
 //	Collection<EmployeeSystems> employeeDetailsCompany (@Param("id_employee") Long id_employee);
