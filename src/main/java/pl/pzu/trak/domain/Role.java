@@ -1,7 +1,8 @@
 package pl.pzu.trak.domain;
 
 import javax.persistence.*;
-import java.util.Collection;
+
+import java.util.List;
 
 @Entity
 public class Role {
@@ -11,11 +12,11 @@ public class Role {
     private Long id;
 
     @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
+    private List<User> users;
 
     @ManyToMany
     @JoinTable(name = "roles_privileges", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
+    private List<Privilege> privileges;
 
     private String name;
 
@@ -46,19 +47,19 @@ public class Role {
         this.name = name;
     }
 
-    public Collection<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(final Collection<User> users) {
+    public void setUsers(final List<User> users) {
         this.users = users;
     }
 
-    public Collection<Privilege> getPrivileges() {
+    public List<Privilege> getPrivileges() {
         return privileges;
     }
 
-    public void setPrivileges(final Collection<Privilege> privileges) {
+    public void setPrivileges(final List<Privilege> privileges) {
         this.privileges = privileges;
     }
 
