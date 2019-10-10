@@ -66,7 +66,7 @@ layout:decorate="~{fragments/layout}">
 							 	<td th:text="${c.getEmployeeCompanyDictionary().getName()}"></td> 
 		 						<td>
 		 							<table>
-		 								<tr th:each="s:${systems.EmployeeSystemsDictionary}">
+		 								<tr th:each="s:${systems.getEmployeeSystemsDictionary()}">
 		 									<td th:text="${s.getName()}"></td>
 		 								<tr>
 		 							</table>
