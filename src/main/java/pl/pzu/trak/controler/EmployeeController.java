@@ -80,6 +80,7 @@ public class EmployeeController {
 
 		model.addAttribute("employeeOne", employeeService.findOne(id_employee));
 		model.addAttribute("systems", employeeSystemsService.employeeDetailsSystemsById(id_employee));
+		//model.addAttribute("systems", employeeSystemsService.employeeDetailsSystemsById(id_employee));
 		
 //		model.addAttribute("company", employeeContractsService.employeeDetailsCompanyById(id_employee));
 

@@ -63,14 +63,8 @@ layout:decorate="~{fragments/layout}">
 										
 <!-- 								<td th:text="${c.employeeCompanyDictionary.name}"></td>					
 							 	<td th:text="${c.employeeSystemsDictionary.name}"></td>-->
-							 	<td th:text="${c.getEmployeeCompanyDictionary"></td> 
-		 						<td>
-		 							<table>
-		 								<tr th:each="s:${systems.getEmployeeSystemsDictionary()}">
-		 									<td th:text="${s.getName()}"></td>
-		 								<tr>
-		 							</table>
-		 						</td> 
+							 	<td th:text="${c.getEmployeeCompanyDictionary().getName()}"></td> 
+		 						<td th:text="${c.getEmployeeSystemsDictionary().getName()}"></td> 
 												 	
 							
 <!-- 								<td>
@@ -79,7 +73,11 @@ layout:decorate="~{fragments/layout}">
 											<td th:text="${c.employeeSystemsDictionary.name}"></td>
 										</tr>
 									</table>												
-								</td>	 -->
+								</td>	
+								
+								 -->
+
+								
 							
 				<tr th:each="c:${employeeOne}">
 					<td th:hidden="${c.id_employee}"></td>

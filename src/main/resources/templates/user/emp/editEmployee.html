@@ -68,7 +68,9 @@ layout:decorate="~{fragments/layout}">
 								<td th:text="${emp.last_name}"></td>
 								<td th:text="${emp.team}"></td>
 								<td th:text="${emp.workplace}"></td>
-								<td th:text="${emp.employee_status}"></td>			
+								
+								<td th:if="${emp.employee_status == true}">Aktywny</td>	
+								<td th:unless="${emp.employee_status == true}">Nie aktywny</td>					
 							</tr>
 						</tbody>
 					</table>			
