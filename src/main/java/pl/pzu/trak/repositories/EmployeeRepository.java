@@ -28,13 +28,23 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 //			+ " LEFT JOIN employee_systems_dictionary sd ON s.id_systems = sd.id_systems", nativeQuery = true)
 //	List<EmployeeQuery> all();
 	
-		@Query("SELECT new pl.pzu.trak.domain.EmployeeQuery(e.id_employee, e.first_name, e.last_name, e.team, e.workplace, d.name, g.name, e.employee_status)"
+		@Query("SELECT distinct new pl.pzu.trak.domain.EmployeeQuery(e.id_employee, e.first_name, e.last_name, e.team, e.workplace, d.name, g.name, e.employee_status)"
 			+ " FROM Employee e"
 			+ " LEFT JOIN  e.employeeContract c"
 			+ " LEFT JOIN  c.employeeCompanyDictionary d"
 			+ " LEFT JOIN  e.employeeSystems s"
 			+ " LEFT JOIN  s.employeeSystemsDictionary g")
 		Collection<EmployeeQuery> all();
+		
+		@Query("SELECT distinct e"
+				+ " FROM Employee e"
+				+ " LEFT JOIN  e.employeeContract c"
+				+ " LEFT JOIN  c.employeeCompanyDictionary d"
+				+ " LEFT JOIN  e.employeeSystems s"
+				+ " LEFT JOIN  s.employeeSystemsDictionary g")
+			Collection<Employee> listToEditEmployee();
+		
+		
 		
 		@Transactional
 		@Modifying(clearAutomatically = true)

@@ -37,12 +37,12 @@ public interface EmployeeSystemsRepository extends JpaRepository<EmployeeSystems
 //			//+ " GROUP BY cd.name, cd.id_company, sd.id_systems, sd.name")
 //	Collection<EmployeeSystems> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
 	
-	@Query("SELECT DISTINCT new pl.pzu.trak.domain.EmployeeSystemsQuery (cd.name, sd.name) FROM EmployeeSystems AS s "
+	@Query("SELECT DISTINCT s FROM EmployeeSystems AS s "
 			+ " JOIN s.employeeSystemsDictionary AS sd "
 			+ " JOIN s.employeeCompanyDictionary AS cd"
 			+ " WHERE s.id_employee = :id_employee")
-			//+ " GROUP BY cd.name, cd.id_company, sd.id_systems, sd.name")
-	Collection<EmployeeSystemsQuery> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
+//			+ " GROUP BY s.id_employee_systems, s.id_systems, s.id_employee, s.id_company")
+	Collection<EmployeeSystems> employeeDetailsSystemsById (@Param("id_employee") Long id_employee);
 	
 //	@Query("SELECT cd FROM EmployeeContract c JOIN c.employeeCompanyDictionary cd WHERE c.id_employee = :id_employee")
 //	Collection<EmployeeSystems> employeeDetailsCompany (@Param("id_employee") Long id_employee);

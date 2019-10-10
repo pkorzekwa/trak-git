@@ -29,6 +29,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Collection<Employee> findAll() {
 		return employeeRepository.findAll();
 	}
+	
+	public Collection<Employee> editList() {
+		return employeeRepository.listToEditEmployee();
+	}
 
 	@Override
 	public void add(Employee employee)

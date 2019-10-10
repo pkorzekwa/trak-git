@@ -71,7 +71,7 @@ public class EmployeeController {
 	public String findSystems (Model model, @PathVariable(value = "id_employee") Long id_employee)
 	{
 		
-		Collection<EmployeeSystemsQuery> employeeSystems = new ArrayList<>();
+		Collection<EmployeeSystems> employeeSystems = new ArrayList<>();
 		employeeSystems.addAll(employeeSystemsService.employeeDetailsSystemsById(id_employee));
 		
 		//model.addAttribute("listSystems", employeeSystemsService.employeeDetails(id_employee));
@@ -206,7 +206,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/employeeedit", method = RequestMethod.GET)
 	public String editEmployee (Model model)
 	{
-		model.addAttribute("employeeList", employeeService.all());
+		model.addAttribute("employeeList", employeeService.editList());
 		
 		return "/user/emp/editEmployee";
 	}
