@@ -28,7 +28,7 @@ layout:decorate="~{fragments/layout}">
                 actives.clone().appendTo('.list-left ul');
                 actives.remove();
                 $mode='del';
-                $.post('JsonServlet',{appmodule:$appmod,section:$section,team:$team,mode:$mode,elist:$('.list-left ul li.active').text()});
+                $.post('JsonServlet',{elist:$('.list-left ul li.active').text()});
                 actives = $('.list-left ul li.active');
                 actives.removeClass('active');
                 actives = '';
@@ -37,7 +37,7 @@ layout:decorate="~{fragments/layout}">
                 actives.clone().appendTo('.list-right ul');
                 actives.remove();
                 $mode='add';
-                $.post('JsonServlet',{appmodule:$appmod,section:$section,team:$team,mode:$mode,elist:$('.list-right ul li.active').text()});
+                $.post('JsonServlet',{elist:$('.list-right ul li.active').text()});
                 actives = $('.list-right ul li.active');
                 actives.removeClass('active');
                 actives = '';                
