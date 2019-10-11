@@ -73,7 +73,9 @@ layout:decorate="~{fragments/layout}">
 								<td th:unless="${emp.employee_status == true}">Nie aktywny</td>					
 							</tr>
 						</tbody>
-					</table>			
+					</table>	
+						
+					<a type="button" name="cancel" class="btn btn-default" th:href="${'/employee/all'}">Powrót</a>	
 			</div>
 		</div>
 	</div>

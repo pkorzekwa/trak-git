@@ -19,7 +19,7 @@ public interface  EmployeeContractRepository  extends JpaRepository<EmployeeCont
 	
 	
 	@Query(value = "SELECT * FROM employee_contract "
-			+ " JOIN employee_type_of_contract_dictionary ON employee_contract.id_type_of_contract = employee_type_of_contract_dictionary.id_type_of_contract WHERE id_employee = :id_employee", nativeQuery = true)
+			+ " JOIN employee_type_of_contract_dictionary ON employee_contract.id_type_of_contract = employee_type_of_contract_dictionary.id_type_of_contract WHERE id_employee = :id_employee ORDER BY name", nativeQuery = true)
 	Collection<EmployeeContract> employeeContractsListContracts(@Param("id_employee") Long id_employee);
 	
 	
