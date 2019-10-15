@@ -40,8 +40,8 @@ public class RoleServiceImpl implements RoleService
 	}
 	
 	@Override
-	public Role findOne(Long id) {
-		return roleRepository.getOne(id);
+	public Role findOne(Long id) {		
+		return roleRepository.findById(id).get();
 	}
 
 	public void updateRole(Long id, String name)

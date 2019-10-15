@@ -1,23 +1,25 @@
 package pl.pzu.trak.domain;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrivilegeListDto
 {
-	private List<Privilege> privileges;
-	public void addAllPrivilege(Role roles)
-	{
-		this.privileges.addAll(roles.getPrivileges());
-	}
+	private List<Privilege> privileges = new ArrayList<Privilege>();
+		
 	
-	
-	public void addPrivilege(Privilege privilege)
+	public PrivilegeListDto(List<Privilege> privileges)
 	{
-		this.privileges.add(privilege);
+		super();
+		this.privileges = privileges;
 	}
 
-	public Collection<Privilege> getPrivileges()
+	public void addPrivilege(Privilege privilege)
+	{
+		privileges.add(privilege);
+	}
+
+	public List<Privilege> getPrivileges()
 	{
 		return privileges;
 	}
