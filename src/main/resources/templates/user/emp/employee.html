@@ -45,16 +45,29 @@ layout:decorate="~{fragments/layout}">
     					}
     			}
    		});
+	
+	
   	/*]]>*/
+
   	</script>
 
 	<div layout:fragment="content" th:remove="tag">
 	<div class="container">
+	
+<!-- 	<button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-excel-o"></span> Export to Excel</button> -->
+	
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
-					<table id="datatable" class="table table-striped table-bordered nowrap">
+					<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 						<thead class="thead">
-							<tr bgcolor="azure"><th>Nazwisko</th><th>Imie</th><th>Zespol</th><th>Stanowisko</th><th>Spółki pracownika</th><th>Systemy pracownika</th><th>Status Pracownika</th><th>Umowa</th><th>System</th></tr>
+							<tr bgcolor="azure"><th class="th-sm">Nazwisko</th>
+												<th class="th-sm">Imie</th><th>Zespol</th>
+												<th class="th-sm">Stanowisko</th>
+												<th class="th-sm">Spółki pracownika</th>
+												<th class="th-sm">Systemy pracownika</th>
+												<th class="th-sm">Status Pracownika</th>
+												<th>Umowa</th>
+												<th>System</th></tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="emp:${employeeList}">

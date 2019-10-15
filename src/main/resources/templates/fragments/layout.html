@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/datatables/datatables.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+	
 </head>
 
 <body>
@@ -24,5 +25,9 @@
         <th:block layout:fragment="content"/>
     </div>
     <th:block th:replace="fragments/footer :: footer"/>
+    
+    <script type="text/javascript" th:src="@{/datatables/datatablessort.js}"></script>
+    
+    
 </body>
 </html>
