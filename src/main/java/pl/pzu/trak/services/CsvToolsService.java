@@ -1,6 +1,6 @@
 package pl.pzu.trak.services;
 
-public interface CsvTools
+public interface CsvToolsService
 {
 	public String LoadFileCsv(String fileName);
 }
