@@ -53,16 +53,17 @@ layout:decorate="~{fragments/layout}">
 	<form th:action="@{/employee/contracts/add}" th:object="${contract}" accept-charset='UTF-8' method="POST">	
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
-					<table id="datatable" class="table table-striped table-bordered nowrap">				
+					<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
 						<thead class="thead">									
-							<tr bgcolor="azure"><th>Imię</th><th>Nazwisko</th></tr>
-							<tr><td th:text="${employeeOne.first_name}"></td><td th:text="${employeeOne.last_name}"></td></tr>
+							<tr class="bg-success"><th>Imię</th><th>Nazwisko</th></tr>
+							<tr style="font-size: 2.0em;"><td th:text="${employeeOne.first_name}"></td><td th:text="${employeeOne.last_name}"></td></tr>
 						</thead>	
 					</table>	
 					
 					<table id="dtBasicExample" class="table table-striped table-bordered table-sm " cellspacing="0" width="100%" >	
 						<thead>
-							<tr><th width="5%">Usuń</th>
+							<tr bgcolor="azure">
+								<th width="5%">Usuń</th>
 								<th class="th-sm">Nazwa</th>
 								<th class="th-sm">Data od</th>
 								<th class="th-sm">Data do</th>
