@@ -62,7 +62,7 @@ layout:decorate="~{fragments/layout}">
 							<tr bgcolor="azure"><th class="th-sm">Nazwisko</th>
 												<th class="th-sm">Imie</th><th>Zespol</th>
 												<th class="th-sm">Stanowisko</th>
-												<th class="th-sm">Spółki pracownika</th>
+												<th class="th-sm">Umowy pracownika</th>
 												<th class="th-sm">Systemy pracownika</th>
 												<th class="th-sm">Status Pracownika</th>
 												<th>Umowa</th>
@@ -117,8 +117,31 @@ layout:decorate="~{fragments/layout}">
 							</tr>
 						</tbody>
 						
+						
+
+						
 					</table>	
-							
+					
+					<table id="datatable" class="table table-striped nowrap" style="width:10%">
+					<thead>			
+						<th>
+							<h4>Opcje:</h4>
+						</th>
+					</thead>
+					<tfoot class="tfoot">
+					<tr>
+						<td>
+							<a title="Dodaj pracownika" class='btn btn-info btn-xs' th:href="@{'/employee/employeeaddnew/'}"><span class='glyphicon glyphicon-plus'></span> Dodaj pracownika</a>	
+						</td>
+					</tr>	
+					<tr>	
+						<td>	
+							<a title="Edytuj pracownika" class='btn btn-info btn-xs' th:href="@{'/employee/employeeedit/'}"><span class='glyphicon glyphicon-edit'></span> Edytuj pracownika</a>						
+						</td>
+						
+					</tr>
+					</tfoot>	
+					</table>		
 			</div>
 		</div>
 	</div>

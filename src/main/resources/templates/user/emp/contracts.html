@@ -64,7 +64,7 @@ layout:decorate="~{fragments/layout}">
 						<thead>
 							<tr bgcolor="azure">
 								<th width="5%">Usuń</th>
-								<th class="th-sm">Nazwa</th>
+								<th class="th-sm">Nazwa spółki</th>
 								<th class="th-sm">Data od</th>
 								<th class="th-sm">Data do</th>
 								<th class="th-sm">Rodzaj umowy</th>
@@ -123,7 +123,7 @@ layout:decorate="~{fragments/layout}">
 								
 						<tr th:each="c:${employeeOne}">
 							<td th:hidden="${c.id_employee}"></td>
-							<th><a title="Dodaj umowe" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj umowe</th>
+							<th><a title="Dodaj spółke" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj spółke</th>
 											
 						
 						</tr>

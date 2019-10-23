@@ -12,12 +12,12 @@ layout:decorate="~{fragments/layout}">
 	<div layout:fragment="content" th:remove="tag">
 	<div class="container">
 	<div>
-		<h4>Nowy system</h4>
+		<h3>Nowy system</h3><br>
 	</div>		
 		  <form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newSystem}" accept-charset='UTF-8' method="POST">	
 				<div>
 				
-					<div class="row">			
+<!-- 					<div class="row">			
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="employee.id_employee">Pracownik</label>
 							<select th:field="*{employee.id_employee}" class="form-control" required="required">
@@ -26,12 +26,21 @@ layout:decorate="~{fragments/layout}">
             					</option>
           					</select>					
 						</div>
-					</div> 
-					
+					</div>  -->
 					
 					<div class="row">			
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
-							<label for="id_company">Nazwa spółki</label>
+							<label for="id_systems">Nazwa systemu</label>
+							<select th:field="*{id_systems}" class="form-control" required="required">
+    							<option th:each="t : ${systemsList}" th:value="${t.id_systems}"
+            							th:label="${t.name}">
+            					</option>
+          					</select>					
+						</div>
+					</div>	
+					<div class="row">			
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="id_company">Dane przetwarzane w ramach systemu</label>
 							<select th:field="*{id_company}" class="form-control" required="required">
     							<option th:each="c : ${companyList}" th:value="${c.id_company}"
             							th:label="${c.name}">
@@ -40,16 +49,7 @@ layout:decorate="~{fragments/layout}">
 						</div>
 					</div>	
 
-					<div class="row">			
-						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
-							<label for="id_systems">Rodzaj umowy</label>
-							<select th:field="*{id_systems}" class="form-control" required="required">
-    							<option th:each="t : ${systemsList}" th:value="${t.id_systems}"
-            							th:label="${t.name}">
-            					</option>
-          					</select>					
-						</div>
-					</div>	
+
 				
 
 							

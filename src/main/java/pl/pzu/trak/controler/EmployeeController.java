@@ -87,15 +87,15 @@ public class EmployeeController {
 //		Collection<EmployeeSystems> systemy = new ArrayList<>();
 //		systemy.addAll(employeeSystemsService.employeeDetailsSystemsById(id_employee));
 		
-		Employee employee = new Employee();
-		employee = employeeService.findOne(id_employee);
-		System.out.println(employee.toString());
-		
-		for(EmployeeSystems ex:employee.getEmployeeSystems())
-		{
-		System.out.println("AAAAAA "+ex.getId_systems()+"_"+ex.getEmployeeSystemsDictionary().getName());
-		System.out.println("bbbbbb "+ex.getId_company()+"_"+ex.getEmployeeCompanyDictionary().getName());
-		}
+//		Employee employee = new Employee();
+//		employee = employeeService.findOne(id_employee);
+//		System.out.println(employee.toString());
+//		
+//		for(EmployeeSystems ex:employee.getEmployeeSystems())
+//		{
+//		System.out.println("AAAAAA "+ex.getId_systems()+"_"+ex.getEmployeeSystemsDictionary().getName());
+//		System.out.println("bbbbbb "+ex.getId_company()+"_"+ex.getEmployeeCompanyDictionary().getName());
+//		}
 		
 		
 
@@ -157,6 +157,7 @@ public class EmployeeController {
 	{
 		EmployeeSystems newSystem = new EmployeeSystems();
 		model.addAttribute("newSystem", newSystem);
+		
 		
 		model.addAttribute("employeeList1", employeeService.findOne(id_employee));
 		model.addAttribute("companyList", employeeCompanyDictionaryService.findAllNameCompanyDictionary());

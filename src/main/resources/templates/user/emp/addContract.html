@@ -5,14 +5,14 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 layout:decorate="~{fragments/layout}">
 
 <head>
-	<title>Nowa umowa</title>
+	<title>Nowa spółka</title>
 </head>
 
 <body>
 	<div layout:fragment="content" th:remove="tag">
 	<div class="container">
 	<div>
-		<h4>Nowa umowa</h4>
+		<h3>Nowa spółka</h3><br>
 	</div>		
 		  <form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newContract}" accept-charset='UTF-8' method="POST">	
 				<div>
@@ -68,7 +68,7 @@ layout:decorate="~{fragments/layout}">
 									<label for="contract_status">Aktywna</label><br>
 									<div>
 										<label>Tak</label>
-										<input type="radio" th:field="*{contract_status}" th:value="true" />
+										<input type="radio" th:field="*{contract_status}" th:value="true"/>
 										<label>Nie</label>
 										<input type="radio" th:field="*{contract_status}" th:value="false"/>
 										
