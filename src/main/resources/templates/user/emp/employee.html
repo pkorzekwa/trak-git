@@ -60,13 +60,15 @@ layout:decorate="~{fragments/layout}">
 					<!-- table-striped -->
 						<thead class="thead">
 							<tr bgcolor="azure"><th class="th-sm">Nazwisko</th>
-												<th class="th-sm">Imie</th><th>Zespol</th>
+												<th class="th-sm">Imię</th>
+												<th class="th-sm">Zespół</th>
 												<th class="th-sm">Stanowisko</th>
 												<th class="th-sm">Umowy pracownika</th>
 												<th class="th-sm">Systemy pracownika</th>
-												<th class="th-sm">Status Pracownika</th>
+												<th class="th-sm">Status pracownika</th>
 												<th>Umowa</th>
-												<th>System</th></tr>
+												<th>System</th>
+							</tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="emp:${employeeList}">
@@ -109,10 +111,10 @@ layout:decorate="~{fragments/layout}">
 								<td th:unless="${emp.employee_status == true}">Nie aktywny</td>		
 								
 								<td>						
-									<a title="Dodaj umowe" th:href="${'/employee/contracts/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-duplicate"></span></a>	
+									<a title="Umowy pracownika" th:href="${'/employee/contracts/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-duplicate"></span></a>	
 								</td>
 								<td>
-									<a title="Dodaj system" th:href="${'/employee/systems/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list-alt"></span></a>	
+									<a title="Systemy pracownika" th:href="${'/employee/systems/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list-alt"></span></a>	
 								</td>	
 							</tr>
 						</tbody>

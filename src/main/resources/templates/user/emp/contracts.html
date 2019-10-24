@@ -106,8 +106,8 @@ layout:decorate="~{fragments/layout}">
 								</td>
 																				
 							 	<td th:text="${c.employeeCompanyDictionary.name}"></td>
-								<td th:text="${c.data_from}"></td> 					
-								<td th:text="${c.data_to}"></td>
+								<td th:text="${#dates.format(c.data_from, 'yyyy-MM-dd')}"></td> 					
+								<td th:text="${#dates.format(c.data_to, 'yyyy-MM-dd')}"></td>
 								<td th:text="${c.employeeTypeOfContractDictionary.name}"></td>
 								<td th:hidden="${c.employee.id_employee}"></td>
 											
