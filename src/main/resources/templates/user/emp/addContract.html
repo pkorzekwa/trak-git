@@ -9,12 +9,18 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
-	<div layout:fragment="content" th:remove="tag">
+<section layout:fragment="content">
+	
 	<div class="container">
-	<div>
-		<h3>Nowa spółka</h3><br>
-	</div>		
+	
+	<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>	  
+	<div class="panel panel-default">
+	<div class="panel-heading" th:text="#{employee.add.contract}"></div><br>
+	<div class="panel-body">	
 		  <form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newContract}" accept-charset='UTF-8' method="POST">	
+		  
+
+		  
 				<div>
 				
 <!-- 					<div class="row">			
@@ -81,10 +87,15 @@ layout:decorate="~{fragments/layout}">
 					<div class="submit">
 						<a type="button" name="cancel" class="btn btn-default" th:href="${'/employee/contracts/' + id_employee}">Anuluj</a>
 						<button type="submit" name="save" class="btn btn-success">Zapisz</button>
-					</div>
-				</div>			
+					</div><br>
+
+					</div>		
 			</form>
+							</div>	
+				</div>	
+				</div>	
 		</div>
-		</div>
+		
+		</section>
 </body>
 </html>

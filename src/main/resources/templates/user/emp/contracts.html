@@ -48,11 +48,19 @@ layout:decorate="~{fragments/layout}">
   	/*]]>*/
   	</script>
 
-	<div layout:fragment="content" th:remove="tag">
+	<section layout:fragment="content">
 	<div class="container">
+	<div class='col-lg-50 col-md-50 col-sm-50' style='padding-bottom: 10px;'>	
+	<div class="panel panel-default">
+	<div class="panel-heading" th:text="#{employee.contracts}"></div>
+	<div class="panel-body">	
+	
 	<form th:action="@{/employee/contracts/add}" th:object="${contract}" accept-charset='UTF-8' method="POST">	
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
+			
+		
+			
 					<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
 						<thead class="thead">									
 							<tr class="bg-success"><th>Imię</th><th>Nazwisko</th></tr>
@@ -123,7 +131,7 @@ layout:decorate="~{fragments/layout}">
 								
 						<tr th:each="c:${employeeOne}">
 							<td th:hidden="${c.id_employee}"></td>
-							<th><a title="Dodaj spółke" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj spółke</th>
+							<th><a title="Dodaj umowę" class='btn btn-warning btn-xs' th:href="@{'/employee/contracts/add/'+${c.id_employee} }"><span class='glyphicon glyphicon-plus'></span></a> - Dodaj umowę</th>
 											
 						
 						</tr>
@@ -136,10 +144,13 @@ layout:decorate="~{fragments/layout}">
 			</div>
 		</div>
 
-
+		
 		 </form>
 	</div>
 	</div>
+	</div>
+	</div>
+	</section>
 
 </body>
 </html>

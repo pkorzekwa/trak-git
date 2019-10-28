@@ -48,14 +48,15 @@ layout:decorate="~{fragments/layout}">
   	/*]]>*/
   	</script>
 
-	<div layout:fragment="content" th:remove="tag">
+	<section layout:fragment="content">
 	<div class="container">
-	
-<!-- 	<button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-excel-o"></span> Export to Excel</button> -->
-
-
+	<div class='col-lg-50 col-md-50 col-sm-50' style='padding-bottom: 10px;'>	
+	<div class="panel panel-default">
+	<div class="panel-heading" th:text="#{employee.title}"></div><br>
+	<div class="panel-body">	
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
+
 					<table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="100%" >
 					<!-- table-striped -->
 						<thead class="thead">
@@ -133,12 +134,12 @@ layout:decorate="~{fragments/layout}">
 					<tfoot class="tfoot">
 					<tr>
 						<td>
-							<a title="Dodaj pracownika" class='btn btn-info btn-xs' th:href="@{'/employee/employeeaddnew/'}"><span class='glyphicon glyphicon-plus'></span> Dodaj pracownika</a>	
+							<a type="button" title="Dodaj pracownika"  th:text="#{employee.add}" class='btn btn-success'  th:href="@{'/employee/employeeaddnew/'}"><span class='glyphicon glyphicon-plus'></span></a>	
 						</td>
 					</tr>	
 					<tr>	
 						<td>	
-							<a title="Edytuj pracownika" class='btn btn-info btn-xs' th:href="@{'/employee/employeeedit/'}"><span class='glyphicon glyphicon-edit'></span> Edytuj pracownika</a>						
+							<a type="button" title="Edytuj pracownika" th:text="#{employee.edit}" class='btn btn-info' th:href="@{'/employee/employeeedit/'}"><span class='glyphicon glyphicon-edit'></span></a>						
 						</td>
 						
 					</tr>
@@ -146,9 +147,11 @@ layout:decorate="~{fragments/layout}">
 					</table>		
 			</div>
 		</div>
+		</div>
+		</div>
 	</div>
 	</div>
-	
+	</section>
 
 </body>
 </html>

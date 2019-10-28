@@ -9,11 +9,12 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
-	<div layout:fragment="content" th:remove="tag">
+	<section layout:fragment="content">
 	<div class="container">
-	<div>
-		<h3>Nowy system</h3><br>
-	</div>		
+	<div class='col-lg-50 col-md-50 col-sm-50' style='padding-bottom: 10px;'>	
+	<div class="panel panel-default">
+	<div class="panel-heading" th:text="#{employee.add.systems}"></div>
+	<div class="panel-body">	
 		  <form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${newSystem}" accept-charset='UTF-8' method="POST">	
 				<div>
 				
@@ -63,5 +64,8 @@ layout:decorate="~{fragments/layout}">
 			</form>
 		</div>
 		</div>
+		</div>
+		</div>
+		</section>
 </body>
 </html>
