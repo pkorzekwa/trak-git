@@ -13,7 +13,7 @@ layout:decorate="~{fragments/layout}">
 	/*<![CDATA[*/
 	$(document).ready(function() 
 		{
-			var dttable = $("#datatable").dataTable(
+			var dttable = $("#dtBasicExample").dataTable(
 			{
        			"iDisplayLength": 50,
         		"aLengthMenu": [[20, 50, 100, 500, 1000], [20, 50, 100, 500, 1000]],
@@ -118,6 +118,10 @@ layout:decorate="~{fragments/layout}">
 									<a title="Systemy pracownika" th:href="${'/employee/systems/'+emp.id_employee}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list-alt"></span></a>	
 								</td>	
 							</tr>
+							
+							
+							
+							
 						</tbody>
 						
 						
@@ -128,7 +132,7 @@ layout:decorate="~{fragments/layout}">
 					<table id="datatable" class="table table-striped nowrap" style="width:10%">
 					<thead>			
 						<th>
-							<h4>Opcje:</h4>
+							<h4><b>Opcje:</b></h4>
 						</th>
 					</thead>
 					<tfoot class="tfoot">
