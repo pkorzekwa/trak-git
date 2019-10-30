@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pl.pzu.trak.component.ExcelReportView;
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeContract;
 import pl.pzu.trak.domain.EmployeeSystems;
@@ -58,6 +60,16 @@ public class EmployeeController {
 		model.put("employeeList", employeeService.findAll());
 		return "user/emp/employee";
 	}
+	
+	//EXCEL CONTROLLER
+	@RequestMapping(value = "/reportEmployee", method=RequestMethod.GET)
+	public ModelAndView getExcel(Model model)
+	{
+		 ArrayList<Employee> employeeList = new ArrayList<Employee>(); 
+		 employeeList = (ArrayList<Employee>) employeeService.findAll();
+	              return new ModelAndView(new ExcelReportView(), "employeeList", employeeList);
+	}
+	
 	
 	@RequestMapping(value = "/contracts/{id_employee}", method = RequestMethod.GET)
 	public String findContracts (Model model, @PathVariable(value = "id_employee") Long id_employee)

@@ -56,7 +56,7 @@ layout:decorate="~{fragments/layout}">
 	<div class="panel-body">	
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
-
+			
 					<table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="100%" >
 					<!-- table-striped -->
 						<thead class="thead">
@@ -144,11 +144,17 @@ layout:decorate="~{fragments/layout}">
 					<tr>	
 						<td>	
 							<a type="button" title="Edytuj pracownika" th:text="#{employee.edit}" class='btn btn-info' th:href="@{'/employee/employeeedit/'}"><span class='glyphicon glyphicon-edit'></span></a>						
-						</td>
-						
+						</td>		
 					</tr>
+					<tr>	
+						<td>
+							<a type="button" title="Excel" th:href="${'/employee/reportEmployee/'}" th:text="#{employee.excel}" class="btn btn-success"><span class="glyphicon glyphicon-print"></span></a>	
+						</td>		
+					</tr>
+					
 					</tfoot>	
 					</table>		
+					
 			</div>
 		</div>
 		</div>
