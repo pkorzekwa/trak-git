@@ -1,6 +1,6 @@
 package pl.pzu.trak.controler;
 
-import java.awt.List;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -22,7 +22,7 @@ import pl.pzu.trak.component.ExcelReportView;
 import pl.pzu.trak.domain.Employee;
 import pl.pzu.trak.domain.EmployeeContract;
 import pl.pzu.trak.domain.EmployeeSystems;
-import pl.pzu.trak.domain.EmployeeSystemsQuery;
+
 import pl.pzu.trak.services.EmployeeCompanyDictionaryService;
 import pl.pzu.trak.services.EmployeeContractsService;
 import pl.pzu.trak.services.EmployeeService;
