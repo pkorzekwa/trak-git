@@ -29,6 +29,7 @@ public class EmployeeContract {
     private boolean contract_status;
     private Long id_company;
     private Long id_employee;
+    private String name_of_replacement;
     
 	@ManyToOne
 	@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
@@ -46,10 +47,8 @@ public class EmployeeContract {
 
 	
 
-
-
 	public EmployeeContract(Long id_contract, Date data_from, Date data_to, Long id_type_of_contract,
-			boolean contract_status, Long id_company, Long id_employee, Employee employee,
+			boolean contract_status, Long id_company, Long id_employee, String name_of_replacement, Employee employee,
 			EmployeeCompanyDictionary employeeCompanyDictionary,
 			EmployeeTypeOfContractDictionary employeeTypeOfContractDictionary) {
 		super();
@@ -60,6 +59,7 @@ public class EmployeeContract {
 		this.contract_status = contract_status;
 		this.id_company = id_company;
 		this.id_employee = id_employee;
+		this.name_of_replacement = name_of_replacement;
 		this.employee = employee;
 		this.employeeCompanyDictionary = employeeCompanyDictionary;
 		this.employeeTypeOfContractDictionary = employeeTypeOfContractDictionary;
@@ -162,6 +162,16 @@ public class EmployeeContract {
 
 	public void setId_employee(Long id_employee) {
 		this.id_employee = id_employee;
+	}
+	
+
+	public String getName_of_replacement() {
+		return name_of_replacement;
+	}
+
+
+	public void setName_of_replacement(String name_of_replacement) {
+		this.name_of_replacement = name_of_replacement;
 	}
 
 

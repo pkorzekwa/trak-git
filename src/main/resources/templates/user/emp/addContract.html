@@ -65,9 +65,18 @@ layout:decorate="~{fragments/layout}">
     							<option th:each="t : ${typeOfContractList}" th:value="${t.id_type_of_contract}"
             							th:label="${t.name}">
             					</option>
-          					</select>					
+          					</select>	
 						</div>
-					</div>	
+					</div>
+					<div th:each="t : ${typeOfContractList}">
+					<div th:if="${t.name == 'Na zastępstwo'}">
+					<div class="row">			
+						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
+							<label for="name_of_replacement">Osoba zastępująca</label>
+								<input type="text" th:field="*{name_of_replacement}" class="form-control">
+						</div>
+					</div>
+		</div></div>
 				
 							<div class="row">						
 								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>

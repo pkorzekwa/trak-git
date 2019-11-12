@@ -31,3 +31,5 @@ public class TrakApplication {
 //za kogo do kiedy
 
 //rola uzytkownika w systemie datasteward superdatasteward
+//To są role w FOCUS 
+//tzn. dla każdej spółki która jest w Focus/syzyf uzytkownik będzie miał tą samą rolę
