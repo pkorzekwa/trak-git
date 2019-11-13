@@ -126,6 +126,7 @@ public class EmployeeController {
 		//model.addAttribute("employeeList1", employeeService.findAll());
 		model.addAttribute("companyList", employeeCompanyDictionaryService.findAll());
 		model.addAttribute("typeOfContractList", employeeTypeOfContractDictionaryService.findAll());
+		model.addAttribute("employeeList", employeeService.findAll());
 		
 		return "/user/emp/addContract";
 	}

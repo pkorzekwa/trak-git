@@ -61,23 +61,61 @@ layout:decorate="~{fragments/layout}">
 					<div class="row">			
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="id_type_of_contract">Rodzaj umowy</label>
-							<select th:field="*{id_type_of_contract}" class="form-control" required="required">
+							<select th:field="*{id_type_of_contract}" class="form-control" required="required" onchange="szukaj()">
+    						
     							<option th:each="t : ${typeOfContractList}" th:value="${t.id_type_of_contract}"
-            							th:label="${t.name}">
+            							th:label="${t.name}">				
             					</option>
-          					</select>	
+            					
+          					</select>	          					
 						</div>
 					</div>
-					<div th:each="t : ${typeOfContractList}">
-					<div th:if="${t.name == 'Na zastępstwo'}">
+					
+<!-- 					<button type="button" onclick="hideElem()">Hide image</button>
+					<button type="button" onclick="showElem()">Show image</button> -->
+					
+				
+					<div id="name_div" style="visibility:hidden;">
 					<div class="row">			
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="name_of_replacement">Osoba zastępująca</label>
-								<input type="text" th:field="*{name_of_replacement}" class="form-control">
+								<!-- <input type="text" th:field="*{name_of_replacement}" class="form-control"> -->
+								<input  list="json_login" class="form-control" name="name_of_replacement" id="name_of_replacement">
+								<datalist id = "name_of_replacement">
+									<option th:each="a:${typeOfContractList}" th:value="${a.id_type_of_contract}"
+            							th:label="${a.name}">				
+            						</option>
+								
+								</datalist>
 						</div>
 					</div>
-		</div></div>
-				
+					</div>
+
+					
+
+					  <script>
+	                      function hideElem() 
+	                      {
+                          	document.getElementById("name_div").style.visibility = "hidden";
+                          }
+                          function showElem() 
+                          {
+							document.getElementById("name_div").style.visibility = "visible";
+						  }
+                          function szukaj()
+                          {
+                        	  if($("select#id_type_of_contract option:selected").val()==4)
+                        	  {
+                        		  document.getElementById("name_div").style.visibility = "visible";
+                        		
+                        	  }  
+                        	  else
+                        	  {
+                        		  document.getElementById("name_div").style.visibility = "hidden";
+                        	  }
+                          }
+                      </script>
+				    <!--        <div th:if="${t.name} == 'Na zastępstwo'" onclick="showElem()"></div> -->
 							<div class="row">						
 								<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 									<label for="contract_status">Aktywna</label><br>
