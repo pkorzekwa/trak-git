@@ -18,6 +18,7 @@ public class EmployeeSystems {
 	 	private Long id_systems;
 	    private Long id_employee;
 	    private Long id_company;
+	    private Long id_systems_role;
 		
 		@ManyToOne
 		@JoinColumn(name = "id_employee", nullable=false , insertable=false, updatable=false)
@@ -33,6 +34,10 @@ public class EmployeeSystems {
 		@JoinColumn(name = "id_company", nullable=false , insertable=false, updatable=false)
 		private EmployeeCompanyDictionary employeeCompanyDictionary;
 
+		//Spółka SL
+		@ManyToOne
+		@JoinColumn(name = "id_systems_role", nullable=false , insertable=false, updatable=false)
+		private EmployeeSystemsRoleDictionary employeeSystemsRoleDictionary;
 		
 		
 		public EmployeeCompanyDictionary getEmployeeCompanyDictionary() {
@@ -53,17 +58,37 @@ public class EmployeeSystems {
 
 
 
+
 		public EmployeeSystems(Long id_employee_systems, Long id_systems, Long id_employee, Long id_company,
-				Employee employee, EmployeeSystemsDictionary employeeSystemsDictionary,
-				EmployeeCompanyDictionary employeeCompanyDictionary) {
+				Long id_systems_role, Employee employee, EmployeeSystemsDictionary employeeSystemsDictionary,
+				EmployeeCompanyDictionary employeeCompanyDictionary,
+				EmployeeSystemsRoleDictionary employeeSystemsRoleDictionary) {
 			super();
 			this.id_employee_systems = id_employee_systems;
 			this.id_systems = id_systems;
 			this.id_employee = id_employee;
 			this.id_company = id_company;
+			this.id_systems_role = id_systems_role;
 			this.employee = employee;
 			this.employeeSystemsDictionary = employeeSystemsDictionary;
 			this.employeeCompanyDictionary = employeeCompanyDictionary;
+			this.employeeSystemsRoleDictionary = employeeSystemsRoleDictionary;
+		}
+
+		public Long getId_systems_role() {
+			return id_systems_role;
+		}
+
+		public void setId_systems_role(Long id_systems_role) {
+			this.id_systems_role = id_systems_role;
+		}
+
+		public EmployeeSystemsRoleDictionary getEmployeeSystemsRoleDictionary() {
+			return employeeSystemsRoleDictionary;
+		}
+
+		public void setEmployeeSystemsRoleDictionary(EmployeeSystemsRoleDictionary employeeSystemsRoleDictionary) {
+			this.employeeSystemsRoleDictionary = employeeSystemsRoleDictionary;
 		}
 
 		public EmployeeSystems() {

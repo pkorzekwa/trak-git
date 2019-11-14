@@ -95,7 +95,7 @@ layout:decorate="~{fragments/layout}">
 						  }
                           function szukaj()
                           {
-                        	  if($("select#id_type_of_contract option:selected").val()==4)
+                        	  if($("select#id_type_of_contract option:selected").attr("label")=="Na zastępstwo")
                         	  {
                         		  document.getElementById("name_div").style.visibility = "visible";
                         		

@@ -68,7 +68,8 @@ layout:decorate="~{fragments/layout}">
 							<tr bgcolor="azure">
 								<th style="width: 10%">Usuń</th>
 								<th class="th-sm">Nazwa systemu</th>
-								<th class="th-sm">Dane przetwarzane w ramach systemu</th>							
+								<th class="th-sm">Dane przetwarzane w ramach systemu</th>	
+								<th class="th-sm">Rola w systemie</th>							
 							</tr>
 						</thead>
 						
@@ -109,7 +110,7 @@ layout:decorate="~{fragments/layout}">
 							 	
 		 						<td th:text="${c.getEmployeeSystemsDictionary().getName()}"></td> 
 								<td th:text="${c.getEmployeeCompanyDictionary().getName()}"></td> 				 	
-							
+								<td th:text="${c.getEmployeeSystemsRoleDictionary().getName()?:'-'}"></td> 
 <!-- 								<td>
 									<table id="datatable" class="table table-striped table-bordered nowrap">
 										<tr th:each="row,rowStat : ${c.employeeSystemsDictionary}">

@@ -27,6 +27,7 @@ import pl.pzu.trak.services.EmployeeCompanyDictionaryService;
 import pl.pzu.trak.services.EmployeeContractsService;
 import pl.pzu.trak.services.EmployeeService;
 import pl.pzu.trak.services.EmployeeSystemsDictionaryService;
+import pl.pzu.trak.services.EmployeeSystemsRoleDictionaryService;
 import pl.pzu.trak.services.EmployeeSystemsService;
 import pl.pzu.trak.services.EmployeeTypeOfContractDictionaryService;
 
@@ -53,6 +54,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeSystemsDictionaryService employeeSystemsDictionaryService;
+	
+	@Autowired
+	private EmployeeSystemsRoleDictionaryService employeeSystemsRoleDictionaryService;
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -92,6 +96,7 @@ public class EmployeeController {
 
 		model.addAttribute("employeeOne", employeeService.findOne(id_employee));
 		model.addAttribute("systems", employeeSystemsService.employeeDetailsSystemsById(id_employee));
+		model.addAttribute("systemsRoleList", employeeSystemsRoleDictionaryService.findAll());
 		//model.addAttribute("systems", employeeSystemsService.employeeDetailsSystemsById(id_employee));
 		
 //		model.addAttribute("company", employeeContractsService.employeeDetailsCompanyById(id_employee));
@@ -175,6 +180,7 @@ public class EmployeeController {
 		model.addAttribute("employeeList1", employeeService.findOne(id_employee));
 		model.addAttribute("companyList", employeeCompanyDictionaryService.findAllNameCompanyDictionary());
 		model.addAttribute("systemsList", employeeSystemsDictionaryService.findAllNameSystemsDictionary());
+		model.addAttribute("systemsRoleList", employeeSystemsRoleDictionaryService.findAll());
 	
 		return "/user/emp/addSystem";
 	}

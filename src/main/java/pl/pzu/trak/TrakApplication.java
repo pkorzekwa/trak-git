@@ -27,8 +27,7 @@ public class TrakApplication {
 		SpringApplication.run(TrakApplication.class, args);
 	}
 }
-//na zastępstwo, czas okreslony wyrzucic1
-//za kogo do kiedy
+
 
 //rola uzytkownika w systemie datasteward superdatasteward
 //To są role w FOCUS 
