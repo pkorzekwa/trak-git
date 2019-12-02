@@ -55,10 +55,10 @@ layout:decorate="~{fragments/layout}">
 						<div class='col-lg-6 col-md-6 col-sm-6' style='padding-bottom: 10px;'>
 							<label for="id_systems_role">Rola w systemie FOCUS</label>
 								<select th:field="*{id_systems_role}" class="form-control" required="required">
-    							<option th:each="t : ${systemsRoleList}" th:value="${t.id_systems_role}"
+    								<option th:each="t : ${systemsRoleList}" th:value="${t.id_systems_role}"
             							th:label="${t.name}">				
-            					</option>
-          					</select>	 
+            						</option>
+          						</select>	 
 						</div>
 					</div>
 				    </div>
