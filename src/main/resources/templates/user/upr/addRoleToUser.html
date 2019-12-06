@@ -71,7 +71,7 @@ layout:decorate="~{fragments/layout}">
     </script>
 	<div class="container">
 	<div class="row">
-        <div class="dual-list list-left col-md-5">
+<!--         <div class="dual-list list-left col-md-5">
             <div class="well">
 				<h4>Dostępne Role</h4>
 				<div class="well">
@@ -137,7 +137,35 @@ layout:decorate="~{fragments/layout}">
 		</div>
 		</form>
 
+	</div> -->
+	
+	<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${userRole}" th:accept-charset='UTF-8' method="post">
+	
+	<div>
+	<select multiple>
+    	<option th:each="p : ${allroles}" th:text="${p.name}">
+        </option>
+	</select>	
 	</div>
+	
+	
+            	<div class="submit">
+								<button type="button" class="btn btn-default">Anuluj</button>
+								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+				</div>
+	
+	</form>
+	
+		<div>
+
+	<select >
+    	<option th:each="p : ${user.roles}" 
+    			th:text="${p.name}" 
+    			th:value="${p.name}">
+        </option>
+	</select>	
+	</div>
+	
 	</div>
 	</div>
 	

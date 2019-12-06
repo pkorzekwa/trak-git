@@ -91,9 +91,9 @@ layout:decorate="~{fragments/layout}">
 							 		</table>
 							 	</td>
 							 	<td>
-							 		<table style="line-height: 25%" >
+							 		<table style="line-height: 25%;">
 							 			<tr th:each="a:${emp.employeeSystems}">
-							 				<td th:text="${a.employeeSystemsDictionary.name}"></td>
+							 				<td style="width: 12em" th:text="${a.employeeSystemsDictionary.name}"></td>
 							 			</tr>
 							 		</table>
 							 	</td>	
@@ -131,26 +131,26 @@ layout:decorate="~{fragments/layout}">
 					
 					<table id="datatable" class="table table-striped nowrap" style="width:10%">
 					<thead>			
-						<th>
+						<tr>
 							<h4><b>Opcje:</b></h4>
-						</th>
+						</tr>
 					</thead>
 					<tfoot class="tfoot">
 					<tr>
 						<td>
 							<a type="button" title="Dodaj pracownika"  th:text="#{employee.add}" class='btn btn-success'  th:href="@{'/employee/employeeaddnew/'}"><span class='glyphicon glyphicon-plus'></span></a>	
+							
+						</td>
+						<td>
+							<a type="button" title="Excel" th:href="${'/employee/reportEmployee/'}" th:text="#{employee.excel}" class="btn btn-default"><span class="glyphicon glyphicon-print"></span></a>	
 						</td>
 					</tr>	
-					<tr>	
+<!-- 					<tr>	
 						<td>	
 							<a type="button" title="Edytuj pracownika" th:text="#{employee.edit}" class='btn btn-info' th:href="@{'/employee/employeeedit/'}"><span class='glyphicon glyphicon-edit'></span></a>						
 						</td>		
-					</tr>
-					<tr>	
-						<td>
-							<a type="button" title="Excel" th:href="${'/employee/reportEmployee/'}" th:text="#{employee.excel}" class="btn btn-success"><span class="glyphicon glyphicon-print"></span></a>	
-						</td>		
-					</tr>
+					</tr> -->
+
 					
 					</tfoot>	
 					</table>		
