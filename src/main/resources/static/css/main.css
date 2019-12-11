@@ -1,7 +1,9 @@
 h1 {
     color: #78ab46;
 }
-
+body {
+	padding-top: 80px; 
+}
 footer {
     position: fixed;
     height: 50px;
