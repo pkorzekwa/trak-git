@@ -19,11 +19,11 @@
                     <li class="nav-item dropdown">
                     	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    		<a class="dropdown-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
-                    		<a class="dropdown-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a><br>
-                    		<a class="dropdown-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy użytkowników</a>
-                    		<a class="dropdown-item" th:href="@{/employee/all}" sec:authorize="hasRole('UZYTKOWNICY')">Umowy pracowników</a><br>
-                    		<a class="dropdown-item" th:href="@{/employee/employeeedit}" sec:authorize="hasRole('UZYTKOWNICY')">Słownik pracowników</a>
+                    		<a class="list-group-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
+                    		<a class="list-group-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
+                    		<a class="list-group-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy użytkowników</a>
+                    		<a class="list-group-item" th:href="@{/employee/all}" sec:authorize="hasRole('UZYTKOWNICY')">Umowy pracowników</a>
+                    		<a class="list-group-item" th:href="@{/employee/employeeedit}" sec:authorize="hasRole('UZYTKOWNICY')">Słownik pracowników</a>
                     	</div>
                     </li>
                 </ul>

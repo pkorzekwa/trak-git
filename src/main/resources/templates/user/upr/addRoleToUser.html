@@ -142,12 +142,32 @@ layout:decorate="~{fragments/layout}">
 	<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${userRole}" th:accept-charset='UTF-8' method="post">
 	
 	<div>
+	<div><br>dostepne role</div>
 	<select multiple>
-    	<option th:each="p : ${allroles}" th:text="${p.name}">
+    	<option th:each="p : ${allroles}" th:text="${p.name}" th:value="${p.name}">
         </option>
 	</select>	
 	</div>
-	
+<!-- 							<div class="row">			
+						<div class='col-lg-6 col-md-6 col-sm-6'>
+							<label for="roles">rola</label>
+							<select th:field="*{roles}" class="form-control" required="required">
+    							<option th:each="t : ${allroles}" th:value="${t.name}"
+            							th:text="${t.name}">
+            					</option>
+          					</select>					
+						</div>
+					</div>	 -->
+<!-- 
+	                  <div>
+                        <label for="project_roles">Project Roles:</label>
+                        <ul class="checkbox-list">
+                            <li th:each="role : ${allroles}">
+                                <input type="checkbox" th:field="*{user.roles}" th:text="${role.name}" th:value="${role.id}"/>
+                                
+                            </li>
+                        </ul>
+                    </div> -->
 	
             	<div class="submit">
 								<button type="button" class="btn btn-default">Anuluj</button>
@@ -157,7 +177,7 @@ layout:decorate="~{fragments/layout}">
 	</form>
 	
 		<div>
-
+	<div><br>nadane role</div>
 	<select >
     	<option th:each="p : ${user.roles}" 
     			th:text="${p.name}" 

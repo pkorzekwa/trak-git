@@ -109,11 +109,12 @@ public class UserControler
 		} 
 		else
 		{
-			userService.updateUserRoles(user.getId(), user.getRoles());
+		
 			System.out.println(user);
 			System.out.println(user.getId());
 			System.out.println(user.getRoles());
-		
+			//userService.updateUserRoles(user.getId(), user.getRoles());
+			
 			return "redirect:/users/all";
 		}
 	}
