@@ -18,7 +18,8 @@ public interface UserService extends UserDetailsService {
     User findOne(Long id);
     void save(User user);
     void update(User user);
-    void updateUser(Long id, String firstName, String lastName, String login, boolean enabled);
+    void updateUser(Long id, String firstName, String lastName, String login, String email, boolean enabled);
     void updateUserRoles(Long id, Collection<Role> roles);
+
     
 }

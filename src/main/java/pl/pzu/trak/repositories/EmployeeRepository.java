@@ -1,7 +1,7 @@
 package pl.pzu.trak.repositories;
 
 import java.util.Collection;
-import java.util.List;
+
 
 import javax.transaction.Transactional;
 

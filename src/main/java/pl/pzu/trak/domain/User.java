@@ -1,5 +1,7 @@
 package pl.pzu.trak.domain;
 import javax.persistence.*;
+
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -23,7 +25,7 @@ public class User {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles;
+    private Collection<Role> roles;
 
     public User() {
     }
@@ -37,7 +39,7 @@ public class User {
         this.enabled = enabled; 
     }
 
-    public User(String firstName, String lastName, String email, String login, String password, boolean enabled, List<Role> roles) {
+    public User(String firstName, String lastName, String email, String login, String password, boolean enabled, Collection<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -103,13 +105,15 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public List<Role> getRoles() {
+	public Collection<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
+	
+
 
 	@Override
 	public String toString() {

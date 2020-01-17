@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/users/**").hasAuthority("UZYTKOWNICY")
                     .antMatchers("/roles/**").hasAuthority("ROLES")
                     .antMatchers("/employee/**").hasAuthority("UZYTKOWNICY")
+                    .antMatchers("/privileges/**").hasAuthority("UZYTKOWNICY")
                     .antMatchers("/emp/**").hasAuthority("UZYTKOWNICY")
                     .anyRequest().hasAuthority("READ")
                 .and()

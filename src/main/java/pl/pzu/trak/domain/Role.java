@@ -2,6 +2,7 @@ package pl.pzu.trak.domain;
 
 import javax.persistence.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Role {
     private Long id;
 
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private Collection<User> users;
 
     @ManyToMany
     @JoinTable(name = "roles_privileges", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
@@ -47,11 +48,11 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers() {
+    public Collection<User> getUsers() {
         return users;
     }
 
-    public void setUsers(final List<User> users) {
+    public void setUsers(final Collection<User> users) {
         this.users = users;
     }
 
@@ -95,5 +96,7 @@ public class Role {
         builder.append("Role [name=").append(name).append("]").append("[id=").append(id).append("]");
         return builder.toString();
     }
+    
+
 }
 

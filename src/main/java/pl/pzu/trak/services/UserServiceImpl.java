@@ -130,9 +130,9 @@ public class UserServiceImpl implements UserService
 		userRepository.save(user);
 	}
 	
-	public void updateUser(Long id, String firstName, String lastName, String login, boolean enabled)
+	public void updateUser(Long id, String firstName, String lastName, String login, String email, boolean enabled)
 	{
-		userRepository.updateUser(id, firstName, lastName, login, enabled);
+		userRepository.updateUser(id, firstName, lastName, login, email, enabled);
 	}
 	
 	public void updateUserRoles(Long id, Collection<Role> roles)
@@ -140,5 +140,4 @@ public class UserServiceImpl implements UserService
 		userRepository.updateUserRoles(id, roles);
 	}
 
-	
 }

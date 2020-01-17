@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.pzu.trak.domain.Role;
+
 import pl.pzu.trak.domain.User;
 import pl.pzu.trak.services.RoleService;
 import pl.pzu.trak.services.UserService;
+
 
 @Controller
 @RequestMapping(value = "/users")
@@ -30,6 +32,7 @@ public class UserControler
 	@Autowired
 	private RoleService roleService;
 
+	
     @GetMapping("/all")
 	public String showUserListDetail(Map<String, Object> model)
 	{
@@ -53,7 +56,7 @@ public class UserControler
 			return "/user/upr/editUser";
 		} else
 		{
-			userService.updateUser(user.getId(), user.getFirstName(), user.getLastName(), user.getLogin(), user.isEnabled());
+			userService.updateUser(user.getId(), user.getFirstName(), user.getLastName(), user.getLogin(), user.getEmail(), user.isEnabled());
 			return "redirect:/users/all";
 		}
 	}	    
@@ -83,6 +86,8 @@ public class UserControler
 		List<Role> allroles = roleService.ListAllRolesUserList(id);
 		model.addAttribute("allroles", allroles);
 		
+		model.addAttribute("rolesdictionary", roleService.findAll());
+		
 		return "/user/upr/addRoleToUser";
 	}
 		
@@ -100,7 +105,7 @@ public class UserControler
 	}
 	
 	@RequestMapping(value = "/roles/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateAddUserToRoleSave(@Valid @ModelAttribute("userRole") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,
+	public String updateAddUserToRoleSave(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes attributes, Model model,
 			@PathVariable(value = "id") Long id)
 	{
 		if (bindingResult.hasErrors())
@@ -109,14 +114,15 @@ public class UserControler
 		} 
 		else
 		{
-		
-			System.out.println(user);
-			System.out.println(user.getId());
-			System.out.println(user.getRoles());
-			//userService.updateUserRoles(user.getId(), user.getRoles());
+			userService.save(user);
+			
+//			System.out.println(user.getId());
+//			System.out.println(user.getRoles());
 			
 			return "redirect:/users/all";
 		}
 	}
-		
+	
+	
+	
 }

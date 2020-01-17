@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.pzu.trak.domain.Privilege;
 import pl.pzu.trak.domain.PrivilegeListDto;
 import pl.pzu.trak.domain.Role;
+import pl.pzu.trak.domain.User;
 import pl.pzu.trak.services.PrivilegeService;
 import pl.pzu.trak.services.RoleService;
 
@@ -103,7 +104,8 @@ public class RoleControler
 
 		List<Privilege> allprivileges = privilegeService.ListAllPrivilegesRoleList(id);
 		model.addAttribute("allprivileges", allprivileges);
-
+		model.addAttribute("allprivilegesDictionary", privilegeService.findAll());
+		
 		return "user/upr/editRolePrivileges";
 	}
 
@@ -127,7 +129,25 @@ public class RoleControler
 				//privilegeService.save(priv);
 			}
 			//roleService.save(role);
-
+			
+			System.out.println(role.getId());
+			System.out.println(role.getPrivileges());
+			System.out.println(role.getName());
+			
+			return "redirect:/roles/all";
+		}
+		
+	}
+	
+	@RequestMapping(value = "/editprivileges/{id}", params = { "cancel" }, method = RequestMethod.POST)
+	public String RolePrivilegesCancel(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm, BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "/user/upr/editRolePrivileges";
+		} else
+		{		
+			model.addAttribute("roleList", roleService.findAll());
 			return "redirect:/roles/all";
 		}
 	}

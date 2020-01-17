@@ -22,6 +22,7 @@
                     		<a class="list-group-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
                     		<a class="list-group-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
                     		<a class="list-group-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy użytkowników</a>
+                    		<a class="list-group-item" th:href="@{/privileges/all}" sec:authorize="hasRole('ROLES')">Uprawnienia w grupie</a>
                     		<a class="list-group-item" th:href="@{/employee/all}" sec:authorize="hasRole('UZYTKOWNICY')">Umowy pracowników</a>
                     		<a class="list-group-item" th:href="@{/employee/employeeedit}" sec:authorize="hasRole('UZYTKOWNICY')">Słownik pracowników</a>
                     	</div>

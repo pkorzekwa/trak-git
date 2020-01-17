@@ -53,4 +53,5 @@ public class RoleServiceImpl implements RoleService
 	public List<Role> ListAllRolesUserList(Long userId) {
 		return roleRepository.AllRolesUserList(userId);
 	}
+
 }

@@ -1,7 +1,7 @@
      $(function () {
     	  	$('body').on('click', '.list-group .list-group-item', function () {
     	  	$(this).toggleClass('active');
-    	  	}
+    	  	});
         $('.list-arrows button').click(function () {        	
         	var $appmod='sectionemployees';
         	var $section=$('#section').val();
@@ -29,7 +29,7 @@
                 actives = '';
                 
             }
-        }
+        });
         $('.dual-list .selector').click(function () {
             var $checkBox = $(this);
             if (!$checkBox.hasClass('selected')) {
@@ -39,7 +39,7 @@
                 $checkBox.removeClass('selected').closest('.well').find('ul li.active').removeClass('active');
                 $checkBox.children('i').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
             }
-        }
+        });
         $('[name="SearchDualList"]').keyup(function (e) {
             var code = e.keyCode || e.which;
             if (code == '9') return;
@@ -49,7 +49,7 @@
             $rows.show().filter(function () {
                 var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
                 return !~text.indexOf(val);
-            }
-        }
-    }
+            });
+        });
+    });
    

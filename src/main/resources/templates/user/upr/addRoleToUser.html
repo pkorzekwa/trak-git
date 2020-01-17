@@ -1,193 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-layout:decorate="~{fragments/layout}">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
 
 <head>
-	<title>Edycja uprawnień grupy</title>
+<title>Edycja uprawnień grupy</title>
 </head>
 
 <body>
 	<div layout:fragment="content" th:remove="tag">
-	<script th:inline="javascript">
-     /*<![CDATA[*/
-     $(function () {
-    	  	$('body').on('click', '.list-group .list-group-item', function () {
-            $(this).toggleClass('active');
-        });
-        $('.list-arrows button').click(function () {
-        	
-        	var $appmod='sectionemployees';
-        	var $section=$('#section').val();
-        	var $team=$("select#json_teams").val();
-        	var $mode='';
-        	var $module = $("select#json_unit").val();
-        	var $button = $(this), actives = '';
-            if ($button.hasClass('move-left')) {
-                actives = $('.list-right ul li.active');
-                actives.clone().appendTo('.list-left ul');
-                actives.remove();
-                $mode='del';
-                $.post('JsonServlet',{appmodule:$appmod,section:$section,team:$team,mode:$mode,elist:$('.list-left ul li.active').text()});
-                actives = $('.list-left ul li.active');
-                actives.removeClass('active');
-                actives = '';
-            } else if ($button.hasClass('move-right')) {
-                actives = $('.list-left ul li.active');
-                actives.clone().appendTo('.list-right ul');
-                actives.remove();
-                $mode='add';
-                $.post('JsonServlet',{appmodule:$appmod,section:$section,team:$team,mode:$mode,elist:$('.list-right ul li.active').text()});
-                actives = $('.list-right ul li.active');
-                actives.removeClass('active');
-                actives = '';
-                
-            }
-        });
-        $('.dual-list .selector').click(function () {
-            var $checkBox = $(this);
-            if (!$checkBox.hasClass('selected')) {
-                $checkBox.addClass('selected').closest('.well').find('ul li:not(.active)').addClass('active');
-                $checkBox.children('i').removeClass('glyphicon-unchecked').addClass('glyphicon-check');
-            } else {
-                $checkBox.removeClass('selected').closest('.well').find('ul li.active').removeClass('active');
-                $checkBox.children('i').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
-            }
-        });
-        $('[name="SearchDualList"]').keyup(function (e) {
-            var code = e.keyCode || e.which;
-            if (code == '9') return;
-            if (code == '27') $(this).val(null);
-            var $rows = $(this).closest('.dual-list').find('.list-group li');
-            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-            $rows.show().filter(function () {
-                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-                return !~text.indexOf(val);
-            }).hide();
-        });
-    });
-    /*]]>*/
-    </script>
-	<div class="container">
-	<div class="row">
-<!--         <div class="dual-list list-left col-md-5">
-            <div class="well">
-				<h4>Dostępne Role</h4>
-				<div class="well">
-	                <div class="row">
-	                    <div class="col-md-10">
-	                        <div class="input-group">
-	                            <span class="input-group-addon glyphicon glyphicon-search"></span>
-	                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
-	                        </div>
-	                    </div>
-	                    <div class="col-md-2">
-	                        <div class="btn-group">
-	                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <ul class="list-group">	                    
-  						<li class="list-group-item" th:each="p : ${allroles}" th:text="${p.name}"></li>
-	                </ul>
-	            </div>
-            </div>
-        </div>
+		<div class="container">
 
-        <div class="list-arrows col-md-1 text-center">
-            <button class="btn btn-default btn-sm move-left">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </button>
+		<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="#{list.available.roles}"></div>
+				<div class="panel-body">
+			
+				<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
+					<thead class="thead">									
+						<tr class="bg-success"><th>Imię</th><th>Nazwisko</th></tr>
+						<tr style="font-size: 2.0em;"><td th:text="${user.firstName}"></td><td th:text="${user.lastName}"></td></tr>
+					</thead>	
+				</table>	
 
-            <button class="btn btn-default btn-sm move-right">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-        </div>
-
-
-		<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${userRole}" th:accept-charset='UTF-8' method="post">
-        <div class="dual-list list-right col-md-5">
-            <div class="well">
-				<h4>Role w grupie</h4>
+			<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${user}" th:accept-charset='UTF-8' method="post">
 				
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="btn-group">
-                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div class="input-group">
-                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
-                            <span class="input-group-addon glyphicon glyphicon-search"></span>
-                        </div>
-                    </div>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item" th:each="p : ${user.roles}" th:text="${p.name}" th:value="${p.name}"></li>             
-                </ul>
-         
-            </div>
-            	<div class="submit">
-								<button type="button" class="btn btn-default">Anuluj</button>
-								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+				<input type="hidden" th:field="*{id}" class="form-control"/>
+				<input type="hidden" th:field="*{firstName}" class="form-control"/>
+				<input type="hidden" th:field="*{lastName}" class="form-control"/>
+				<input type="hidden" th:field="*{email}" class="form-control"/>
+				<input type="hidden" th:field="*{login}" class="form-control"/>
+				<input type="hidden" th:field="*{password}" class="form-control"/>
+				<input type="hidden" th:field="*{enabled}" class="form-control"/>
+				
+				
+				<div class="checkbox" th:each="p : ${rolesdictionary}">
+	   		  		<label><input type="checkbox" th:field="*{roles}" th:value="${p.id}" th:text="${p.name}" th:checked="${user.roles.contains(p)}"></label>
 				</div>
-				
+
+
+				<button type="submit" name="cancel" class="btn btn-default">Anuluj</button>
+				<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+
+			</form>
+			</div>
+			</div>
+			</div>
 		</div>
-		</form>
+	</div>
 
-	</div> -->
-	
-	<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${userRole}" th:accept-charset='UTF-8' method="post">
-	
-	<div>
-	<div><br>dostepne role</div>
-	<select multiple>
-    	<option th:each="p : ${allroles}" th:text="${p.name}" th:value="${p.name}">
-        </option>
-	</select>	
-	</div>
-<!-- 							<div class="row">			
-						<div class='col-lg-6 col-md-6 col-sm-6'>
-							<label for="roles">rola</label>
-							<select th:field="*{roles}" class="form-control" required="required">
-    							<option th:each="t : ${allroles}" th:value="${t.name}"
-            							th:text="${t.name}">
-            					</option>
-          					</select>					
-						</div>
-					</div>	 -->
-<!-- 
-	                  <div>
-                        <label for="project_roles">Project Roles:</label>
-                        <ul class="checkbox-list">
-                            <li th:each="role : ${allroles}">
-                                <input type="checkbox" th:field="*{user.roles}" th:text="${role.name}" th:value="${role.id}"/>
-                                
-                            </li>
-                        </ul>
-                    </div> -->
-	
-            	<div class="submit">
-								<button type="button" class="btn btn-default">Anuluj</button>
-								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
-				</div>
-	
-	</form>
-	
-		<div>
-	<div><br>nadane role</div>
-	<select >
-    	<option th:each="p : ${user.roles}" 
-    			th:text="${p.name}" 
-    			th:value="${p.name}">
-        </option>
-	</select>	
-	</div>
-	
-	</div>
-	</div>
-	
 </body>
 </html>
