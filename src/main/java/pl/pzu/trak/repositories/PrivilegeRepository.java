@@ -3,7 +3,10 @@ package pl.pzu.trak.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,4 +23,13 @@ public interface PrivilegeRepository extends JpaRepository<Privilege, Long> {
     List<Privilege> AllPrivilegesRoleList(@Param("roleId") Long roleId);
 // dfgsdfg
     
+	@Transactional
+	@Modifying(clearAutomatically = true)
+    @Query(value = "DELETE FROM Privilege WHERE Id = :Id", nativeQuery = true)
+    void deleteById(@Param("Id") Long Id);
+	
+	@Transactional
+	@Modifying(clearAutomatically = true)
+    @Query("UPDATE Privilege r SET r.name = :name WHERE r.id = :Id")
+	void updatePrivilege(@Param("Id") Long Id, @Param("name") String name);
 }

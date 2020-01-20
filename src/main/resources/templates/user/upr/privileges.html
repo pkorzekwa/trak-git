@@ -54,13 +54,13 @@ layout:decorate="~{fragments/layout}">
 			<div class="col-sm-12 col-md-12">
 					<table id='datatable' class='table table-striped table-bordered nowrap'>
 						<thead class="thead">
-							<tr><th><a title="Nowa grupa" class='btn btn-warning btn-xs' th:href="@{/privileges/add}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id uprawnienia</th><th>Nazwa uprawnienia</th></tr>
+							<tr><th><a title="Nowa grupa" class='btn btn-warning btn-xs' th:href="@{/privileges/add}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Nazwa uprawnienia</th></tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="privilege:${privilegeListDictionary}">
-<!-- 								
-								Modalne okno kasowania 
-								<div class="modal fade" th:id="delete+${roles.Id}" role="dialog">
+								
+								<!-- Modalne okno kasowania  -->
+								<div class="modal fade" th:id="delete+${privilege.Id}" role="dialog">
 								<div class='modal-dialog'>
 								<div class='modal-content'>
 								<div class='modal-header'>
@@ -72,19 +72,19 @@ layout:decorate="~{fragments/layout}">
 								</div>
 								<div class='modal-footer'>
 										<button type='button' class='btn btn-default' data-dismiss='modal'>Anuluj</button>
-										<a th:href="${'/roles/delete/'+ roles.Id}" class='btn btn-success'>OK</a>
+										<a th:href="${'/privileges/delete/'+ privilege.Id}" class='btn btn-success'>OK</a>
 									</div>
 								</div>
 								</div>
 								</div>
-	    						Koniec
+	    					<!-- 	Koniec -->
 								
-							 -->
+							
 								<td>				
-									<!-- <button type='button' class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#delete'+${privilege.Id}"><span class="glyphicon glyphicon-remove"></span></button> -->
+									<button type='button' class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#delete'+${privilege.Id}"><span class="glyphicon glyphicon-remove"></span></button>
 									<a th:href="${'/privileges/edit/'+privilege.Id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
 								</td>															
-								<td th:text="${privilege.Id}"></td>
+								<td th:hidden="${privilege.Id}"></td>
 								<td th:text="${privilege.name}"></td>
 							</tr>
 						</tbody>

@@ -13,5 +13,6 @@ public interface RoleService
 	Role findOne(Long id);
 	void updateRole(Long id, String name);
 	List<Role> ListAllRolesUserList(Long userId);
+	void removeRole(Long Id);
 
 }

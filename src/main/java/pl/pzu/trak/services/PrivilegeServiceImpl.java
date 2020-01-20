@@ -25,8 +25,8 @@ public class PrivilegeServiceImpl implements PrivilegeService
 	}
 	
 	@Override
-	public void remove(Long privilegeId) {
-		privilegeRepository.deleteById(privilegeId);
+	public void remove(Long Id) {
+		privilegeRepository.deleteById(Id);
 	}
 
 	@Override
@@ -46,5 +46,9 @@ public class PrivilegeServiceImpl implements PrivilegeService
 	
 	public List<Privilege> ListAllPrivilegesRoleList(Long roleId){
 		return privilegeRepository.AllPrivilegesRoleList(roleId);
+	}
+	
+	public void updatePrivilege(Long Id, String name) {
+		privilegeRepository.updatePrivilege(Id, name);
 	}
 }

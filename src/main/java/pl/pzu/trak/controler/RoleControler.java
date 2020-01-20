@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.pzu.trak.domain.Privilege;
 import pl.pzu.trak.domain.PrivilegeListDto;
 import pl.pzu.trak.domain.Role;
-import pl.pzu.trak.domain.User;
+
 import pl.pzu.trak.services.PrivilegeService;
 import pl.pzu.trak.services.RoleService;
 
@@ -160,5 +160,11 @@ public class RoleControler
 	    return new ResponseEntity<String>(elist, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/delete/{Id}", method = RequestMethod.GET)
+	public String deletePrivilege(@PathVariable(value = "Id") Long Id)
+	{
+		roleService.remove(Id);;
+		return "redirect:/roles/all";
+	}
 	
 }
