@@ -26,6 +26,7 @@ import pl.pzu.trak.domain.Role;
 import pl.pzu.trak.services.PrivilegeService;
 import pl.pzu.trak.services.RoleService;
 
+
 @Controller
 @RequestMapping(value = "/roles")
 public class RoleControler
@@ -35,6 +36,7 @@ public class RoleControler
 
 	@Autowired
 	private PrivilegeService privilegeService;
+
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -104,12 +106,16 @@ public class RoleControler
 
 		List<Privilege> allprivileges = privilegeService.ListAllPrivilegesRoleList(id);
 		model.addAttribute("allprivileges", allprivileges);
+	
+		
 		model.addAttribute("allprivilegesDictionary", privilegeService.findAll());
+		model.addAttribute("role", roleService.findOne(id));
+		
 		
 		return "user/upr/editRolePrivileges";
 	}
 
-	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
+/*	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
 	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm,
 			BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)
 	{
@@ -137,7 +143,30 @@ public class RoleControler
 			return "redirect:/roles/all";
 		}
 		
+	}*/
+	
+	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
+	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") Role role,
+			BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)
+	{
+		if (bindingResult.hasErrors())
+		{
+			return "user/upr/editRolePrivileges";
+		} else
+		{
+
+			roleService.save(role);
+			
+			System.out.println(role.getId());
+			System.out.println(role.getPrivileges());
+
+			
+			return "redirect:/roles/all";
+		}
+		
 	}
+	
+	
 	
 	@RequestMapping(value = "/editprivileges/{id}", params = { "cancel" }, method = RequestMethod.POST)
 	public String RolePrivilegesCancel(@Valid @ModelAttribute("privilegeForm") PrivilegeListDto privilegeForm, BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)

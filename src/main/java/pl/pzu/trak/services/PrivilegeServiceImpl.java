@@ -1,5 +1,6 @@
 package pl.pzu.trak.services;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class PrivilegeServiceImpl implements PrivilegeService
 	}
 	
 	@Override
-	public void remove(Long Id) {
+	public void remove(Long Id){
 		privilegeRepository.deleteById(Id);
+		
 	}
 
 	@Override

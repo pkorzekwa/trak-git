@@ -17,7 +17,13 @@ layout:decorate="~{fragments/layout}">
 			<div class="panel panel-default">
 				<div class="panel-heading" th:text="#{list.available.privileges}"></div>
 				<div class="panel-body">
-
+		
+				<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
+					<thead class="thead">									
+						<tr class="bg-success"><th>Nazwa Grupy</th></tr>
+						<tr style="font-size: 2.0em;"><td th:text="${role.name}"></td></tr>
+					</thead>	
+				</table>	
 						
 		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${privilegeForm}" method="post">
 
@@ -27,10 +33,10 @@ layout:decorate="~{fragments/layout}">
                 </ul>
 
         	 -->
-        	
+        		<!-- <input type="hidden" th:field="*{role.name}" class="form-control"/> -->
         					
 				<div class="checkbox" th:each="p : ${allprivilegesDictionary}">
-	   		  		<label><input type="checkbox" th:value="${p.id}" th:text="${p.name}" th:checked="${privilegeForm.privileges.contains(p)}"></label>
+	   		  		<label><input type="checkbox" th:field="*{privileges}" th:value="${p.id}" th:text="${p.name}" th:checked="${privilegeForm.privileges.contains(p)}"></label>
 				</div>
 
              <div class="submit">

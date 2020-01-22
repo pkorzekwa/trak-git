@@ -32,4 +32,5 @@ public interface PrivilegeRepository extends JpaRepository<Privilege, Long> {
 	@Modifying(clearAutomatically = true)
     @Query("UPDATE Privilege r SET r.name = :name WHERE r.id = :Id")
 	void updatePrivilege(@Param("Id") Long Id, @Param("name") String name);
+	
 }

@@ -1,10 +1,12 @@
 package pl.pzu.trak.controler;
 
+
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +20,15 @@ import pl.pzu.trak.domain.Privilege;
 
 import pl.pzu.trak.services.PrivilegeService;
 
+
+
 @Controller
 @RequestMapping(value = "/privileges")
 public class PrivilegeController {
 
 	@Autowired
 	private PrivilegeService privilegeService;
+	
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model)
@@ -54,10 +59,21 @@ public class PrivilegeController {
 	}
 	
 	@RequestMapping(value = "/delete/{Id}", method = RequestMethod.GET)
-	public String deletePrivilege(@PathVariable(value = "Id") Long Id)
+	public String deletePrivilege(@PathVariable(value = "Id") Long Id) 
 	{
-		privilegeService.remove(Id);;
-		return "redirect:/privileges/all";
+		try 
+		{	
+			privilegeService.remove(Id);;
+			return "redirect:/privileges/all";
+		}
+		catch(DataAccessException e)
+		{
+			//throw new Exception("Nadane uprawnienie zostało wykorzystane wcześniej.", e);
+			e.toString();
+
+			System.out.println("Nadane uprawnienie zostało wykorzystane wcześniej");
+			return "error/exceptionPage";
+		}
 	}
 	
 	@RequestMapping(value = "/edit/{Id}", method = RequestMethod.GET)
