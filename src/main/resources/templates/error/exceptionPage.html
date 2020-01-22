@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Access Denied</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>Nadane uprawnienie zostało wykorzystane wcześniej</h1>
+    <h2>Operacja zablokowana!!!</h2>
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+</div>
+</body>
+</html>
