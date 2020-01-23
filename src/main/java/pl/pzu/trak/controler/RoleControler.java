@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -146,7 +147,7 @@ public class RoleControler
 	}*/
 	
 	@RequestMapping(value = "/editprivileges/{id}", params = { "save" }, method = RequestMethod.POST)
-	public String updateRolePrivileges(@Valid @ModelAttribute("privilegeForm") Role role,
+	public String updateRolePrivileges(@Valid @ModelAttribute("role") Role role,
 			BindingResult bindingResult, RedirectAttributes attributes, Model model, @PathVariable(value = "id") Long roleId)
 	{
 		if (bindingResult.hasErrors())
@@ -157,9 +158,9 @@ public class RoleControler
 
 			roleService.save(role);
 			
-			System.out.println(role.getId());
+/*			System.out.println(role.getId());
 			System.out.println(role.getPrivileges());
-
+			System.out.println(role.getName());*/
 			
 			return "redirect:/roles/all";
 		}
@@ -192,8 +193,19 @@ public class RoleControler
 	@RequestMapping(value = "/delete/{Id}", method = RequestMethod.GET)
 	public String deletePrivilege(@PathVariable(value = "Id") Long Id)
 	{
-		roleService.remove(Id);;
-		return "redirect:/roles/all";
+		try 
+		{
+			roleService.remove(Id);;
+			return "redirect:/roles/all";
+		}
+		catch(DataAccessException e)
+		{
+			//throw new Exception("Nadane uprawnienie zostało wykorzystane wcześniej.", e);
+			e.toString();
+
+			System.out.println("Nadane uprawnienie zostało wykorzystane wcześniej");
+			return "error/exceptionPage";
+		}
 	}
 	
 }

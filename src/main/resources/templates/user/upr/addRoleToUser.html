@@ -11,18 +11,25 @@
 <body>
 	<div layout:fragment="content" th:remove="tag">
 		<div class="container">
-
-		<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
+				<div class='col-lg-10 col-md-10 col-sm-10' style="width: 40%">
 			<div class="panel panel-default">
-				<div class="panel-heading" th:text="#{list.available.roles}"></div>
-				<div class="panel-body">
-			
-				<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
+		
+				<table id="datatable" class="table table-striped nowrap">				
 					<thead class="thead">									
 						<tr class="bg-success"><th>Imię</th><th>Nazwisko</th></tr>
 						<tr style="font-size: 2.0em;"><td th:text="${user.firstName}"></td><td th:text="${user.lastName}"></td></tr>
 					</thead>	
 				</table>	
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class='col-lg-10 col-md-10 col-sm-10' style="width: 40%">
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="#{list.available.roles}"></div>
+				<div class="panel-body">
+	
+	
 
 			<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${user}" th:accept-charset='UTF-8' method="post">
 				
@@ -36,7 +43,7 @@
 				
 				
 				<div class="checkbox" th:each="p : ${rolesdictionary}">
-	   		  		<label><input type="checkbox" th:field="*{roles}" th:value="${p.id}" th:text="${p.name}" th:checked="${user.roles.contains(p)}"></label>
+	   		  		<label><input type="checkbox" th:field="*{roles}" th:value="${p.id}" th:text="${'['+p.name+']'}" th:checked="${user.roles.contains(p)}"></label>
 				</div>
 
 

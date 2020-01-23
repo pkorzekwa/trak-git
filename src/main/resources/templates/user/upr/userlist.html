@@ -54,7 +54,7 @@ layout:decorate="~{fragments/layout}">
 			<div class="col-sm-12 col-md-12">
 					<table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="1" width="100%">
 						<thead class="thead">
-							<tr><th><a title="Nowy uzytkownik" class='btn btn-warning btn-xs' th:href="@{/registration}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id</th><th>Login</th><th>Imie</th><th>Nazwisko</th><th>Aktywny</th><th>Uprawnienia</th></tr>
+							<tr><th><a title="Nowy uzytkownik" class='btn btn-warning btn-xs' th:href="@{/registration}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Id</th><th>Login</th><th>Imie</th><th>Nazwisko</th><th>Aktywny</th><th>Grupa użytkownika</th></tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="users:${userList}">
@@ -76,7 +76,7 @@ layout:decorate="~{fragments/layout}">
 											<td style="font-size:85%" th:text="${'['+row.name+']'}"></td>
 										</tr>
 									</table>												
-								</td>													
+								</td>										
 							</tr>
 						</tbody>
 					</table>			

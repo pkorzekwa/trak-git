@@ -9,7 +9,7 @@ layout:decorate="~{fragments/layout}">
 </head>
 
 <body>
-	<div layout:fragment="content" th:remove="tag">	
+	
 	<script th:inline="javascript">
 	/*<![CDATA[*/
 	$(document).ready(function() 
@@ -48,13 +48,21 @@ layout:decorate="~{fragments/layout}">
    		}
   	/*]]>*/
   	</script>
-  	
+  	<div layout:fragment="content" th:remove="tag">	
 	<div class="container">
+	<div class='col-lg-50 col-md-50 col-sm-50' style='padding-bottom: 10px;'>
+		<div class="panel panel-default">
+		<div class="panel-heading" th:text="#{roles.name}"></div>
+		<div class="panel-body">	
 		<div class="row">
-			<div class="col-sm-12 col-md-12">
-					<table id='datatable' class='table table-striped table-bordered nowrap' style="width: 50%">
+		<div class="col-sm-12 col-md-12">
+				
+					<table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="1" width="100%">
 						<thead class="thead">
-							<tr><th><a title="Nowa grupa" class='btn btn-warning btn-xs' th:href="@{/roles/add}"><span class='glyphicon glyphicon-plus'></span></a></th><th>Nazwa grupy</th></tr>
+							<tr><th><a title="Nowa grupa" class='btn btn-warning btn-xs' th:href="@{/roles/add}"><span class='glyphicon glyphicon-plus'></span></a></th>
+							    <th>Nazwa grupy</th>
+							    <th>Nazwa uprawnienia</th>							
+							</tr>
 						</thead>
 						<tbody class="tbody">					
 							<tr th:each="roles:${roleList}">
@@ -85,14 +93,28 @@ layout:decorate="~{fragments/layout}">
 									<a th:href="${'/roles/edit/'+roles.Id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
 									<a th:href="${'/roles/editprivileges/'+roles.Id}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-list"></span></a>
 								</td>															
-								<td th:hidden="${roles.Id}"></td>
-								<td th:text="${roles.name}"></td>
+							<!-- 	<td th:hidden="${roles.Id}"></td> -->
+								<td th:text="${'[ '+roles.name+' ]'}"></td>
+								
+							 	<td>
+							 		<table style="line-height: 100%;">
+							 			<tr th:each="a:${roles.privileges}">
+							 				<td style="width: 12em" th:text="${'[ '+a.name}+' ]'"></td>
+							 			</tr>
+							 		</table>
+							 	</td>	
+				
 							</tr>
 						</tbody>
 					</table>			
+					<div><br></div>	
+					
 			</div>
 		</div>
 	</div>
+	</div>
+	</div>
+		</div>
 	</div>
 </body>
 </html>

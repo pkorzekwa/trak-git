@@ -12,20 +12,26 @@ layout:decorate="~{fragments/layout}">
 	<div layout:fragment="content" th:remove="tag">
 
 	<div class="container">
-
-	<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
+	<div class='col-lg-10 col-md-10 col-sm-10' style="width: 50%">
 			<div class="panel panel-default">
-				<div class="panel-heading" th:text="#{list.available.privileges}"></div>
-				<div class="panel-body">
-		
-				<table id="datatable" class="table table-striped nowrap" style="width: 50%">				
+				<table id="datatable" class="table table-striped nowrap">				
 					<thead class="thead">									
 						<tr class="bg-success"><th>Nazwa Grupy</th></tr>
 						<tr style="font-size: 2.0em;"><td th:text="${role.name}"></td></tr>
 					</thead>	
 				</table>	
+			</div>
+		</div>	
+
+	</div>
+	<div class="container">
+	<div class='col-lg-10 col-md-10 col-sm-10' style="width: 50%">
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="#{list.available.privileges}"></div>
+				<div class="panel-body">
+		
 						
-		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${privilegeForm}" method="post">
+		<form action="#" th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${role}" method="post">
 
 <!--                 <ul class="list-group">
 						 <li class="list-group-item" data-toggle="list" th:each="privilege, itemStat : ${privilegeForm.privileges}" th:id="${privilege.getId()}" th:value="${privilege.getName()}" th:text="${privilege.getName()}"></li>
@@ -33,7 +39,8 @@ layout:decorate="~{fragments/layout}">
                 </ul>
 
         	 -->
-        		<!-- <input type="hidden" th:field="*{role.name}" class="form-control"/> -->
+        		<input type="hidden" th:field="*{id}" class="form-control"/>
+        		<input type="hidden" th:field="*{name}" class="form-control"/>
         					
 				<div class="checkbox" th:each="p : ${allprivilegesDictionary}">
 	   		  		<label><input type="checkbox" th:field="*{privileges}" th:value="${p.id}" th:text="${p.name}" th:checked="${privilegeForm.privileges.contains(p)}"></label>

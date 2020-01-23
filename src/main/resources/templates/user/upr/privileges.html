@@ -85,7 +85,7 @@ layout:decorate="~{fragments/layout}">
 									<a th:href="${'/privileges/edit/'+privilege.Id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
 								</td>															
 								<td th:hidden="${privilege.Id}"></td>
-								<td th:text="${privilege.name}"></td>
+								<td th:text="${'[ '+privilege.name+' ]'}"></td>
 							</tr>
 						</tbody>
 					</table>
