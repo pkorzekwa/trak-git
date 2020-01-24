@@ -88,18 +88,18 @@ layout:decorate="~{fragments/layout}">
 	    						<!-- Koniec -->
 								
 							
-								<td>				
+								<td style="width: 10%">				
 									<button type='button' class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#delete'+${roles.Id}"><span class="glyphicon glyphicon-remove"></span></button>
 									<a th:href="${'/roles/edit/'+roles.Id}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>								
 									<a th:href="${'/roles/editprivileges/'+roles.Id}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-list"></span></a>
 								</td>															
 							<!-- 	<td th:hidden="${roles.Id}"></td> -->
-								<td th:text="${'[ '+roles.name+' ]'}"></td>
+								<td th:text="${'['+roles.name+']'}"></td>
 								
 							 	<td>
-							 		<table style="line-height: 100%;">
+							 		<table style="line-height: 10%;">
 							 			<tr th:each="a:${roles.privileges}">
-							 				<td style="width: 12em" th:text="${'[ '+a.name}+' ]'"></td>
+							 				<td style="width: 12em" th:text="${'['+a.name}+']'"></td>
 							 			</tr>
 							 		</table>
 							 	</td>	
