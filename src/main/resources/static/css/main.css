@@ -6,7 +6,7 @@ body {
 }
 footer {
     position: fixed;
-    height: 50px;
+    height: 60px;
     bottom: 0;
     width: 100%;
     background-color: #ccc
@@ -40,4 +40,8 @@ footer p {
 
 .list-arrows button {
     margin-bottom: 20px;
+}
+.pzuLogo { 
+	padding-top: 0px; 
+	margin-top: -15px;
 }

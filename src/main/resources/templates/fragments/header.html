@@ -10,15 +10,15 @@
     <!-- navbar-fixed-top -->
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">
-                    <img th:src="@{/media/mLogo.png}" alt="Trak logo"/>
+                <a class="navbar-brand pzuLogo" th:href="@{/}">
+                    <img th:src="@{/media/PZU LOGO RGB_42x42px.png}" alt="Trak logo"/>
                 </a>
             </div>
             <div id="navbar" class="collapse navbar-collapse" sec:authorize="hasAnyRole('ZADANIA', 'UZYTKOWNICY', 'ROLES')">
                 <ul class="nav navbar-nav">                    
                     <li class="nav-item dropdown">
                     	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administartor</a>
-                    	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                       	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     		<a class="list-group-item" th:href="@{/tasks/all}" sec:authorize="hasRole('ZADANIA')">Słownik zadań</a>
                     		<a class="list-group-item" th:href="@{/users/all}" sec:authorize="hasRole('UZYTKOWNICY')">Użytkownicy</a>
                     		<a class="list-group-item" th:href="@{/roles/all}" sec:authorize="hasRole('ROLES')">Grupy użytkowników</a>
@@ -27,8 +27,15 @@
                     		<a class="list-group-item" th:href="@{/employee/employeeedit}" sec:authorize="hasRole('UZYTKOWNICY')">Słownik pracowników</a>
                     	</div>
                     </li>
+
+                    
                 </ul>
-            </div>
+                <ul class="nav navbar-nav navbar-right">
+                  	<li><a><i class="glyphicon glyphicon-user"></i><span sec:authentication="name"></span></a></li>                        
+                    <li><a th:href="@{/logout}"><i class="glyphicon glyphicon-log-out"></i><span th:text="#{sign.out}"></span></a></li>
+                </ul>
+              </div>
+
         </div>
     </nav>
 </th:block>

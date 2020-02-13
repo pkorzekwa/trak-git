@@ -81,7 +81,20 @@ public class UserServiceImpl implements UserService
 		{
 			privileges.add(item.getName());
 		}
-
+		
+		// Role 
+		List<String> listRoles = new ArrayList<String>();
+		for (Role role : roles)
+		{
+			listRoles.add(role.getName());
+		}
+		for (String i : listRoles)
+		{
+			privileges.add(i);
+		}
+		
+		//end
+		
 		return privileges;
 	}
 
@@ -94,6 +107,39 @@ public class UserServiceImpl implements UserService
 		}
 		return authorities;
 	}
+	
+/*	
+	//======= Role
+	
+	private Collection<? extends GrantedAuthority> getAuthorities2(Collection<Role> roles)
+	{
+
+		return getGrantedAuthorities2(getRoles(roles));
+	}
+	
+	private List<GrantedAuthority> getGrantedAuthorities2(List<String> listRoles)
+	{
+		List<GrantedAuthority> authorities2 = new ArrayList<>();
+		for (String role : listRoles)
+		{
+			authorities2.add(new SimpleGrantedAuthority(role));
+		}
+		return authorities2;
+	}
+	
+	private List<String> getRoles(final Collection<Role> roles)
+	{
+		List<String> listRoles = new ArrayList<String>();
+
+		for (Role role : roles)
+		{
+			listRoles.add(role.getName());
+		}
+		
+		return listRoles;
+	}
+	//=======
+	*/
 
 	public User findByLogin(String login)
 	{

@@ -6,12 +6,14 @@
     <footer>
         <div class="container">
             <p>
-                &copy; trak.pzu.pl
+               
                 <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | <b><span th:text="#{logged.user}" ></span>:</b> <span sec:authentication="name"></span> 
-                    | <b><span th:text="#{roles.privilege}"></span>:</b> <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/logout}"><span th:text="#{sign.out}"></span></a>
-                </span>
+                   
+                      <b><span th:text="#{roles.name}"></span>:</b> 
+                         <span th:each="a: ${#authentication.principal.authorities}" th:text="${#strings.contains(a, 'TRAK')} ? ${'[' + a + ']' + ' '}"></span>
+                         <br>
+                          &copy; trak.pzu.pl
+                </span> 
             </p>
         </div>
     </footer>
