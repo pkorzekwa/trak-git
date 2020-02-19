@@ -9,4 +9,10 @@ public interface SystService {
 //	void save(pl.pzu.trak.domain.System system);
 //	pl.pzu.trak.domain.System findOne(String systemId);
 //	pl.pzu.trak.domain.System getSystemById(String systemId);
+	void add(Syst syst);
+	void remove(Short systemId);
+	void update(Syst syst);
+	Syst findOne(Short systemId);
+	void updateSystem(Short systemId, String systemName);
+
 }

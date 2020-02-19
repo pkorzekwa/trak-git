@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="~{fragments/layout}">
+
+
+<head>
+	<title>Edycja grupy</title>
+</head>
+
+<body>
+	<div layout:fragment="content" th:remove="tag">
+	<div class="container">
+		<div class='col-lg-10 col-md-10 col-sm-10' style='padding-bottom: 10px;'>
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="#{system.edit}"></div>
+				<div class="panel-body">
+
+					<form th:action="@{${#httpServletRequest.getRequestURI()}}" th:object="${system}" th:accept-charset='UTF-8' method="post">
+						<div>							
+							<div class="row">
+								<div class='col-lg-10 col-md-10 col-sm-10'
+									style='padding-bottom: 10px;'>
+									<label for="systemName">Nazwa systemu</label> <input
+										type="text" th:field="*{systemName}" class="form-control"
+										required="required" />
+								</div>
+							</div>
+
+							<div class="submit">							
+								<a type="button" name="cancel" class="btn btn-default" th:href="${'/systems/all/'}">Anuluj</a>
+								<button type="submit" name="save" class="btn btn-success">Zapisz</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

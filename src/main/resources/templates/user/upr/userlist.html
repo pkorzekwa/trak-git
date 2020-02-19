@@ -68,7 +68,7 @@ layout:decorate="~{fragments/layout}">
 								<td th:text="${users.login}"></td>
 								<td th:text="${users.firstName}"></td>
 								<td th:text="${users.lastName}"></td>
-								<td th:text="${users.enabled}"></td>
+								<td th:text="${users.enabled == true} ? 'Aktywny' : 'Nieaktywny' "></td>
 								
 								<td>
 									<table style="line-height: 25%;">

@@ -93,5 +93,5 @@ public class TaskController
 			taskService.save(task);
 			return "redirect:/tasks/all";
 		}
-	}	
+	}
 }
